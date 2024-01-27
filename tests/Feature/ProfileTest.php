@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Livewire\Volt\Volt;
 use Tests\TestCase;
 
@@ -97,5 +99,33 @@ class ProfileTest extends TestCase
             ->assertNoRedirect();
 
         $this->assertNotNull($user->fresh());
+    }
+
+    public function test_profile_can_be_created_for_user(): void
+    {
+        $this->withoutExceptionHandling();
+        $user = User::factory()->create();
+
+        $nombre = Str::random(10);
+        $apellido = Str::random(10);
+        $email = Str::random(10).'@example.com';
+        $cedula = random_int(min:100_000, max:300_000_000);
+
+        $profile = new Profile();
+
+        $profile->fill([
+            'user_id' => $user['id'],
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'cedula' => $cedula,
+            'email' => $email
+        ]);
+
+        $profile->save();
+
+        $this->assertDatabaseHas(Profile::class, [
+            'user_id' => $user['id'],
+            'cedula' => $cedula
+        ]);
     }
 }
