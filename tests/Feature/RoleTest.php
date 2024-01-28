@@ -10,9 +10,14 @@ class RoleTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed();
+    }
+
     public function test_roles_exist(): void
     {
-        $this->seed();
         $this->assertDatabaseHas('roles', [
             'nombre' => 'admin',
             'nombre' => 'admision',
@@ -23,7 +28,6 @@ class RoleTest extends TestCase
 
     public function test_4_roles_exist(): void
     {
-        $this->seed();
         $this->assertDatabaseCount('roles', 4);
     }
 }

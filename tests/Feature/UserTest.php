@@ -7,37 +7,35 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Tests\CreatesApplication;
 use Tests\TestCase;
 
 class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
+    protected function setUp(): void
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        parent::setUp();
+        $this->seed();
     }
 
     public function test_we_can_create_user(): void
     {
         $name = Str::random(10);
         $email = Str::random(10).'@example.com';
+        $role = 2;
 
-        $user = new User();
-        $user->fill([
+        User::create([
             'name' => $name,
             'email' => $email,
             'password' => Hash::make('password'),
+            'role_id' => $role
         ]);
-        $user->save();
 
         $this->assertDatabaseHas(User::class, [
-            'name' => $name
+            'name' => $name,
+            'role_id' => $role
         ]);
     }
 }
