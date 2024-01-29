@@ -36,6 +36,8 @@ return new class extends Migration
             $table->text('examenes_complementarios');
             $table->text('consentimiento');
             $table->text('evolucion');
+
+            $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
