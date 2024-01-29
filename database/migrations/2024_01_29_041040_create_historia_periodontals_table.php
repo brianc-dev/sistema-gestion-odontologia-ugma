@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('control_placa_dental_url');
             $table->decimal('porcentaje', 5, 2);
             $table->timestamps();
-            
+
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
