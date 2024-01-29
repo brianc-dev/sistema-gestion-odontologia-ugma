@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('historias', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_historia', 10);
+            $table->string('numero_historia')->nullable(false)->unique();
+            $table->integer('ano_creacion')->nullable(false);
+            $table->foreignId('estudiante_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
+
+            $table->index('numero_historia');
         });
     }
 
