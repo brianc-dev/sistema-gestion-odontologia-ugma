@@ -4,5 +4,5 @@
             {{ __('Historia') }}
         </h2>
     </x-slot>
-        <livewire:historia.create-historia />
+        <livewire:historia.editor-section />
 </x-app-layout>
