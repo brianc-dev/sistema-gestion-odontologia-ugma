@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class HistoriaController extends Controller
 {
+    private const NUMERO_HISTORIA_PATTERN = '/^T-[\d]{4}-[\d]{4}$/';
+    // Regex to match T-0000-0000
+    // /^T-[\d]{4}-[\d]{4}$/
     /**
      * Display a listing of the resource.
      */
@@ -20,7 +23,7 @@ class HistoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.historia.create');
     }
 
     /**
@@ -28,7 +31,9 @@ class HistoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Generate numero_historia
+
+
     }
 
     /**
