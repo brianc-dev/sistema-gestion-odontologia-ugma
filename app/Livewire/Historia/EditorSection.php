@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class EditorSection extends Component
 {
-    public $section = 3;
+    public $section = 4;
     #[On('section-changed')]
     public function changeSection($section)
     {
