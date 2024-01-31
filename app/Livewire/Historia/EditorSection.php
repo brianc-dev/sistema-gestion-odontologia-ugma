@@ -10,9 +10,10 @@ class EditorSection extends Component
 {
     private $sections = [
         'Datos personales del paciente',
+        'Antecedentes Médicos Familiares',
         'Antecedentes Médicos Personales',
         'Medicamento',
-        'Antecedentes Médicos Familiares',
+        'Historia Odontologica',
         'Examen radiográfico',
         'Periodontograma',
         'Estudio de modelos',
@@ -26,7 +27,7 @@ class EditorSection extends Component
         'Ficha endodontica'
     ];
 
-    public $section = 0;
+    public $section = 4;
     #[On('section-changed')]
     public function changeSection(int $section)
     {
