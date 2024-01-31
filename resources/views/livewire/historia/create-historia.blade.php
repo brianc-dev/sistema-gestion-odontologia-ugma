@@ -68,7 +68,7 @@
                 </fieldset>
                 <div> @error('form.sexo')
                     <x-input-error :messages="$message" class=""></x-input-error> @enderror</div>
-                <x-input-error :messages="$errors->get('form.edad')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('form.sexo')" class="mt-2"/>
             </div>
 
             <!-- Edad -->
