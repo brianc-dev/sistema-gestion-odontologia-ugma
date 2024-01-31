@@ -7,24 +7,8 @@ use function Laravel\Prompts\alert;
 
 class Menus extends Component
 {
-    private $menus = [
-        'Datos personales del paciente',
-        'Antecedentes Médicos Personales',
-        'Medicamento',
-        'Antecedentes Médicos Familiares',
-        'Examen radiográfico',
-        'Periodontograma',
-        'Estudio de modelos',
-        'Plan de tratamiento',
-        'Modificaciones del plan de tratamiento',
-        'Presupuesto',
-        'Secuencia de tratamiento',
-        'Historia periodontal',
-        'Ficha endodontica',
-        'Pruebas diagnosticas',
-        'Ficha endodontica'
-    ];
-
+    public $sections;
+    
     public function changeSection($section) {
         $this->dispatch('section-changed', section: $section)->to(EditorSection::class);
     }
@@ -32,7 +16,7 @@ class Menus extends Component
     public function render()
     {
         return view('livewire.historia.menus')->with([
-            'menus' => $this->menus
+            'sections' => $this->sections
         ]);
     }
 }
