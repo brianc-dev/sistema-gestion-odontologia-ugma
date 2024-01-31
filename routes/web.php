@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +23,12 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+// Definimos rutas para los recursos. De una vez especificamos que todas requieren autenticacion
+Route::middleware(['auth'])->group(function (){
+    Route::resources([
+        'historia' => HistoriaController::class
+    ]);
+});
 
 require __DIR__.'/auth.php';
