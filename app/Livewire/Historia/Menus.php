@@ -9,9 +9,8 @@ class Menus extends Component
 {
     private $menus = [
         'Datos personales del paciente',
-        'Historia Médica',
-        'Historia Odontológica',
         'Antecedentes Médicos Personales',
+        'Medicamento',
         'Antecedentes Médicos Familiares',
         'Examen radiográfico',
         'Periodontograma',
