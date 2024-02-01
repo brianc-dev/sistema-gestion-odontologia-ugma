@@ -10,6 +10,7 @@ class CreateHistoria extends Component
 {
     public HistoriaForm $form;
 
+    #[On('historia-updated')]
     public function save()
     {
         // reformat cedula

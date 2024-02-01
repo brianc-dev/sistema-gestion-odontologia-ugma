@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Historia;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class HistoriaPolicy
 {
@@ -29,7 +30,29 @@ class HistoriaPolicy
      */
     public function create(User $user): bool
     {
-        //
+        // Denegar si...
+        // Si el usuario NO esta autenticado
+        if (!Auth::check()) {
+            return false;
+        }
+
+        // Si el usuario que pide la solicitud NO es el mismo logueado
+        if (Auth::user() !== $user) {
+            return false;
+        }
+
+        // Si el usuario NO es estudiante
+        if (Auth::user()->role_id != 3) {
+            return false;
+        }
+
+        // Si el usuario ya tiene 5 historias o más
+        if (Auth::user()->estudiante->historias->count() >= 5) {
+            return false;
+        }
+
+        // Sino permitir
+        return true;
     }
 
     /**

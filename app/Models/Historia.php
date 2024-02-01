@@ -11,7 +11,9 @@ class Historia extends Model
     use HasFactory;
 
     protected $fillable = [
-        'numero_historia'
+        'numero_historia',
+        'ano_creacion',
+        'estudiante_id'
     ];
 
     public function alumno(): BelongsTo

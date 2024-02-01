@@ -7,7 +7,7 @@
 
             @if(Auth::user()->role_id == 3)
                 <div @class('justify-self-end')>
-                    <a href="{{ route('historia.create') }}" @class('btn-option')>Crear nueva historia</a>
+                    <livewire:historia.create-button />
                 </div>
             @endif
         </div>
