@@ -1,8 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        <div @class('flex space-x-4 justify-between')>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Dashboard') }}
+            </h2>
+
+            @if(Auth::user()->role_id == 3)
+                <div @class('justify-self-end')>
+                    <a href="{{ route('historia.create') }}" @class('btn-option')>Crear nueva historia</a>
+                </div>
+            @endif
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -13,7 +21,7 @@
                 </div>
             </div>
             <div>
-                <h2 @class("p-6 text-gray-900 font-semibold")>Historias recientes</h2>
+                <h2 @class("p-6 text-gray-900 font-semibold")>Historias médicas recientes</h2>
                 <div>
                     @if(Auth::user()->role_id == 3)
                         @if(Auth::user()->estudiante->historias->count() > 0)

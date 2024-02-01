@@ -33,11 +33,6 @@ new class extends Component {
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Inicio') }}
                     </x-nav-link>
-                    @if(Auth::user()->role_id == 3)
-                    <x-nav-link :href="route('historia.create')" :active="request()->routeIs('historia.create')" wire:navigate>
-                        {{ __('Crear nueva historia') }}
-                    </x-nav-link>
-                    @endif
                 </div>
             </div>
 
@@ -63,13 +58,13 @@ new class extends Component {
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
                         <button wire:click="logout" class="w-full text-start">
                             <x-dropdown-link>
-                                {{ __('Log Out') }}
+                                {{ __('Cerrar Sesión') }}
                             </x-dropdown-link>
                         </button>
                     </x-slot>
@@ -111,13 +106,13 @@ new class extends Component {
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile')" wire:navigate>
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
                 <button wire:click="logout" class="w-full text-start">
                     <x-responsive-nav-link>
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar Sesión') }}
                     </x-responsive-nav-link>
                 </button>
             </div>
