@@ -9,7 +9,23 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    {{ __("Bienvenido ".Auth::user()->name.'. Has iniciado sesión.') }}
+                </div>
+            </div>
+            <div>
+                <h2 @class("p-6 text-gray-900 font-semibold")>Historias recientes</h2>
+                <div>
+                    @if(Auth::user()->role_id == 3)
+                        @if(Auth::user()->estudiante->historias->count() > 0)
+
+                        @else
+                            <div>Aun no tienes historias médicas.</div>
+                        @endif
+                    @endif
+                    @php
+
+
+                    @endphp
                 </div>
             </div>
         </div>

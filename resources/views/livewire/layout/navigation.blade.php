@@ -31,19 +31,15 @@ new class extends Component {
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                        {{ __('Inicio') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                    @if(Auth::user()->role_id == 3)
+                    <x-nav-link :href="route('historia.create')" :active="request()->routeIs('historia.create')" wire:navigate>
+                        {{ __('Crear nueva historia') }}
                     </x-nav-link>
+                    @endif
                 </div>
-                @if(Auth::user()->role_id == 3)
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-self-end">
-                        <a href="#" class="" wire:navigate>{{ __('Crear nueva historia') }}</a>
-                    </div>
-                @endif
             </div>
-
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

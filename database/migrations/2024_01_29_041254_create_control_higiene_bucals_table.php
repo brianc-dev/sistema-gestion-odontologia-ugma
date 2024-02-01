@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('tecnica_cepillado');
             $table->text('cepillo_recomendado');
             $table->text('metodos_auxiliares_requeridos');
-            $table->text('placa_bacteriana_lengua');
+            $table->enum('placa_bacteriana_lengua', ['Sí', 'No']);
             $table->enum('control_halitosis', ['Sí', 'No']);
             $table->text('tratamiento');
 
