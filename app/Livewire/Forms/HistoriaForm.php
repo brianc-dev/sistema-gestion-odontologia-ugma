@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -102,4 +103,18 @@ class HistoriaForm extends Form
         'enfermedad_actual' => ['required', 'string', 'between:0,200']
     ], message: self::messages)]
     public string $enfermedad_actual = '';
+
+    #[On('update-historia')]
+    public function save()
+    {
+        // reformat cedula
+        $this->form->cedula = $this->form->letra_cedula.$this->form->numero_cedula;
+        $this->validate();
+
+//        Historia::create(
+//            $this->form->all()
+//        );
+
+        return $this->redirect('/dashboard', navigate: true);
+    }
 }

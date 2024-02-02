@@ -174,12 +174,5 @@
                     <x-input-error :messages="$message" class=""></x-input-error> @enderror</div>
             </div>
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <button type="button" class="btn-secondary">{{ __('Cancelar') }}</button>
-            <x-primary-button class="ms-4 btn-primary">
-                {{ __('Guardar') }}
-            </x-primary-button>
-        </div>
     </form>
 </div>

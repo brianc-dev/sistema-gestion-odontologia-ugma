@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div @class('flex space-x-4 justify-between')>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
+                {{ __('Resumen') }}
             </h2>
 
             @if(Auth::user()->role_id == 3)
                 <div @class('justify-self-end')>
-                    <livewire:historia.create-button />
+                    <livewire:historia.create-button/>
                 </div>
             @endif
         </div>
@@ -22,18 +22,27 @@
             </div>
             <div>
                 <h2 @class("p-6 text-gray-900 font-semibold")>Historias médicas recientes</h2>
-                <div>
+                <div class="flex flex-col gap-4">
                     @if(Auth::user()->role_id == 3)
                         @if(Auth::user()->estudiante->historias->count() > 0)
+                            @foreach(Auth::user()->estudiante->historias as $historia)
+                                <div class="rounded-lg bg-white p-4">
+                                    <a href="{{ route('historia.show', $historia->id) }}">
+                                        <div class="flex justify-between items-center space-x-4">
 
+                                            <p>Nro. {{$historia->numero_historia}}</p>
+                                            <div class="grow">
+                                                <p>Paciente: </p>
+                                            </div>
+                                            <p class="text-slate-400 text-sm">{{ $historia->created_at->format('d-n-Y h:i A') }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         @else
                             <div>Aun no tienes historias médicas.</div>
                         @endif
                     @endif
-                    @php
-
-
-                    @endphp
                 </div>
             </div>
         </div>

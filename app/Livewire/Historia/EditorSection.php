@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Historia;
 
+use App\Livewire\Forms\HistoriaForm;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 
 class EditorSection extends Component
 {
+
+    public HistoriaForm $form;
     private $sections = [
         'Datos personales del paciente',
         'Antecedentes Médicos Familiares',
@@ -27,7 +30,7 @@ class EditorSection extends Component
         'Ficha endodontica'
     ];
 
-    public $section = 4;
+    public $section = 0;
     #[On('section-changed')]
     public function changeSection(int $section)
     {

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Historia;
 use App\Models\User;
+use App\Observers\HistoriaObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -29,6 +31,7 @@ class EventServiceProvider extends ServiceProvider
     {
         // Observe User models for events
         User::observe(UserObserver::class);
+        Historia::observe(HistoriaObserver::class);
     }
 
     /**

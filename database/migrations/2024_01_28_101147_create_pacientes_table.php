@@ -13,21 +13,23 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->integer('edad');
-            $table->enum('sexo', ['M', 'F']);
-            $table->string('lugar_nacimiento');
-            $table->date('fecha_nacimiento');
-            $table->string('ocupacion');
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('cedula');
-            $table->string('contacto_emergencia');
-            $table->string('telefono_emergencia');
-            $table->text('motivo_consulta');
-            $table->text('enfermedad_actual');
+            $table->string('nombre')->default('');
+            $table->string('apellido')->default('');
+            $table->integer('edad')->default(0);
+            $table->enum('sexo', ['M', 'F'])->nullable();
+            $table->string('lugar_nacimiento')->default('');
+            $table->date('fecha_nacimiento')->nullable();
+            $table->string('ocupacion')->default('');
+            $table->string('direccion')->default('');
+            $table->string('telefono')->default('');
+            $table->string('cedula')->default('');
+            $table->string('contacto_emergencia')->default('');
+            $table->string('telefono_emergencia')->default('');
+            $table->text('motivo_consulta')->nullable();
+            $table->text('enfermedad_actual')->nullable();
             $table->timestamps();
+
+            $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

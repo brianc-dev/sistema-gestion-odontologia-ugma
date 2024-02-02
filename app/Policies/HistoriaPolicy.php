@@ -28,7 +28,7 @@ class HistoriaPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user): bool|Response
     {
         // Denegar si...
         // Si el usuario NO esta autenticado
@@ -43,11 +43,6 @@ class HistoriaPolicy
 
         // Si el usuario NO es estudiante
         if (Auth::user()->role_id != 3) {
-            return false;
-        }
-
-        // Si el usuario ya tiene 5 historias o más
-        if (Auth::user()->estudiante->historias->count() >= 5) {
             return false;
         }
 

@@ -16,7 +16,7 @@ class Historia extends Model
         'estudiante_id'
     ];
 
-    public function alumno(): BelongsTo
+    public function estudiante(): BelongsTo
     {
         return $this->belongsTo(Estudiante::class);
     }
