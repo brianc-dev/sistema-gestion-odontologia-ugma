@@ -26,7 +26,7 @@
                     @if(Auth::user()->role_id == 3)
                         @if(Auth::user()->estudiante->historias->count() > 0)
                             @foreach(Auth::user()->estudiante->historias as $historia)
-                                <div class="rounded-lg bg-white p-4">
+                                <div wire:key="{{ $historia->id }}" class="rounded-lg bg-white p-4">
                                     <a href="{{ route('historia.show', $historia->id) }}">
                                         <div class="flex justify-between items-center space-x-4">
 
