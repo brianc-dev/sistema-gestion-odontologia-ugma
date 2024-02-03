@@ -5,13 +5,13 @@
                 {{ __('Historia Nro. '.$historia->numero_historia) }}
             </h2>
 
-            @if(Auth::user()->role_id == 3)
-                <div @class('justify-self-end')>
-                    <livewire:historia.save-button />
-                </div>
-            @endif
+            <div class="flex justify-end space-x-2">
+
+            @can('update', $historia)
+                <livewire:historia.edit-button></livewire:historia.edit-button>
+            @endcan
+            </div>
         </div>
     </x-slot>
-
 </x-app-layout>
 
