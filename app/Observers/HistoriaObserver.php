@@ -15,6 +15,8 @@ class HistoriaObserver
         $paciente = new Paciente();
         $paciente->historia_id = $historia->id;
         $paciente->save();
+
+
     }
 
     /**

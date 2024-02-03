@@ -4,8 +4,10 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use App\Models\Historia;
+use App\Models\Lapso;
 use App\Models\User;
 use App\Policies\HistoriaPolicy;
+use App\Policies\LapsoPolicy;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -18,7 +20,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        Historia::class => HistoriaPolicy::class
+        Historia::class => HistoriaPolicy::class,
+        Lapso::class => LapsoPolicy::class
     ];
 
     /**
