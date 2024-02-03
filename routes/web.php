@@ -27,7 +27,7 @@ Route::view('profile', 'profile')
 // Definimos rutas para los recursos. De una vez especificamos que todas requieren autenticacion
 Route::middleware(['auth'])->group(function (){
     Route::resources([
-        'historia' => HistoriaController::class
+        'historias' => HistoriaController::class
     ]);
 });
 

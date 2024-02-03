@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div @class('flex space-x-4 justify-between')>
+        <div @class('flex space-x-4 justify-between items-center')>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Resumen') }}
             </h2>
@@ -27,7 +27,7 @@
                         @if(Auth::user()->estudiante->historias->count() > 0)
                             @foreach(Auth::user()->estudiante->historias as $historia)
                                 <div wire:key="{{ $historia->id }}" class="rounded-lg bg-white p-4">
-                                    <a href="{{ route('historia.show', $historia->id) }}">
+                                    <a href="{{ route('historias.show', $historia->id) }}">
                                         <div class="flex justify-between items-center space-x-4">
 
                                             <p>Nro. {{$historia->numero_historia}}</p>

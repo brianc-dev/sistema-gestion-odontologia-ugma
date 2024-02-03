@@ -14,15 +14,31 @@ class HistoriaPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Historia $historia): bool
+    public function view(User $user, Historia $historia): bool|Response
     {
-        //
+        // Denegar si...
+        // Si el usuario NO esta autenticado
+        if (!Auth::check()) {
+            return false;
+        }
+
+        // Si el usuario que pide la solicitud NO es el mismo logueado
+        if (Auth::user() !== $user) {
+            return false;
+        }
+
+        // Si el usuario es estudiante y si el estudiante de la historia NO es el mismo estudiante con sesion activa
+        if ($user->role_id == 3 AND $historia->estudiante != $user->estudiante) {
+                return false;
+        }
+
+        return true;
     }
 
     /**
