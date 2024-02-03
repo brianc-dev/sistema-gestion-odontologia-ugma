@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HistoriaController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,10 +27,28 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 // Definimos rutas para los recursos. De una vez especificamos que todas requieren autenticacion
-Route::middleware(['auth'])->group(function (){
+Route::middleware(['auth'])->group(function () {
     Route::resources([
         'historias' => HistoriaController::class
     ]);
+
+    // Ahora las rutas de admin
+    Route::prefix('admin-access')->group(function () {
+        Route::get('/', function (Request $req) {
+            Gate::authorize('admin');
+
+            return view('pages.admin.home');
+        });
+    });
 });
 
-require __DIR__.'/auth.php';
+// Esta debe ser la unica ruta de admin expuesta sin autenticacion.
+Route::middleware(['guest'])->prefix('admin')->group(function () {
+    Route::get('/login', function (Request $req) {
+        return view('pages.admin.login');
+    });
+});
+
+
+
+require __DIR__ . '/auth.php';
