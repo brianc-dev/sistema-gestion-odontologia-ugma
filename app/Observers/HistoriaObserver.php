@@ -28,6 +28,8 @@ class HistoriaObserver
      */
     public function created(Historia $historia): void
     {
+        return;
+
         $paciente = new Paciente();
         $paciente->historia_id = $historia->id;
         $paciente->save();

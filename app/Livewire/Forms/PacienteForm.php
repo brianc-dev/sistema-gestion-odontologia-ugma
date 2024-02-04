@@ -2,13 +2,11 @@
 
 namespace App\Livewire\Forms;
 
-use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class HistoriaForm extends Form
+class PacienteForm extends Form
 {
-
     const messages = [
         'required' => 'El campo :attribute es requerido.',
         'alpha' => 'El campo :attribute solo debe poseer letras.',
@@ -19,10 +17,6 @@ class HistoriaForm extends Form
         'numeric' => 'El campo :attribute debe ser numérico.',
         'integer' => 'El campo :attribute debe ser un número entero sin decimales.',
     ];
-
-    public int $estudiante_id = 0;
-
-    // Datos personales del paciente
 
     #[Validate([
         'nombre' => ['required', 'string', 'alpha', 'between:2, 50']
@@ -50,7 +44,7 @@ class HistoriaForm extends Form
     public string $edad = '';
 
     #[Validate([
-       'sexo' => ['required', 'string', 'size:1', 'regex:/^[M|F]$/']
+        'sexo' => ['required', 'string', 'size:1', 'regex:/^[M|F]$/']
     ], message: self::messages)]
     public string $sexo = '';
 
@@ -103,5 +97,4 @@ class HistoriaForm extends Form
         'enfermedad_actual' => ['required', 'string', 'between:0,200']
     ], message: self::messages)]
     public string $enfermedad_actual = '';
-
 }

@@ -2,17 +2,15 @@
 
 namespace App\Livewire\Historia;
 
-use App\Livewire\Forms\HistoriaOdontologicaForm;
+use App\Livewire\Forms\PacienteForm;
 use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class HistoriaOdontologica extends Component
+class Paciente extends Component
 {
     #[Modelable]
-    public HistoriaOdontologicaForm $form;
-
-    public $title = '';
+    public PacienteForm $form;
 
     #[On('errors-show')]
     public function showErrors()
@@ -22,6 +20,6 @@ class HistoriaOdontologica extends Component
 
     public function render()
     {
-        return view('livewire.historia.historia-odontologica');
+        return view('livewire.historia.paciente');
     }
 }

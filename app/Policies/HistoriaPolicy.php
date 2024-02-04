@@ -44,26 +44,15 @@ class HistoriaPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool|Response
+    public function create(User $user): bool
     {
-        // Denegar si...
-        // Si el usuario NO esta autenticado
-        if (!Auth::check()) {
-            return false;
-        }
-
-        // Si el usuario que pide la solicitud NO es el mismo logueado
-        if (Auth::user() !== $user) {
-            return false;
-        }
-
-        // Si el usuario NO es estudiante
-        if (Auth::user()->role_id != 3) {
-            return false;
+        // Si el usuario es estudiante
+        if ($user->role_id == 3) {
+            return true;
         }
 
         // Sino permitir
-        return true;
+        return false;
     }
 
     /**

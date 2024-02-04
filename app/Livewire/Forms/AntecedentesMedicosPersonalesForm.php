@@ -71,7 +71,7 @@ class AntecedentesMedicosPersonalesForm extends Form
 
     #[Validate([
         'descripcion_amt' => ['required', 'string', 'between:0,300']
-    ], message: self::messages)]
+    ], message: self::messages, as: 'descripción')]
     public string $descripcion_amt = '';
 
     public function store()

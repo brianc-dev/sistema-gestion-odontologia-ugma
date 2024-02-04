@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pacientes', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('nombre')->default('');
             $table->string('apellido')->default('');
             $table->integer('edad')->default(0);
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('enfermedad_actual')->nullable();
             $table->timestamps();
 
-            $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->primary('historia_id');
         });
     }
 
