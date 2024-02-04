@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('antecedentes_medicos_familiares', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('madre');
-            $table->text('padre');
-            $table->text('hermanos');
-            $table->text('abuelos_maternos');
-            $table->text('abuelos_paternos');
+            $table->text('padre')->default('');
+            $table->text('hermanos')->default('');
+            $table->text('abuelos_maternos')->default('');
+            $table->text('abuelos_paternos')->default('');
 
             $table->primary('historia_id');
         });

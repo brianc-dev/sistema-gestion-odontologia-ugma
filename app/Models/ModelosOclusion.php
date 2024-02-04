@@ -10,4 +10,16 @@ class ModelosOclusion extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $attributes = [
+        'linea_media' => '',
+        'sobresalte' => 0,
+        'sobrepase' => 0,
+        'relacion_canina' => '',
+        'relacion_molar' => '',
+        'mordida_anterior' => '',
+        'mordida_posterior' => '',
+        'curvas_compensacion' => '',
+        'plano_oclusal' => '',
+    ];
 }

@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('historia_periodontals', function (Blueprint $table) {
-            $table->id();
-            $table->integer('higiene_bucal');
-            $table->text('control_placa_dental_url');
-            $table->decimal('porcentaje', 5, 2);
+            $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('control_placa_dental_url')->default('');
+            $table->decimal('porcentaje', 5, 2)->default(0);
             $table->timestamps();
 
-            $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->primary('historia_id');
         });
     }
 

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('examen_radiograficos', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->text('zona_nasomaxilar');
-            $table->text('zona_atm');
-            $table->text('zona_mandibular');
-            $table->text('zona_dasi');
-            $table->text('estudio_periapicales');
-            $table->text('estudio_coronales');
+            $table->text('zona_nasomaxilar')->default('');
+            $table->text('zona_atm')->default('');
+            $table->text('zona_mandibular')->default('');
+            $table->text('zona_dasi')->default('');
+            $table->text('estudio_periapicales')->default('');
+            $table->text('estudio_coronales')->default('');
 
             $table->primary('historia_id');
         });

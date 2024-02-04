@@ -10,4 +10,11 @@ class FichaEndodontica extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $attributes = [
+        'sintomas' => '',
+        'signos' => '',
+        'etiologia' => '',
+        'interpretacion_radiografica' => '',
+    ];
 }

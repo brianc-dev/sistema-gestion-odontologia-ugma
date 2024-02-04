@@ -10,4 +10,8 @@ class AntecedentesMedicosPersonales extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $attributes = [
+        'descripcion_amt' => ''
+    ];
 }

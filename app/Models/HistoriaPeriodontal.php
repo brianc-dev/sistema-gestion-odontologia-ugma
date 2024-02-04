@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class HistoriaPeriodontal extends Model
 {
     use HasFactory;
+
+    protected $attributes = [
+        'control_placa_dental_url' => '',
+        'porcentaje' => 0
+    ];
 }

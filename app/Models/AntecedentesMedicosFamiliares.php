@@ -10,4 +10,12 @@ class AntecedentesMedicosFamiliares extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $attributes = [
+        'madre' => '',
+        'padre' => '',
+        'hermanos' => '',
+        'abuelos_maternos' => '',
+        'abuelos_paternos' => '',
+    ];
 }

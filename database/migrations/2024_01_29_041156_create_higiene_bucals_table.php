@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('higiene_bucals', function (Blueprint $table) {
-            $table->id();
-            $table->text('tipo_cepillo');
-            $table->text('metodo_cepillado');
-            $table->text('metodos_auxiliares');
-            $table->enum('cepillado_lengua', ['Sí', 'No']);
-            $table->enum('hemorragia_gingival', ['Sí', 'No']);
-            $table->enum('xerostomia', ['Sí', 'No']);
-            $table->enum('sialorrea', ['Sí', 'No']);
+            $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('tipo_cepillo')->default('');
+            $table->text('metodo_cepillado')->default('');
+            $table->text('metodos_auxiliares')->default('');
+            $table->enum('cepillado_lengua', ['Sí', 'No'])->default(null);
+            $table->enum('hemorragia_gingival', ['Sí', 'No'])->default(null);
+            $table->enum('xerostomia', ['Sí', 'No'])->default(null);
+            $table->enum('sialorrea', ['Sí', 'No'])->default(null);
 
-            $table->foreignId('historia_periodontals_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->primary('historia_id');
         });
     }
 

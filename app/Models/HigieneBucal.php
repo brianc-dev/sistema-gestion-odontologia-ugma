@@ -10,4 +10,10 @@ class HigieneBucal extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $attributes = [
+        'tipo_cepillo' => '',
+        'metodo_cepillado' => '',
+        'metodos_auxiliares' => ''
+    ];
 }

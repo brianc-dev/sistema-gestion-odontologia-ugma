@@ -10,4 +10,9 @@ class Medicamento extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $attributes = [
+        'medicamento_actual' => '',
+        'alergias' => ''
+    ];
 }

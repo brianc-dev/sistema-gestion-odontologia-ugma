@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('periodontogramas', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string("url");
+            $table->string("url")->nullable();
 
             $table->primary('historia_id');
         });

@@ -11,7 +11,7 @@ class CreateButton extends Component
 {
     public function createHistoria()
     {
-        return $this->redirect(route('historia.create'), navigate: true);
+        return $this->redirect(route('historias.create'), navigate: true);
     }
 
     public function render()

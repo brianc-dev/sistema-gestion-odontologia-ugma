@@ -12,18 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ficha_endodonticas', function (Blueprint $table) {
-            $table->id();
-            $table->text('nombre_paciente');
-            $table->text('numero_historia');
-            $table->text('nombre_bachiller');
-            $table->integer('anos');
-            $table->integer('cliente');
-            $table->text('sintomas');
-            $table->text('signos');
-            $table->text('etiologia');
-            $table->text('interpretacion_radiografica');
-
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->integer('ano')->default(null);
+            $table->integer('diente')->default(null);
+            $table->text('sintomas')->default('');
+            $table->text('signos')->default('');
+            $table->text('etiologia')->default('');
+            $table->text('interpretacion_radiografica')->default('');
+
+            $table->primary('historia_id');
         });
     }
 

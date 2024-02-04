@@ -12,23 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pruebas_diagnosticas', function (Blueprint $table) {
-            $table->id();
-            $table->text('examen_tejidos_periodontales');
-            $table->text('pruebas_vitalidad');
-            $table->text('diagnostico_presuntivo');
-            $table->text('diagnostico_definitivo');
-            $table->text('morfologia_conducto');
-            $table->text('tratamiento_conducto');
-            $table->text('metodos_obturacion');
-            $table->text('tecnica_preparacion_biomecanica');
-            $table->text('preparacion_quimica');
-            $table->text('numero_ultima_lima_utilizada');
-            $table->text('material_obturacion');
-            $table->text('medicacion');
-            $table->text('justificacion_medicacion');
-            $table->text('observaciones');
-
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('examen_tejidos_periodontales')->default('');
+            $table->text('pruebas_vitalidad')->default('');
+            $table->text('diagnostico_presuntivo')->default('');
+            $table->text('diagnostico_definitivo')->default('');
+            $table->text('morfologia_conducto')->default('');
+            $table->text('tratamiento_conducto')->default('');
+            $table->text('metodos_obturacion')->default('');
+            $table->text('tecnica_preparacion_biomecanica')->default('');
+            $table->text('preparacion_quimica')->default('');
+            $table->text('numero_ultima_lima_utilizada')->default('');
+            $table->text('material_obturacion')->default('');
+            $table->text('medicacion')->default('');
+            $table->text('justificacion_medicacion')->default('');
+            $table->text('observaciones')->default('');
+
+            $table->primary('historia_id');
         });
     }
 

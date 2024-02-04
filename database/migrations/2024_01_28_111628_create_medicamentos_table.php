@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->text('medicamento_actual');
-            $table->text('alergias');
+            $table->text('medicamento_actual')->default('');
+            $table->text('alergias')->default('');
 
             $table->primary('historia_id');
         });

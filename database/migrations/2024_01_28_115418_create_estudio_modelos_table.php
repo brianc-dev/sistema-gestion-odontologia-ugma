@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('estudio_modelos', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-
-            $table->text('examenes_complementarios');
-            $table->text('interconsultas');
-            $table->text('diagnostico');
-            $table->text('pronostico');
+            $table->text('examenes_complementarios')->default('');
+            $table->text('interconsultas')->default('');
+            $table->text('diagnostico')->default('');
+            $table->text('pronostico')->default('');
 
             $table->primary('historia_id');
         });

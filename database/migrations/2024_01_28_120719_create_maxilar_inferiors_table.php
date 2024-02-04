@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('maxilar_inferiors', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->text('tipo_arco');
-            $table->text('forma_arco');
-            $table->text('simetria_arco');
-            $table->text('piso_boca');
-            $table->text('malposiciones_dentarias');
-            $table->text('dientes_ausentes');
-            $table->text('facetas_desgaste');
-            $table->text('diastemas');
-            $table->text('anomalias_forma_tamano_numero');
+            $table->text('tipo_arco')->default('');
+            $table->text('forma_arco')->default('');
+            $table->text('simetria_arco')->default('');
+            $table->text('piso_boca')->default('');
+            $table->text('malposiciones_dentarias')->default('');
+            $table->text('dientes_ausentes')->default('');
+            $table->text('facetas_desgaste')->default('');
+            $table->text('diastemas')->default('');
+            $table->text('anomalias_forma_tamano_numero')->default('');
 
             $table->primary('historia_id');
         });

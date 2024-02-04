@@ -12,17 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('radiografias', function (Blueprint $table) {
-            $table->id();
-            $table->string('radiografia_inicial');
-            $table->string('radiografia_penachos_1');
-            $table->string('radiografia_penachos_2');
-            $table->string('radiografia_final_1');
-            $table->string('radiografia_final_2');
-            $table->string('radiografia_final_4');
-            $table->text('radiografia_conductomedria');
-            $table->text('radiografia_cono_patron');
-
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('radiografia_inicial')->default('');
+            $table->string('radiografia_penachos_1')->default('');
+            $table->string('radiografia_penachos_2')->default('');
+            $table->string('radiografia_final_1')->default('');
+            $table->string('radiografia_final_2')->default('');
+            $table->string('radiografia_final_4')->default('');
+            $table->text('radiografia_conductomedria')->default('');
+            $table->text('radiografia_cono_patron')->default('');
+
+            $table->primary('historia_id');
         });
     }
 

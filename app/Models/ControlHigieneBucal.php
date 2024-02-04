@@ -10,4 +10,11 @@ class ControlHigieneBucal extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $attributes = [
+        'tecnica_cepillado' => '',
+        'cepillo_recomendado' => '',
+        'metodos_auxiliares_requeridos' => '',
+        'tratamiento' => '',
+    ];
 }
