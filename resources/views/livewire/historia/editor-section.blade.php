@@ -17,7 +17,7 @@
             <livewire:historia.historia-odontologica :title="$sections[$section]" wire:model="historiaOdontologicaForm"/>
             @break
         @case(5)
-
+            <livewire:historia.examen-radiografico :title="$sections[$section]" wire:model="examenRadiograficoForm"/>
             @break
         @case(6)
 

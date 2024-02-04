@@ -43,7 +43,7 @@ class EditorSection extends Component
         'Ficha endodontica'
     ];
 
-    public $section = 0;
+    public $section = 6;
 
     #[On('section-changed')]
     public function changeSection(int $section)
