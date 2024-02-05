@@ -16,4 +16,6 @@ class HigieneBucal extends Model
         'metodo_cepillado' => '',
         'metodos_auxiliares' => ''
     ];
+
+    protected $guarded = [];
 }

@@ -15,4 +15,6 @@ class Medicamento extends Model
         'medicamento_actual' => '',
         'alergias' => ''
     ];
+
+    protected $guarded = [];
 }

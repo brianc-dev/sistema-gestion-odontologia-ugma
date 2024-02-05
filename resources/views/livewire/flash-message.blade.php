@@ -7,7 +7,7 @@
          x-transition:leave.opacity.duration.1500ms
          style="display: none;" >
         <p>
-            {{ session('message') }}
+            {{ session()->pull('message') }}
         </p>
     </div>
     @endif

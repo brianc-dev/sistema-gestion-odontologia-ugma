@@ -14,5 +14,5 @@ class PeriodontogramaForm extends Form
     ];
 
     #[Validate('nullable|image|max:3072', message: self::MESSAGES)] // 1MB Max
-    public $periodontograma_photo;
+    public $url;
 }

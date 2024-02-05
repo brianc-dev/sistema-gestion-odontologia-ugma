@@ -10,6 +10,7 @@ use App\Livewire\Forms\MedicamentoForm;
 use App\Livewire\Forms\PacienteForm;
 use App\Livewire\Forms\PeriodontogramaForm;
 use App\Models\Historia;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -43,7 +44,7 @@ class EditorSection extends Component
         'Ficha endodontica'
     ];
 
-    public $section = 6;
+    public $section = 0;
 
     #[On('section-changed')]
     public function changeSection(int $section)
@@ -54,6 +55,8 @@ class EditorSection extends Component
     #[On('historia-create')]
     public function save()
     {
+        $this->pacienteForm->cedula = $this->pacienteForm->letra_cedula . $this->pacienteForm->numero_cedula;
+
         try {
             $this->pacienteForm->validate();
             $this->antecedentesMedicosFamiliaresForm->validate();
@@ -62,20 +65,57 @@ class EditorSection extends Component
             $this->historiaOdontologicaForm->validate();
             $this->examenRadiograficoForm->validate();
             $this->periodontogramaForm->validate();
-
         } catch (ValidationException $exception) {
             $this->dispatch('errors-show');
             return;
         }
 
         $this->authorize('create', Historia::class);
-        // reformat cedula
-//        $this->form->cedula = $this->form->letra_cedula.$this->form->numero_cedula;
 
+        // Creamos historia con los datos validados
+        $estudiante_id = Auth::user()->estudiante->id;
 
-        session()->flash('message', 'Historia creada');
+        $historia = Historia::create([
+            'ano_creacion' => date('Y'),
+            'estudiante_id' => $estudiante_id
+        ]);
 
-        $this->redirectRoute('dashboard', navigate: true);
+        $paciente = new \App\Models\Paciente();
+        $paciente->historia_id = $historia->id;
+        $paciente->fill($this->pacienteForm->except(['letra_cedula', 'numero_cedula']));
+        $paciente->save();
+
+        $antecedentesFamiliares = new \App\Models\AntecedentesMedicosFamiliares($this->antecedentesMedicosFamiliaresForm->all());
+        $antecedentesFamiliares->historia_id = $historia->id;
+        $antecedentesFamiliares->save();
+
+        $antecedentesPersonales = new \App\Models\AntecedentesMedicosPersonales($this->antecedentesMedicosPersonalesForm->all());
+        $antecedentesPersonales->historia_id = $historia->id;
+        $antecedentesPersonales->save();
+
+        $medicamentos = new \App\Models\Medicamento($this->medicamentoForm->all());
+        $medicamentos->historia_id = $historia->id;
+        $medicamentos->save();
+
+        $historiaOdontologica = new \App\Models\HistoriaOdontologica($this->historiaOdontologicaForm->all());
+        $historiaOdontologica->historia_id = $historia->id;
+        $historiaOdontologica->save();
+
+        $examenRadiografico = new \App\Models\ExamenRadiografico($this->examenRadiograficoForm->all());
+        $examenRadiografico->historia_id = $historia->id;
+        $examenRadiografico->save();
+
+        if ($this->periodontogramaForm->url) {
+            $path = $this->periodontogramaForm->url->store(path: 'periodontogramas');
+            $periodontograma = new \App\Models\Periodontograma();
+            $periodontograma->historia_id = $historia->id;
+            $periodontograma->url = $path;
+            $periodontograma->save();
+        }
+
+        session()->put('message', 'Historia creada');
+
+        $this->redirectRoute('dashboard');
     }
 
     public function render()

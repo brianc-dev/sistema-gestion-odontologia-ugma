@@ -73,10 +73,4 @@ class AntecedentesMedicosPersonalesForm extends Form
         'descripcion_amt' => ['required', 'string', 'between:0,300']
     ], message: self::messages, as: 'descripción')]
     public string $descripcion_amt = '';
-
-    public function store()
-    {
-        $this->validate();
-
-    }
 }

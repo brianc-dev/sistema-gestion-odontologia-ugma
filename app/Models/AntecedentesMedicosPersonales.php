@@ -14,4 +14,6 @@ class AntecedentesMedicosPersonales extends Model
     protected $attributes = [
         'descripcion_amt' => ''
     ];
+
+    protected $guarded = [];
 }

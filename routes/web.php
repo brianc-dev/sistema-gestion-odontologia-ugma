@@ -4,6 +4,7 @@ use App\Http\Controllers\HistoriaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +34,28 @@ Route::middleware(['auth'])->group(function () {
     ]);
 
     // Ahora las rutas de admin
-    Route::prefix('admin-access')->group(function () {
+    Route::prefix('admin')->group(function () {
         Route::get('/', function (Request $req) {
-            Gate::authorize('admin');
+            Gate::authorize('admin-access');
 
             return view('pages.admin.home');
+        })->name('admin.home');
+        Route::get('/login', function () {
+            return view('pages.admin.login');
         });
+
+        Route::get('/historias', function () {
+            return view('pages.admin.historias');
+        })->name('admin.historias');
+        Route::get('/profesores', function () {
+            return view('pages.admin.profesores');
+        })->name('admin.profesores');
+        Route::get('/estudiantes', function () {
+            return view('pages.admin.estudiantes');
+        })->name('admin.estudiantes');
+        Route::get('/usuarios', function () {
+            return view('pages.admin.usuarios');
+        })->name('admin.usuarios');
     });
 });
 

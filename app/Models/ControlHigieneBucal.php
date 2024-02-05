@@ -17,4 +17,6 @@ class ControlHigieneBucal extends Model
         'metodos_auxiliares_requeridos' => '',
         'tratamiento' => '',
     ];
+
+    protected $guarded = [];
 }

@@ -18,4 +18,6 @@ class AntecedentesMedicosFamiliares extends Model
         'abuelos_maternos' => '',
         'abuelos_paternos' => '',
     ];
+
+    protected $guarded = [];
 }

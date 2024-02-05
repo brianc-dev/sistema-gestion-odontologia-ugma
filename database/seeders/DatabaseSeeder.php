@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         // user admin
         User::create([
+            'email' => 'admin@ugma.com',
             'name' => 'admin',
             'password' => 'admin',
             'role_id' => 0

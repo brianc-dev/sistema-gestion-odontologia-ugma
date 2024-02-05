@@ -19,18 +19,18 @@
             </h2>
             <div class="flex flex-col space-y-4">
                 <div class="flex space-x-4">
-                    <a href="{{ route('admin.historias') }}">
+                    <a href="">
                         <div class="rounded-lg bg-white">Historias</div>
                     </a>
-                    <a href="{{ route('admin.estudiantes') }}">
+                    <a href="#">
                         <div class="rounded-lg bg-white">Estudiantes</div>
                     </a>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="{{ route('admin.profesores') }}">
+                    <a href="#">
                         <div class="rounded-lg bg-white">Profesores</div>
                     </a>
-                    <a href="{{ route('admin.usuarios') }}">
+                    <a href="#">
                         <div class="rounded-lg bg-white">Usuarios</div>
                     </a>
                 </div>

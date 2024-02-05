@@ -19,4 +19,6 @@ class ExamenRadiografico extends Model
         'estudio_periapicales' => '',
         'estudio_coronales' => ''
     ];
+
+    protected $guarded = [];
 }

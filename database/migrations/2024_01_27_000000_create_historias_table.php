@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('historias', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_historia')->nullable(false)->unique();
+            $table->string('numero_historia')->default('');
             $table->foreignId('historia_status')->default(0)->constrained()->cascadeOnUpdate();
             $table->integer('ano_creacion')->nullable(false);
             $table->foreignId('estudiante_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();

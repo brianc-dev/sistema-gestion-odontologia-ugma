@@ -17,4 +17,6 @@ class FichaEndodontica extends Model
         'etiologia' => '',
         'interpretacion_radiografica' => '',
     ];
+
+    protected $guarded = [];
 }
