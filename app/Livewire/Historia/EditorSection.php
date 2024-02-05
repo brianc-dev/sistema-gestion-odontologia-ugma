@@ -8,7 +8,7 @@ use App\Livewire\Forms\ExamenRadiograficoForm;
 use App\Livewire\Forms\HistoriaOdontologicaForm;
 use App\Livewire\Forms\MedicamentoForm;
 use App\Livewire\Forms\PacienteForm;
-use App\Livewire\Forms\PeriodontodiagramaForm;
+use App\Livewire\Forms\PeriodontogramaForm;
 use App\Models\Historia;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\On;
@@ -23,7 +23,7 @@ class EditorSection extends Component
     public MedicamentoForm $medicamentoForm;
     public HistoriaOdontologicaForm $historiaOdontologicaForm;
     public ExamenRadiograficoForm $examenRadiograficoForm;
-    public PeriodontodiagramaForm $periodontodiagramaForm;
+    public PeriodontogramaForm $periodontogramaForm;
     private $sections = [
         'Datos personales del paciente',
         'Antecedentes Médicos Familiares',
@@ -31,7 +31,7 @@ class EditorSection extends Component
         'Medicamento',
         'Historia Odontologica',
         'Examen radiográfico',
-        'Periodontodiagrama',
+        'Periodontograma',
         'Estudio de modelos',
         'Plan de tratamiento',
         'Modificaciones del plan de tratamiento',
@@ -61,7 +61,8 @@ class EditorSection extends Component
             $this->medicamentoForm->validate();
             $this->historiaOdontologicaForm->validate();
             $this->examenRadiograficoForm->validate();
-            $this->periodontodiagramaForm->validate();
+            $this->periodontogramaForm->validate();
+
         } catch (ValidationException $exception) {
             $this->dispatch('errors-show');
             return;

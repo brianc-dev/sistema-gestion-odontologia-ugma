@@ -20,7 +20,7 @@
             <livewire:historia.examen-radiografico :title="$sections[$section]" wire:model="examenRadiograficoForm"/>
             @break
         @case(6)
-
+            <livewire:historia.periodontograma :title="$sections[$section]" wire:model="periodontogramaForm"/>
             @break
         @case(7)
 

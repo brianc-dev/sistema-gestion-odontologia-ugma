@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profesors', function (Blueprint $table) {
-            $table->id();
-            $table->string('cedula')->unique();
-            $table->foreignId('user_id')->nullable(false)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::create('historia_statuses', function (Blueprint $table) {
+            $table->unsignedBigInteger('id');
+            $table->string('status');
+
+            $table->primary('id');
+            $table->index('id');
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profesors');
+        Schema::dropIfExists('historia_statuses');
     }
 };

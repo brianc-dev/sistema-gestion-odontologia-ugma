@@ -13,22 +13,6 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        // Check which type of user was created and create the appropriate profile
-        $role = $user->role_id;
-        switch ($role) {
-            // Profesor
-            case 2:
-                $profesor = new Profesor();
-                $profesor->user_id = $user->id;
-                $profesor->save();
-                break;
-            // Estudiante
-            case 3:
-                $estudiante = new Estudiante();
-                $estudiante->user_id = $user->id;
-                $estudiante->save();
-                break;
-        }
     }
 
     /**
