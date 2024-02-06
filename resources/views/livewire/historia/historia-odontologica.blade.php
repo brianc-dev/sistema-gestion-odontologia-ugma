@@ -27,12 +27,12 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="ortodoncia" id="Sí" value="1"
+                                <input type="radio" name="ortodoncia" id="Sí" value="Sí"
                                        wire:model.blur="form.ortodoncia">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="ortodoncia" id="No" value="0"
+                                <input type="radio" name="ortodoncia" id="No" value="No"
                                        wire:model.blur="form.ortodoncia">
                                 <label for="No">No</label>
                             </div>
@@ -47,11 +47,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="protesis" id="Sí" value="1" wire:model.blur="form.protesis">
+                                <input type="radio" name="protesis" id="Sí" value="Sí" wire:model.blur="form.protesis">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="protesis" id="No" value="0" wire:model.blur="form.protesis">
+                                <input type="radio" name="protesis" id="No" value="No" wire:model.blur="form.protesis">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>

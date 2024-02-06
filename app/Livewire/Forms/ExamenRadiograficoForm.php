@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\ExamenRadiografico;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -47,4 +48,9 @@ class ExamenRadiograficoForm extends Form
         'estudio_coronales' => ['string', 'between:0,300']
     ], message: self::messages)]
     public string $estudio_coronales = '';
+
+    public function setExamenRadiografico(ExamenRadiografico $examenRadiografico)
+    {
+        $this->fill($examenRadiografico->attributesToArray());
+    }
 }

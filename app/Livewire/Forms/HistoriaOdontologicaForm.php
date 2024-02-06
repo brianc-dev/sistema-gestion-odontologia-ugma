@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\HistoriaOdontologica;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -25,12 +26,12 @@ class HistoriaOdontologicaForm extends Form
     public string $antecedentes_odontologicos_personales = '';
 
     #[Validate([
-        'ortodoncia' => ['required', 'boolean']
+        'ortodoncia' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $ortodoncia = '';
 
     #[Validate([
-        'protesis' => ['required', 'boolean']
+        'protesis' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $protesis = '';
 
@@ -58,4 +59,9 @@ class HistoriaOdontologicaForm extends Form
         'examen_intrabucal' => ['string', 'between:0,300']
     ], message: self::messages)]
     public string $examen_intrabucal = '';
+
+    public function setHistoriaOdontologica(HistoriaOdontologica $historiaOdontologica)
+    {
+        $this->fill($historiaOdontologica->attributesToArray());
+    }
 }

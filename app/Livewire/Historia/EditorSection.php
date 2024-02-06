@@ -18,6 +18,7 @@ use Livewire\Component;
 
 class EditorSection extends Component
 {
+    public Historia $historia;
     public PacienteForm $pacienteForm;
     public AntecedentesMedicosFamiliaresForm $antecedentesMedicosFamiliaresForm;
     public AntecedentesMedicosPersonalesForm $antecedentesMedicosPersonalesForm;
@@ -46,10 +47,44 @@ class EditorSection extends Component
 
     public $section = 0;
 
+    public $enabled = true;
+
     #[On('section-changed')]
     public function changeSection(int $section)
     {
         $this->section = $section;
+    }
+
+    #[On('historia-edit')]
+    public function edit()
+    {
+        $this->enabled = !$this->enabled;
+        $this->dispatch('historia-editing', $this->enabled);
+    }
+
+    #[On('historia-update')]
+    public function update()
+    {
+
+
+        $this->pacienteForm->cedula = $this->pacienteForm->letra_cedula . $this->pacienteForm->numero_cedula;
+
+        try {
+            $this->pacienteForm->validate();
+            $this->antecedentesMedicosFamiliaresForm->validate();
+            $this->antecedentesMedicosPersonalesForm->validate();
+            $this->medicamentoForm->validate();
+            $this->historiaOdontologicaForm->validate();
+            $this->examenRadiograficoForm->validate();
+            $this->periodontogramaForm->validate();
+        } catch (ValidationException $exception) {
+            $this->dispatch('errors-show');
+            return;
+        }
+
+        $this->authorize('update', $this->historia);
+
+
     }
 
     #[On('historia-create')]
@@ -116,6 +151,20 @@ class EditorSection extends Component
         session()->put('message', 'Historia creada');
 
         $this->redirectRoute('dashboard');
+    }
+
+    public function mount($historia = null)
+    {
+        if (isset($historia)) {
+            $this->historia = $historia;
+            $this->enabled= false;
+            $this->pacienteForm->setPaciente($historia->paciente);
+            $this->antecedentesMedicosFamiliaresForm->setAntecedentesMedicosFamiliares($historia->antecedentesMedicosFamiliares);
+            $this->antecedentesMedicosPersonalesForm->setAntecedentesMedicosPersonales($historia->antecedentesMedicosPersonales);
+            $this->medicamentoForm->setMedicamento($historia->medicamento);
+            $this->historiaOdontologicaForm->setHistoriaOdontologica($historia->historiaOdontologica);
+            $this->examenRadiograficoForm->setExamenRadiografico($historia->examenRadiografico);
+        }
     }
 
     public function render()

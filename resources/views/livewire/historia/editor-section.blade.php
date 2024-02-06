@@ -22,15 +22,5 @@
         @case(6)
             <livewire:historia.periodontograma :title="$sections[$section]" wire:model="periodontogramaForm"/>
             @break
-        @case(7)
-
-            @break
-        @case(8)
-
-            @break
-        @case(9)
-
-            @break
-        @default
     @endswitch
 </div>

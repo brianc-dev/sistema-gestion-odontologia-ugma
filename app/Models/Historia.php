@@ -26,4 +26,29 @@ class Historia extends Model
     {
         return $this->hasOne(Paciente::class);
     }
+
+    public function antecedentesMedicosFamiliares(): HasOne
+    {
+        return $this->hasOne(AntecedentesMedicosFamiliares::class);
+    }
+
+    public function antecedentesMedicosPersonales(): HasOne
+    {
+        return $this->hasOne(AntecedentesMedicosPersonales::class);
+    }
+
+    public function medicamento(): HasOne
+    {
+        return $this->hasOne(Medicamento::class);
+    }
+
+    public function historiaOdontologica(): HasOne
+    {
+        return $this->hasOne(HistoriaOdontologica::class);
+    }
+
+    public function examenRadiografico(): HasOne
+    {
+        return $this->hasOne(ExamenRadiografico::class);
+    }
 }

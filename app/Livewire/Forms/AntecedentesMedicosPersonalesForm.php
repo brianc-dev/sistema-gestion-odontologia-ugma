@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\AntecedentesMedicosPersonales;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -20,52 +21,52 @@ class AntecedentesMedicosPersonalesForm extends Form
     ];
 
     #[Validate([
-        'trastorno_cardiovascular' => ['required', 'boolean']
+        'trastorno_cardiovascular' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_cardiovascular = '';
 
     #[Validate([
-        'trastorno_respiratorio' => ['required', 'boolean']
+        'trastorno_respiratorio' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_respiratorio = '';
 
     #[Validate([
-        'trastorno_gastrointestinal' => ['required', 'boolean']
+        'trastorno_gastrointestinal' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_gastrointestinal = '';
 
     #[Validate([
-        'trastorno_oseo' => ['required', 'boolean']
+        'trastorno_oseo' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_oseo = '';
 
     #[Validate([
-        'trastorno_urologico' => ['required', 'boolean']
+        'trastorno_urologico' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_urologico = '';
 
     #[Validate([
-        'trastorno_hematologico' => ['required', 'boolean']
+        'trastorno_hematologico' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_hematologico = '';
 
     #[Validate([
-        'trastorno_hematologico' => ['required', 'boolean']
+        'trastorno_hematologico' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_endocrino = '';
 
     #[Validate([
-        'trastorno_neurologico' => ['required', 'boolean']
+        'trastorno_neurologico' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_neurologico = '';
 
     #[Validate([
-        'trastorno_ginecologico' => ['required', 'boolean']
+        'trastorno_ginecologico' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_ginecologico = '';
 
     #[Validate([
-        'enfermedad_infectocontagiosa' => ['required', 'boolean']
+        'enfermedad_infectocontagiosa' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $enfermedad_infectocontagiosa = '';
 
@@ -73,4 +74,9 @@ class AntecedentesMedicosPersonalesForm extends Form
         'descripcion_amt' => ['required', 'string', 'between:0,300']
     ], message: self::messages, as: 'descripción')]
     public string $descripcion_amt = '';
+
+    public function setAntecedentesMedicosPersonales(AntecedentesMedicosPersonales $antecedentesMedicosPersonalespaciente)
+    {
+        $this->fill($antecedentesMedicosPersonalespaciente->attributesToArray());
+    }
 }

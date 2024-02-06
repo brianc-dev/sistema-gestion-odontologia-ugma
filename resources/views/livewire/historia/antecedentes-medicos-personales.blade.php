@@ -13,11 +13,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_cardiovascular" id="Sí" value="1" wire:model.blur="form.trastorno_cardiovascular">
+                                <input type="radio" name="trastorno_cardiovascular" id="Sí" value="Sí" wire:model.blur="form.trastorno_cardiovascular">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_cardiovascular" id="No" value="0" wire:model.blur="form.trastorno_cardiovascular">
+                                <input type="radio" name="trastorno_cardiovascular" id="No" value="No" wire:model.blur="form.trastorno_cardiovascular">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -32,11 +32,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_respiratorio" id="Sí" value="1" wire:model.blur="form.trastorno_respiratorio">
+                                <input type="radio" name="trastorno_respiratorio" id="Sí" value="Sí" wire:model.blur="form.trastorno_respiratorio">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_respiratorio" id="No" value="0" wire:model.blur="form.trastorno_respiratorio">
+                                <input type="radio" name="trastorno_respiratorio" id="No" value="No" wire:model.blur="form.trastorno_respiratorio">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -50,11 +50,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_gastrointestinal" id="Sí" value="1" wire:model.blur="form.trastorno_gastrointestinal">
+                                <input type="radio" name="trastorno_gastrointestinal" id="Sí" value="Sí" wire:model.blur="form.trastorno_gastrointestinal">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_gastrointestinal" id="No" value="0" wire:model.blur="form.trastorno_gastrointestinal">
+                                <input type="radio" name="trastorno_gastrointestinal" id="No" value="No" wire:model.blur="form.trastorno_gastrointestinal">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -69,11 +69,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_oseo" id="Sí" value="1" wire:model.blur="form.trastorno_oseo">
+                                <input type="radio" name="trastorno_oseo" id="Sí" value="Sí" wire:model.blur="form.trastorno_oseo">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_oseo" id="No" value="0" wire:model.blur="form.trastorno_oseo">
+                                <input type="radio" name="trastorno_oseo" id="No" value="No" wire:model.blur="form.trastorno_oseo">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -90,11 +90,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_urologico" id="Sí" value="1" wire:model.blur="form.trastorno_urologico">
+                                <input type="radio" name="trastorno_urologico" id="Sí" value="Sí" wire:model.blur="form.trastorno_urologico">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_urologico" id="No" value="0" wire:model.blur="form.trastorno_urologico">
+                                <input type="radio" name="trastorno_urologico" id="No" value="No" wire:model.blur="form.trastorno_urologico">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -109,11 +109,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_hematologico" id="Sí" value="1" wire:model.blur="form.trastorno_hematologico">
+                                <input type="radio" name="trastorno_hematologico" id="Sí" value="Sí" wire:model.blur="form.trastorno_hematologico">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_hematologico" id="No" value="0" wire:model.blur="form.trastorno_hematologico">
+                                <input type="radio" name="trastorno_hematologico" id="No" value="No" wire:model.blur="form.trastorno_hematologico">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -127,11 +127,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_endocrino" id="Sí" value="1" wire:model.blur="form.trastorno_endocrino">
+                                <input type="radio" name="trastorno_endocrino" id="Sí" value="Sí" wire:model.blur="form.trastorno_endocrino">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_endocrino" id="No" value="0" wire:model.blur="form.trastorno_endocrino">
+                                <input type="radio" name="trastorno_endocrino" id="No" value="No" wire:model.blur="form.trastorno_endocrino">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -146,11 +146,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_neurologico" id="Sí" value="1" wire:model.blur="form.trastorno_neurologico">
+                                <input type="radio" name="trastorno_neurologico" id="Sí" value="Sí" wire:model.blur="form.trastorno_neurologico">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_neurologico" id="No" value="0" wire:model.blur="form.trastorno_neurologico">
+                                <input type="radio" name="trastorno_neurologico" id="No" value="No" wire:model.blur="form.trastorno_neurologico">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -166,11 +166,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="trastorno_ginecologico" id="Sí" value="1" wire:model.blur="form.trastorno_ginecologico">
+                                <input type="radio" name="trastorno_ginecologico" id="Sí" value="Sí" wire:model.blur="form.trastorno_ginecologico">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="trastorno_ginecologico" id="No" value="0" wire:model.blur="form.trastorno_ginecologico">
+                                <input type="radio" name="trastorno_ginecologico" id="No" value="No" wire:model.blur="form.trastorno_ginecologico">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>
@@ -185,11 +185,11 @@
                     <div class="mt-4 flex-shrink">
                         <fieldset>
                             <div>
-                                <input type="radio" name="enfermedad_infectocontagiosa" id="Sí" value="1" wire:model.blur="form.enfermedad_infectocontagiosa">
+                                <input type="radio" name="enfermedad_infectocontagiosa" id="Sí" value="Sí" wire:model.blur="form.enfermedad_infectocontagiosa">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
-                                <input type="radio" name="enfermedad_infectocontagiosa" id="No" value="0" wire:model.blur="form.enfermedad_infectocontagiosa">
+                                <input type="radio" name="enfermedad_infectocontagiosa" id="No" value="No" wire:model.blur="form.enfermedad_infectocontagiosa">
                                 <label for="No">No</label>
                             </div>
                         </fieldset>

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\AntecedentesMedicosFamiliares;
+use App\Models\Paciente;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -43,4 +45,9 @@ class AntecedentesMedicosFamiliaresForm extends Form
         'abuelos_paternos' => ['string']
     ], message: self::messages)]
     public string $abuelos_paternos = '';
+
+    public function setAntecedentesMedicosFamiliares(AntecedentesMedicosFamiliares $antecedentesMedicosFamiliares)
+    {
+        $this->fill($antecedentesMedicosFamiliares->attributesToArray());
+    }
 }

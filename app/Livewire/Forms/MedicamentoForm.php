@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Medicamento;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -27,4 +28,9 @@ class MedicamentoForm extends Form
         'alergias' => ['string']
     ], message: self::messages)]
     public string $alergias = '';
+
+    public function setMedicamento(Medicamento $medicamento)
+    {
+        $this->fill($medicamento->attributesToArray());
+    }
 }

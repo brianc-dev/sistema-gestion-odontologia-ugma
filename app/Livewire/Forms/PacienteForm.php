@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Paciente;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -97,4 +98,11 @@ class PacienteForm extends Form
         'enfermedad_actual' => ['required', 'string', 'between:0,200']
     ], message: self::messages)]
     public string $enfermedad_actual = '';
+
+    public function setPaciente(Paciente $paciente)
+    {
+        $this->fill($paciente->attributesToArray());
+        $this->letra_cedula = $paciente->cedula[0];
+        $this->numero_cedula = substr($paciente->cedula, 1);
+    }
 }
