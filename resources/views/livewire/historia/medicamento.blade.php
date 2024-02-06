@@ -9,10 +9,10 @@
             <div class="flex gap-4">
                 <div class="mt-4 flex-1">
                     <x-input-label for="medicamento_actual" :value="__('Medicamento actual')"/>
-                    <textarea wire:model.live="form.medicamento_actual" id="medicamento_actual"
+                    <x-textarea :disabled="!$enabled" wire:model.live="form.medicamento_actual" id="medicamento_actual"
                               class="block mt-1 w-full rounded-lg border-none resize-y" type="text"
                               name="medicamento_actual" rows="4" required autofocus spellcheck="true">
-                    </textarea>
+                    </x-textarea>
                     <div> @error('form.medicamento_actual')
                         <x-input-error :messages="$message" class=""></x-input-error> @enderror</div>
                 </div>
@@ -20,10 +20,10 @@
             <div class="flex gap-4">
                 <div class="mt-4 flex-1">
                     <x-input-label for="alergias" :value="__('Alergias')"/>
-                    <textarea wire:model.live="form.alergias" id="alergias"
+                    <x-textarea :disabled="!$enabled" wire:model.live="form.alergias" id="alergias"
                               class="block mt-1 w-full rounded-lg border-none resize-y" type="text"
                               name="alergias" rows="4" required autofocus spellcheck="true">
-                    </textarea>
+                    </x-textarea>
                     <div> @error('form.alergias')
                         <x-input-error :messages="$message" class=""></x-input-error> @enderror</div>
                 </div>

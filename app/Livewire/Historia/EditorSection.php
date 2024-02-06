@@ -13,6 +13,7 @@ use App\Models\Historia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 
@@ -28,26 +29,26 @@ class EditorSection extends Component
     public PeriodontogramaForm $periodontogramaForm;
     private $sections = [
         'Datos personales del paciente',
-        'Antecedentes Médicos Familiares',
         'Antecedentes Médicos Personales',
+        'Antecedentes Médicos Familiares',
         'Medicamento',
         'Historia Odontologica',
         'Examen radiográfico',
         'Periodontograma',
-        'Estudio de modelos',
-        'Plan de tratamiento',
-        'Modificaciones del plan de tratamiento',
-        'Presupuesto',
-        'Secuencia de tratamiento',
-        'Historia periodontal',
-        'Ficha endodontica',
-        'Pruebas diagnosticas',
-        'Ficha endodontica'
+//        'Estudio de modelos',
+//        'Plan de tratamiento',
+//        'Modificaciones del plan de tratamiento',
+//        'Presupuesto',
+//        'Secuencia de tratamiento',
+//        'Historia periodontal',
+//        'Ficha endodontica',
+//        'Pruebas diagnosticas',
+//        'Ficha endodontica'
     ];
 
     public $section = 0;
 
-    public $enabled = true;
+    public $enabled = false;
 
     #[On('section-changed')]
     public function changeSection(int $section)
@@ -65,8 +66,6 @@ class EditorSection extends Component
     #[On('historia-update')]
     public function update()
     {
-
-
         $this->pacienteForm->cedula = $this->pacienteForm->letra_cedula . $this->pacienteForm->numero_cedula;
 
         try {
@@ -84,7 +83,24 @@ class EditorSection extends Component
 
         $this->authorize('update', $this->historia);
 
+        $paciente = $this->historia->paciente;
+        $paciente->update($this->pacienteForm->except(['letra_cedula', 'numero_cedula']));
 
+        $antecedentesFamiliares = $this->historia->antecedentesMedicosFamiliares;
+        $antecedentesFamiliares->update($this->antecedentesMedicosFamiliaresForm->all());
+
+        $antecedentesPersonales = $this->historia->antecedentesMedicosPersonales;
+        $antecedentesPersonales->update($this->antecedentesMedicosPersonalesForm->all());
+
+        $this->historia->medicamento->update($this->medicamentoForm->all());
+        $this->historia->historiaOdontologica->update($this->historiaOdontologicaForm->all());
+        $this->historia->examenRadiografico->update($this->examenRadiograficoForm->all());
+
+        $this->historia->periodontograma->update($this->periodontogramaForm->all());
+
+        session()->put('message', 'Historia actualizada');
+
+        $this->redirectRoute('dashboard');
     }
 
     #[On('historia-create')]
@@ -140,13 +156,14 @@ class EditorSection extends Component
         $examenRadiografico->historia_id = $historia->id;
         $examenRadiografico->save();
 
+        $periodontograma = new \App\Models\Periodontograma();
+        $periodontograma->historia_id = $historia->id;
+
         if ($this->periodontogramaForm->url) {
             $path = $this->periodontogramaForm->url->store(path: 'periodontogramas');
-            $periodontograma = new \App\Models\Periodontograma();
-            $periodontograma->historia_id = $historia->id;
             $periodontograma->url = $path;
-            $periodontograma->save();
         }
+        $periodontograma->save();
 
         session()->put('message', 'Historia creada');
 
@@ -157,13 +174,15 @@ class EditorSection extends Component
     {
         if (isset($historia)) {
             $this->historia = $historia;
-            $this->enabled= false;
+            $this->enabled = false;
             $this->pacienteForm->setPaciente($historia->paciente);
             $this->antecedentesMedicosFamiliaresForm->setAntecedentesMedicosFamiliares($historia->antecedentesMedicosFamiliares);
             $this->antecedentesMedicosPersonalesForm->setAntecedentesMedicosPersonales($historia->antecedentesMedicosPersonales);
             $this->medicamentoForm->setMedicamento($historia->medicamento);
             $this->historiaOdontologicaForm->setHistoriaOdontologica($historia->historiaOdontologica);
             $this->examenRadiograficoForm->setExamenRadiografico($historia->examenRadiografico);
+        } else {
+            $this->enabled = true;
         }
     }
 

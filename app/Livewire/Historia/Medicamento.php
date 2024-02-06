@@ -12,6 +12,7 @@ class Medicamento extends Component
     #[Modelable]
     public MedicamentoForm $form;
     public $title = '';
+    public $enabled;
 
     #[On('errors-show')]
     public function showErrors()

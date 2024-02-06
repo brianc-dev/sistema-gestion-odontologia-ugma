@@ -8,17 +8,15 @@
 
         <div class="mt-4">
             <x-input-label for="periodontograma_photo" :value="__('Imagen de periodontograma')"/>
-            <input name="periodontograma_photo" type="file" wire:model="form.periodontograma_photo"
-                   id="periodontograma_photo">
+            <x-input-file :disabled="!$enabled" name="periodontograma_photo" type="file" wire:model="form.periodontograma_photo"
+                   id="periodontograma_photo" />
             @error('form.periodontograma_photo') <span class="error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mt-4">
-            @if(gettype($form->periodontograma_photo) != 'string')
-                @if($form->periodontograma_photo)
-                    <img src="{{ $form->periodontograma_photo->temporaryUrl() }}">
-                @endif
-            @endif
+            @isset($form->periodontograma_photo)
+                <img src="{{ $form->periodontograma_photo->temporaryUrl() }}" alt="image_periodontograma"/>
+            @endisset
         </div>
     </div>
 </div>

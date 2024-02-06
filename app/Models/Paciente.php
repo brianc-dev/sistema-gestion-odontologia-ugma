@@ -10,4 +10,7 @@ class Paciente extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $primaryKey = 'historia_id';
+    public $incrementing = false;
 }

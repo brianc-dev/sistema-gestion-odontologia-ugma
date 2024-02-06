@@ -12,6 +12,7 @@ class AntecedentesMedicosFamiliares extends Component
     #[Modelable]
     public AntecedentesMedicosFamiliaresForm $form;
     public $title = '';
+    public $enabled;
 
     #[On('errors-show')]
     public function showErrors()

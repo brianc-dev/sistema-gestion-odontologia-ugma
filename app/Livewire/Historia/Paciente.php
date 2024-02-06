@@ -12,10 +12,18 @@ class Paciente extends Component
     #[Modelable]
     public PacienteForm $form;
 
+    public $enabled;
+
     #[On('errors-show')]
     public function showErrors()
     {
         $this->form->validate();
+    }
+
+    #[On('historia-editing')]
+    public function edit($isEditing)
+    {
+        $this->enabled = $isEditing;
     }
 
     public function render()

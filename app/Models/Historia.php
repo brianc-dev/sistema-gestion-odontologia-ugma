@@ -51,4 +51,9 @@ class Historia extends Model
     {
         return $this->hasOne(ExamenRadiografico::class);
     }
+
+    public function periodontograma(): HasOne
+    {
+        return $this->hasOne(Periodontograma::class);
+    }
 }

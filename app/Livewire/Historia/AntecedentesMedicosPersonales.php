@@ -11,8 +11,8 @@ class AntecedentesMedicosPersonales extends Component
 {
     #[Modelable]
     public AntecedentesMedicosPersonalesForm $form;
-
     public string $title = '';
+    public $enabled;
 
     #[On('errors-show')]
     public function showErrors()

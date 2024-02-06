@@ -13,6 +13,7 @@ class HistoriaOdontologica extends Component
     public HistoriaOdontologicaForm $form;
 
     public $title = '';
+    public $enabled;
 
     #[On('errors-show')]
     public function showErrors()

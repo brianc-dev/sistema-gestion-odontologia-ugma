@@ -15,6 +15,7 @@ class Periodontograma extends Component
     #[Modelable]
     public PeriodontogramaForm $form;
     public $title = '';
+    public $enabled;
 
     #[On('errors-show')]
     public function showErrors()
