@@ -47,8 +47,6 @@ class User extends Authenticatable
 
     public function estudiante(): ?HasOne
     {
-        if ($this->role_id != 3) return null;
-
         return $this->hasOne(Estudiante::class);
     }
 

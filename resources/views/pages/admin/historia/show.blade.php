@@ -6,23 +6,20 @@
             </h2>
 
             {{--            Opciones para el administrador--}}
-            <div class="flex space-x-4 justify-end">
+            <div class="flex space-x-4 justify-end items-baseline">
+                <p>Historia Nro.</p>
+                <x-text-input />
 
+                <button >Guardar</button>
             </div>
         </div>
     </x-slot>
 
     <section class="mx-auto max-w-7xl bg-white">
         <div class="flex justify-center flex-col items-center">
-            <h2>
-                Historias
-            </h2>
-            <div class="flex flex-col space-y-4">
-                @foreach(App\Models\Historia::all() as $historia)
-                    <div class="flex space-between">
-                        <h3>Historia Nro. {{$historia}}</h3>
-                    </div>
-                @endforeach
+
+            <div class="flex flex-col space-y-4 w-full items-center justify-center">
+                <livewire:historia.editor-section :historia="$historia" enabled />
             </div>
         </div>
     </section>

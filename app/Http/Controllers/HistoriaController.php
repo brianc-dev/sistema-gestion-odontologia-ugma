@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class HistoriaController extends Controller
 {
-    private const NUMERO_HISTORIA_PATTERN = '/^T-[\d]{4}-[\d]{4}$/';
-    // Regex to match T-0000-0000
-    // /^T-[\d]{4}-[\d]{4}$/
     public function __construct()
     {
         $this->authorizeResource(Historia::class, 'historia');
@@ -23,7 +20,9 @@ class HistoriaController extends Controller
      */
     public function index()
     {
-
+        if (Auth::user()->role_id == 0) {
+            return view('pages.admin.historia');
+        }
     }
 
     /**
@@ -47,6 +46,9 @@ class HistoriaController extends Controller
      */
     public function show(Historia $historia)
     {
+        if (Auth::user()->role_id == 0) {
+            return view('pages.admin.historia.show', ['historia' => $historia]);
+        }
         return view('pages.historia.show', ['historia' => $historia]);
     }
 

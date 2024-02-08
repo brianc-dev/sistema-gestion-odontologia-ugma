@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Estudiante;
+use App\Models\Lapso;
+use App\Models\Profesor;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -25,7 +28,43 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
             'role_id' => 0
         ]);
-        // \App\Models\User::factory(10)->create();
+
+        $lapso = Lapso::create([
+            'ano' => 2024,
+            'periodo' => 1,
+            'codigo' => '2024T1'
+        ]);
+
+        $user = User::create([
+            'email' => 'username1@example.com',
+            'name' => 'username1',
+            'password' => 'username1',
+            'role_id' => 3
+        ]);
+
+        Estudiante::create([
+            'user_id' => $user->id,
+            'cedula' => 'V30987654',
+            'nombre' => 'user',
+            'apellido' => 'name',
+            'lapso_id' => $lapso->id
+        ]);
+
+        $user = User::create([
+            'email' => 'username2@example.com',
+            'name' => 'username2',
+            'password' => 'username2',
+            'role_id' => 2
+        ]);
+
+        Profesor::create([
+            'user_id' => $user->id,
+            'cedula' => 'V30987655',
+            'nombre' => 'Ricardo',
+            'apellido' => 'Gómez',
+        ]);
+
+        User::factory()->hasEstudiante()->count(20)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

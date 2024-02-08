@@ -9,7 +9,9 @@ class Lapso extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $attributes = [
-        'lapso' => null
+
     ];
 }

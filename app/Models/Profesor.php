@@ -12,6 +12,13 @@ class Profesor extends Model
 
     public $timestamps = false;
 
+    protected $guarded = [];
+
+    protected $attributes = [
+      'nombre' => '',
+      'apellido' => '',
+    ];
+
     public function estudiantes(): HasMany
     {
         return $this->hasMany(Estudiante::class);

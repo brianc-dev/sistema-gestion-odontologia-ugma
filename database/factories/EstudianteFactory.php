@@ -18,8 +18,11 @@ class EstudianteFactory extends Factory
     public function definition(): array
     {
         return [
-            'numero_historia' => Str::random(10),
-            'id_estudiante' => 0
+            'cedula' => fake()->regexify('[VE][0-9]{7,8}'),
+            'nombre' => fake()->firstName(),
+            'apellido' => fake()->lastName(),
+            'profesor_id' => null,
+            'lapso_id' => 1
         ];
     }
 }

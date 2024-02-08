@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('profesors', function (Blueprint $table) {
             $table->id();
             $table->string('cedula')->unique();
+            $table->string('nombre')->default('');
+            $table->string('apellido')->default('');
             $table->foreignId('user_id')->nullable(false)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }

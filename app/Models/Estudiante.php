@@ -14,8 +14,12 @@ class Estudiante extends Model
 
     public $timestamps = false;
 
+    protected $guarded = [];
+
     protected $attributes = [
-        'profesor_id' => null
+        'nombre' => '',
+        'apellido' => '',
+        'profesor_id' => null,
     ];
 
     public function profesor(): ?BelongsTo
@@ -26,5 +30,15 @@ class Estudiante extends Model
     public function historias(): HasMany
     {
         return $this->hasMany(Historia::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lapso(): BelongsTo
+    {
+        return $this->belongsTo(Lapso::class);
     }
 }

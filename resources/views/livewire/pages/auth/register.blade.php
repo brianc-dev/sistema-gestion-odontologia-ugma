@@ -14,6 +14,8 @@ use Livewire\Volt\Component;
 new #[Layout('layouts.guest')] class extends Component {
     public string $name = '';
     public string $email = '';
+    public string $nombre = '';
+    public string $apellido = '';
     public string $password = '';
     public string $password_confirmation = '';
     public string $role = 'estudiante';
@@ -31,6 +33,8 @@ new #[Layout('layouts.guest')] class extends Component {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255', 'unique:' . User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'nombre' => ['required', 'string', 'alpha', 'max:255'],
+            'apellido' => ['required', 'string', 'alpha', 'max:255'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'string', 'regex:/estudiante|profesor/'],
             'letra_cedula' => ['required', 'string', 'size:1', 'regex:/^[V|E]$/'],
@@ -49,12 +53,16 @@ new #[Layout('layouts.guest')] class extends Component {
                 $profesor = new Profesor();
                 $profesor->user_id = $user->id;
                 $profesor->cedula = $validated['cedula'];
+                $profesor->nombre = $validated['nombre'];
+                $profesor->apellido = $validated['apellido'];
                 $profesor->save();
                 break;
             case 3: // Caso estudiante
                 $estudiante = new Estudiante();
                 $estudiante->user_id = $user->id;
                 $estudiante->cedula = $validated['cedula'];
+                $estudiante->nombre = $validated['nombre'];
+                $estudiante->apellido = $validated['apellido'];
                 $estudiante->save();
                 break;
         }
@@ -67,10 +75,10 @@ new #[Layout('layouts.guest')] class extends Component {
 
 <div>
     <form wire:submit="register">
-        <div class="mt-4 w-full">
+        <div class="mt-4 w-full mb-2">
             <x-input-label for="cedula" :value="__('Cédula')"/>
             <div class="flex space-between">
-                <select wire:model.live="letra_cedula" value="-" class="me-2">
+                <select wire:model.live="letra_cedula" value="-" class="me-2 rounded-md">
                     <option value="">-</option>
                     <option value="V">V</option>
                     <option value="E">E</option>
@@ -84,6 +92,21 @@ new #[Layout('layouts.guest')] class extends Component {
                 <x-input-error :messages="$message" class=""></x-input-error> @enderror</div>
         </div>
         <x-input-error :messages="$errors->get('cedula')" class="mt-2"/>
+        <!-- Nombre -->
+        <div>
+            <x-input-label for="nombre" :value="__('Nombre')"/>
+            <x-text-input wire:model="nombre" id="nombre" class="block mt-1 w-full" type="text" nombre="nombre" required
+                          autofocus autocomplete="nombre"/>
+            <x-input-error :messages="$errors->get('nombre')" class="mt-2"/>
+        </div>
+        <!-- Apellido -->
+        <div>
+            <x-input-label for="apellido" :value="__('Apellido')"/>
+            <x-text-input wire:model="apellido" id="apellido" class="block mt-1 w-full" type="text" apellido="apellido" required
+                          autofocus autocomplete="apellido"/>
+            <x-input-error :messages="$errors->get('apellido')" class="mt-2"/>
+        </div>
+
         <!-- Username -->
         <div>
             <x-input-label for="name" :value="__('Nombre de usuario')"/>
@@ -127,7 +150,7 @@ new #[Layout('layouts.guest')] class extends Component {
         <div class="mt-4">
             <x-input-label for="role" :value="__('Tipo de usuario')"/>
 
-            <select wire:model="role" id="role" name="role" class="block mt-1 w-full" required>
+            <select wire:model="role" id="role" name="role" class="block mt-1 w-full rounded-md" required>
                 <option value="estudiante">{{ __('Estudiante') }}</option>
                 <option value="profesor">{{ __('Profesor') }}</option>
             </select>
