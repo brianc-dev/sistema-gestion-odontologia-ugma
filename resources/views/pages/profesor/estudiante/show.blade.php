@@ -3,9 +3,9 @@
         <div class=""><img class="bg-slate-200 aspect-square rounded-full" src="{{ asset('img/user-icon.png') }}"/>
         </div>
         <div class="flex flex-col ">
-            <h3 class="text-xl font-bold">Alumno: {{ $estudiante->nombre . ' ' . $estudiante->apellido }}</h3>
-            <p>Profesor: <span>{{ ($estudiante->profesor) ? $estudiante->profesor->nombre . ' ' . $estudiante->profesor->apellido : 'Sin asignar'}}</span></p>
-            <p>Lapso: <span>{{ $estudiante->lapso->codigo }}</span></p>
+            <h3 class="text-xl font-bold">Alumno: {{ $estudiante->nombre . $estudiante->apellido }}</h3>
+            <p>Profesor: <span>{{ $estudiante->profesor }}</span></p>
+            <p>Lapso: <span>{{ $estudiante->lapso }}</span></p>
         </div>
 
     </div>
@@ -16,7 +16,7 @@
                 <div class="w-2/3 grow rounded-md bg-white">
                     <h2 class="text-lg font-bold">Historias</h2>
 
-                    </div>
+                </div>
                 <div>
                     @forelse($estudiante->historias as $historia)
                         <div wire:key="{{ $historia->id }}" class="rounded-lg bg-white p-4">

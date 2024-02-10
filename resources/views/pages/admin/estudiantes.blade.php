@@ -12,27 +12,40 @@
         </div>
     </x-slot>
 
-    <section class="container bg-white">
-        <div class="flex justify-center flex-col items-center">
-            <h2>
-                Opciones de administracion
-            </h2>
-            <div class="flex flex-col space-y-4">
-                <div class="flex space-x-4">
-                    <a href="">
-                        <div class="rounded-lg bg-white">Historias</div>
-                    </a>
-                    <a href="#">
-                        <div class="rounded-lg bg-white">Estudiantes</div>
-                    </a>
+    <section>
+        <div class="mx-auto max-w-7xl bg-white grid grid-cols-3">
+            <div class="col-span-3 p-4">
+                <h2 class="font-bold text-lg">Alumnos registrados en el sistema</h2>
+            </div>
+            <div class="col-span-2 ">
+                <div>
+                    @forelse(\App\Models\Estudiante::all() as $estudiante)
+                        <div wire:key="{{ $estudiante->id}}" class="flex p-4 border rounded-md space-x-4">
+                            <div class="rounded-full bg-slate-300">
+                                <img src="{{ asset('img/user-icon.png') }}" class="h-12">
+                            </div>
+                            <div class="flex flex-col grow ">
+                                <p class="font-semibold text-lg">{{ $estudiante->nombre . ' ' . $estudiante->apellido }}</p>
+                                <div class="flex space-x-4">
+                                    <p>Historias creadas: {{ $estudiante->historias->count() }}</p>
+                                    <p>Lapso: {{  ($estudiante->lapso_id) ? $estudiante->lapso->codigo : 'Sin asignar'}}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
                 </div>
-                <div class="flex space-x-4">
-                    <a href="#">
-                        <div class="rounded-lg bg-white">Profesores</div>
-                    </a>
-                    <a href="#">
-                        <div class="rounded-lg bg-white">Usuarios</div>
-                    </a>
+            </div>
+            <div class="p-4">
+                <p>Lapso</p>
+                <div>
+                    <x-select>
+                        @forelse(\App\Models\Lapso::all() as $lapso)
+                            <option value="{{ $lapso->codigo }}">{{ $lapso->codigo  }}</option>
+                        @empty
+                        @endforelse
+                    </x-select>
                 </div>
             </div>
         </div>

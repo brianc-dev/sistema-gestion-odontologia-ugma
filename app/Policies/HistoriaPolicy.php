@@ -60,11 +60,11 @@ class HistoriaPolicy
      */
     public function update(User $user, Historia $historia): bool
     {
-        if ($user->role_id == 3 AND $historia->estudiante == $user->estudiante) {
+        if ($user->role_id == 3 and $historia->estudiante == $user->estudiante) {
             return true;
         }
 
-        if ($user->role_id == 2) {
+        if ($user->role_id == 2 and $user->profesor == $historia->estudiante->profesor) {
             return true;
         }
 
