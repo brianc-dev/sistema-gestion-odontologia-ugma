@@ -17,7 +17,7 @@ class GuardarCodigo extends Component
     #[Validate([
         'numero_historia' => ['required', 'string', 'unique:' . Historia::class]
     ], as: [
-        'numero_historia' => 'numero de historia'
+        'numero_historia' => 'número de historia'
     ], message: self::MESSAGES)]
     public $numero_historia = '';
 

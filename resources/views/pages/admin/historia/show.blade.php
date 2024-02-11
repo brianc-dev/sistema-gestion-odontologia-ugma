@@ -6,16 +6,11 @@
             </h2>
 
             {{--            Opciones para el administrador--}}
-            <livewire:historia.guardar-codigo :$historia />
+            <livewire:historia.guardar-codigo :$historia/>
         </div>
     </x-slot>
 
     <section class="mx-auto bg-white">
-        <div class="flex justify-center flex-col items-center">
-
-            <div class="flex flex-col space-y-4 items-center justify-center">
-                <livewire:historia.editor-section :historia="$historia" enabled />
-            </div>
-        </div>
+        <livewire:historia.editor-section :historia="$historia" enabled/>
     </section>
 </x-app-layout>
