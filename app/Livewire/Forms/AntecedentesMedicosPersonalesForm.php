@@ -51,7 +51,7 @@ class AntecedentesMedicosPersonalesForm extends Form
     public string $trastorno_hematologico = '';
 
     #[Validate([
-        'trastorno_hematologico' => ['required', 'regex:/Sí|No/']
+        'trastorno_endocrino' => ['required', 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $trastorno_endocrino = '';
 
@@ -71,7 +71,7 @@ class AntecedentesMedicosPersonalesForm extends Form
     public string $enfermedad_infectocontagiosa = '';
 
     #[Validate([
-        'descripcion_amt' => ['required', 'string', 'between:0,300']
+        'descripcion_amt' => ['string', 'between:0,300']
     ], message: self::messages, as: 'descripción')]
     public string $descripcion_amt = '';
 

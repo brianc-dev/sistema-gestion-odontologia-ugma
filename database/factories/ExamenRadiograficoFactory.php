@@ -16,8 +16,15 @@ class ExamenRadiograficoFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
+
         return [
-            //
+            'zona_nasomaxilar' => $faker->text(),
+            'zona_atm' => $faker->text(),
+            'zona_mandibular' => $faker->text(),
+            'zona_dasi' => $faker->text(),
+            'estudio_periapicales' => $faker->text(),
+            'estudio_coronales' => $faker->text(),
         ];
     }
 }

@@ -15,10 +15,10 @@
         </div>
     </x-slot>
 
-    <section class="mx-auto max-w-7xl bg-white">
+    <section class="mx-auto bg-white">
         <div class="flex justify-center flex-col items-center">
 
-            <div class="flex flex-col space-y-4 w-full items-center justify-center">
+            <div class="flex flex-col space-y-4 items-center justify-center">
                 <livewire:historia.editor-section :historia="$historia" enabled />
             </div>
         </div>

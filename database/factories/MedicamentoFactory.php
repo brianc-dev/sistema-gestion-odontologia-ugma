@@ -16,8 +16,11 @@ class MedicamentoFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
+
         return [
-            //
+            'medicamento_actual' => $faker->text(200),
+            'alergias' => $faker->text(200),
         ];
     }
 }

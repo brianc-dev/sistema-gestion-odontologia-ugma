@@ -18,9 +18,9 @@ class EstudianteFactory extends Factory
     public function definition(): array
     {
         return [
-            'cedula' => fake()->regexify('[VE][0-9]{7,8}'),
-            'nombre' => fake()->firstName(),
-            'apellido' => fake()->lastName(),
+            'cedula' => fake('es_VE')->nationalId(), //->regexify('[VE][0-9]{7,8}'),
+            'nombre' => fake('es_VE')->firstName(),
+            'apellido' => fake('es_VE')->lastName(),
             'profesor_id' => null,
             'lapso_id' => 1
         ];

@@ -35,20 +35,31 @@ class DatabaseSeeder extends Seeder
             'codigo' => '2024T1'
         ]);
 
-        $user = User::create([
+//        $user = User::create([
+//            'email' => 'username1@example.com',
+//            'name' => 'username1',
+//            'password' => 'username1',
+//            'role_id' => 3
+//        ]);
+//
+//        Estudiante::create([
+//            'user_id' => $user->id,
+//            'cedula' => 'V30987654',
+//            'nombre' => 'user',
+//            'apellido' => 'name',
+//            'lapso_id' => $lapso->id
+//        ]);
+
+        \App\Models\User::factory()->state([
             'email' => 'username1@example.com',
             'name' => 'username1',
             'password' => 'username1',
             'role_id' => 3
-        ]);
-
-        Estudiante::create([
-            'user_id' => $user->id,
+        ])->has(\App\Models\Estudiante::factory()->state([
             'cedula' => 'V30987654',
             'nombre' => 'user',
             'apellido' => 'name',
-            'lapso_id' => $lapso->id
-        ]);
+        ])->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->count(5)))->create();
 
         $user = User::create([
             'email' => 'username2@example.com',
@@ -64,11 +75,8 @@ class DatabaseSeeder extends Seeder
             'apellido' => 'Gómez',
         ]);
 
-        User::factory()->hasEstudiante()->count(20)->create();
+//        User::factory()->hasEstudiante()->count(20)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->has(\App\Models\Estudiante::factory()->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->count(2)))->count(20)->create();
     }
 }

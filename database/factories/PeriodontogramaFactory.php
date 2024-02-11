@@ -17,7 +17,7 @@ class PeriodontogramaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'url' => null
         ];
     }
 }

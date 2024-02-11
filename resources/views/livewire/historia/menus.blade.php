@@ -1,5 +1,5 @@
-<div class="w-1/4 pe-2 break-inside-avoid">
-    <div class="bg-white pe-2 py-6">
+<div class="bg-white pe-2 break-inside-avoid">
+    <div class="py-6">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight pb-4 px-4 block text-right">Secciones</h2>
         <div class="flex flex-col gap-2">
             @foreach($sections as $menu)

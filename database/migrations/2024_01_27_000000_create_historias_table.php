@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('historia_status')->default(0)->constrained()->cascadeOnUpdate();
             $table->integer('ano_creacion')->nullable(false);
             $table->foreignId('estudiante_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('historia_status_id')->default(0)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
 
             $table->index('numero_historia');

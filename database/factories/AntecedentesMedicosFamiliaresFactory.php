@@ -16,8 +16,14 @@ class AntecedentesMedicosFamiliaresFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
+
         return [
-            //
+            'madre' => $faker->text('200'),
+            'padre' => $faker->text('200'),
+            'hermanos' => $faker->text('200'),
+            'abuelos_maternos' => $faker->text('200'),
+            'abuelos_paternos' => $faker->text('200'),
         ];
     }
 }

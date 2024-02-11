@@ -1,4 +1,4 @@
-<div class="w-3/4 bg-slate-400 break-inside-avoid items-start py-6 px-4">
+<div class="bg-slate-400 break-inside-avoid items-start py-6 px-4">
     <div>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $title }}

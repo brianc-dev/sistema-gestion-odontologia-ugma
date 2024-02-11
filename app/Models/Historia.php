@@ -14,7 +14,7 @@ class Historia extends Model
     protected $fillable = [
         'numero_historia',
         'ano_creacion',
-        'estudiante_id'
+        'estudiante_id',
     ];
 
     public function estudiante(): BelongsTo
@@ -55,5 +55,10 @@ class Historia extends Model
     public function periodontograma(): HasOne
     {
         return $this->hasOne(Periodontograma::class);
+    }
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(HistoriaStatus::class);
     }
 }

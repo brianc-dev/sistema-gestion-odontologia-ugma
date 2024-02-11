@@ -13,7 +13,7 @@
     </x-slot>
 
     <section>
-        <div class="flex justify-center flex-col items-center bg-white">
+        <div class="max-w-7xl mx-auto h-screen flex justify-start flex-col items-center bg-white">
             <h2 class="text-md font-bold p-4">
                 Opciones de administración
             </h2>

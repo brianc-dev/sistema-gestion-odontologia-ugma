@@ -14,8 +14,8 @@
 
     <section class="mx-auto max-w-7xl bg-white">
         <div class="flex justify-center flex-col items-center">
-            <h2>
-                Opciones de administracion
+            <h2 class="text-start font-bold text-lg">
+                Profesores
             </h2>
             <div class="flex flex-col space-y-4 w-full">
 
