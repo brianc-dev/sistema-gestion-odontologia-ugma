@@ -68,6 +68,14 @@ class HistoriaPolicy
             return true;
         }
 
+        if ($user->isAdmision()) {
+            return true;
+        }
+
+        if ($user->isAdmin()) {
+            return true;
+        }
+
         return false;
     }
 
@@ -76,7 +84,12 @@ class HistoriaPolicy
      */
     public function delete(User $user, Historia $historia): bool
     {
-        //
+
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -84,7 +97,12 @@ class HistoriaPolicy
      */
     public function restore(User $user, Historia $historia): bool
     {
-        //
+
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -92,6 +110,11 @@ class HistoriaPolicy
      */
     public function forceDelete(User $user, Historia $historia): bool
     {
-        //
+
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        return false;
     }
 }

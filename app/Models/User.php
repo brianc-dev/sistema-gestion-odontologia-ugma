@@ -56,4 +56,24 @@ class User extends Authenticatable
 
         return $this->hasOne(Profesor::class);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->role_id == 0;
+    }
+
+    public function isAdmision(): bool
+    {
+        return $this->role_id == 1;
+    }
+
+    public function isProfesor(): bool
+    {
+        return $this->role_id == 2;
+    }
+
+    public function isEstudiante(): bool
+    {
+        return $this->role_id == 3;
+    }
 }

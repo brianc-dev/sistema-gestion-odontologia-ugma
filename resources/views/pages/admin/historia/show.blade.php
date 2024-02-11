@@ -6,12 +6,7 @@
             </h2>
 
             {{--            Opciones para el administrador--}}
-            <div class="flex space-x-4 justify-end items-baseline">
-                <p>Historia Nro.</p>
-                <x-text-input />
-
-                <button >Guardar</button>
-            </div>
+            <livewire:historia.guardar-codigo :$historia />
         </div>
     </x-slot>
 

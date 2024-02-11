@@ -16,7 +16,6 @@ class HistoriaFactory extends Factory
      */
     public function definition(): array
     {
-//        \App\Models\User::factory()->has(\App\Models\Estudiante::factory()->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->count(2)))->count(3)->make();
         return [
             'ano_creacion' => date('Y')
         ];

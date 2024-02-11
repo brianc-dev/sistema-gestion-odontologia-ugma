@@ -1,4 +1,10 @@
 <div class="grid grid-cols-5 h-full">
+    <div></div>
+    <div class="col-span-3 flex justify-start p-2 space-x-4 bg-white">
+        <p>Alumno: {{ ($historia) ? $historia->estudiante->nombre .  ' ' . $historia->estudiante->apellido : Auth::user()->estudiante->nombre . ' ' . Auth::user()->estudiante->apellido}}</p>
+        <p>Lapso: {{ ($historia) ? $historia->estudiante->lapso->codigo : Auth::user()->estudiante->lapso->codigo }}</p>
+    </div>
+    <div></div>
     <livewire:historia.menus :$sections/>
     <div class="col-span-3">
             @switch($section)

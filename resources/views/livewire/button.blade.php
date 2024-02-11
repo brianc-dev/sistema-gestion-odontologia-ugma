@@ -1,1 +1,1 @@
-<button wire:click="$dispatch($event)">{{ $slot }}</button>
+<button wire:click="onClick">{{ $text }}</button>

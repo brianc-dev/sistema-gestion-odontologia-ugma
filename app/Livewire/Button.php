@@ -7,6 +7,7 @@ use Livewire\Component;
 class Button extends Component
 {
     public $event = '';
+    public $text = '';
 
     public function onClick()
     {
