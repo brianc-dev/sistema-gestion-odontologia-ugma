@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('telefono_emergencia')->default('');
             $table->text('motivo_consulta')->nullable();
             $table->text('enfermedad_actual')->nullable();
+            $table->text('correcciones')->default('');
             $table->timestamps();
 
             $table->primary('historia_id');

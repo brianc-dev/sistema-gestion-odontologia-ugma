@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('hermanos')->default('');
             $table->text('abuelos_maternos')->default('');
             $table->text('abuelos_paternos')->default('');
+            $table->text('correcciones')->default('');
 
             $table->primary('historia_id');
         });

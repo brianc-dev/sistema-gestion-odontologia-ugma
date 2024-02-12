@@ -29,6 +29,11 @@ class MedicamentoForm extends Form
     ], message: self::messages)]
     public string $alergias = '';
 
+    #[Validate([
+        'correcciones' => ['string', 'between:0,200']
+    ], message: self::messages)]
+    public string $correcciones = '';
+
     public function setMedicamento(Medicamento $medicamento)
     {
         $this->fill($medicamento->attributesToArray());

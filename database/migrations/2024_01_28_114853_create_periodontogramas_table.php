@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('periodontogramas', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string("url")->nullable();
+            $table->text('correcciones')->default('');
 
             $table->primary('historia_id');
         });

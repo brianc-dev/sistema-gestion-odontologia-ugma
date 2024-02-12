@@ -16,23 +16,28 @@
                     {{ __("Bienvenido ".Auth::user()->name.'. Has iniciado sesión.') }}
                 </div>
             </div>
-            <div class="flex ">
+            <div class="flex bg-white">
                 <div class="w-2/3 grow bg-slate-400">Nose</div>
-                <div class="w-1/3 ">
-                    <h3>Alumnos asignados</h3>
-                    <div>
+                <div class="w-1/3 p-4">
+                    <p class="text-lg">Alumnos asignados</p>
+                    <ul>
 
                         @forelse(Auth::user()->profesor->estudiantes as $estudiante)
-                            <a href="{{ route('estudiante.show', ['estudiante' => $estudiante]) }}">
-                                <div class="flex flex-col">
-                                    <div><h2>{{ $estudiante }}</h2></div>
-                                </div>
-                            </a>
+                            <li class="border p-4">
+                                <a href="{{ route('estudiante.show', ['estudiante' => $estudiante]) }}">
+                                    <div class="flex">
+                                        <div class="flex flex-col">
+                                            <p class="font-bold text-lg">{{ $estudiante->nombre . ' ' . $estudiante->apellido }}</p>
+                                            <p class="">Historias creadas: {{ $estudiante->historias()->count() }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
 
                         @empty
                             <p>No tiene alumnos asignados!</p>
                         @endforelse
-                    </div>
+                    </ul>
                 </div>
 
             </div>

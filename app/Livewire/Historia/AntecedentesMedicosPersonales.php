@@ -3,6 +3,7 @@
 namespace App\Livewire\Historia;
 
 use App\Livewire\Forms\AntecedentesMedicosPersonalesForm;
+use App\Models\Historia;
 use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -11,18 +12,14 @@ class AntecedentesMedicosPersonales extends Component
 {
     #[Modelable]
     public AntecedentesMedicosPersonalesForm $form;
-    public string $title = '';
+    public ?Historia $historia;
+    public string $title = 'Antecedentes Médicos Personales';
     public $enabled;
 
     #[On('errors-show')]
     public function showErrors()
     {
         $this->form->validate();
-    }
-
-    public function mount($title = '')
-    {
-        $this->title = $title;
     }
 
     public function render()

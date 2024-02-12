@@ -99,6 +99,11 @@ class PacienteForm extends Form
     ], message: self::messages)]
     public string $enfermedad_actual = '';
 
+    #[Validate([
+        'correcciones' => ['string', 'between:0,200']
+    ], message: self::messages)]
+    public string $correcciones = '';
+
     public function setPaciente(Paciente $paciente)
     {
         $this->fill($paciente->attributesToArray());

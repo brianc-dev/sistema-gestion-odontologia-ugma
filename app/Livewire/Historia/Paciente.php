@@ -3,6 +3,7 @@
 namespace App\Livewire\Historia;
 
 use App\Livewire\Forms\PacienteForm;
+use App\Models\Historia;
 use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -11,7 +12,8 @@ class Paciente extends Component
 {
     #[Modelable]
     public PacienteForm $form;
-
+    public ?Historia $historia;
+    public $title = 'Datos personales del paciente';
     public $enabled;
 
     #[On('errors-show')]

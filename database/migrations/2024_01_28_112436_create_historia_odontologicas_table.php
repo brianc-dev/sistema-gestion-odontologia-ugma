@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('examen_fisico');
             $table->text('examen_extrabucal');
             $table->text('examen_intrabucal');
+            $table->text('correcciones')->default('');
 
             $table->primary('historia_id');
         });

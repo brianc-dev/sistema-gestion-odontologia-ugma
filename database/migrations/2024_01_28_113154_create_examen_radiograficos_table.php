@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('zona_dasi')->default('');
             $table->text('estudio_periapicales')->default('');
             $table->text('estudio_coronales')->default('');
+            $table->text('correcciones')->default('');
 
             $table->primary('historia_id');
         });

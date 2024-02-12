@@ -60,6 +60,11 @@ class HistoriaOdontologicaForm extends Form
     ], message: self::messages)]
     public string $examen_intrabucal = '';
 
+    #[Validate([
+        'correcciones' => ['string', 'between:0,200']
+    ], message: self::messages)]
+    public string $correcciones = '';
+
     public function setHistoriaOdontologica(HistoriaOdontologica $historiaOdontologica)
     {
         $this->fill($historiaOdontologica->attributesToArray());

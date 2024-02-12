@@ -32,7 +32,7 @@ class EditorSection extends Component
         'Antecedentes Médicos Personales',
         'Antecedentes Médicos Familiares',
         'Medicamento',
-        'Historia Odontologica',
+        'Historia Odontológica',
         'Examen radiográfico',
         'Periodontograma',
 //        'Estudio de modelos',
@@ -166,6 +166,56 @@ class EditorSection extends Component
         $periodontograma->save();
 
         session()->put('message', 'Historia creada');
+
+        $this->redirectRoute('dashboard');
+    }
+
+    #[On('historia-update-correcciones')]
+    public function saveCorreccion()
+    {
+        if (!Auth::user()->isProfesor()) {
+            return;
+        }
+
+        $this->pacienteForm->validateOnly('correcciones');
+        $this->antecedentesMedicosFamiliaresForm->validateOnly('correcciones');
+        $this->antecedentesMedicosPersonalesForm->validateOnly('correcciones');
+        $this->medicamentoForm->validateOnly('correcciones');
+        $this->historiaOdontologicaForm->validateOnly('correcciones');
+        $this->examenRadiograficoForm->validateOnly('correcciones');
+        $this->periodontogramaForm->validateOnly('correcciones');
+
+        $this->authorize('update', $this->historia);
+
+        $this->historia->paciente->update([
+            'correcciones' => $this->pacienteForm->correcciones
+        ]);
+
+        $this->historia->antecedentesMedicosFamiliares->update([
+            'correcciones' => $this->antecedentesMedicosFamiliaresForm->correcciones
+        ]);
+
+        $this->historia->antecedentesMedicosPersonales->update([
+            'correcciones' => $this->antecedentesMedicosPersonalesForm->correcciones
+        ]);
+
+        $this->historia->medicamento->update([
+            'correcciones' => $this->medicamentoForm->correcciones
+        ]);
+
+        $this->historia->historiaOdontologica->update([
+            'correcciones' => $this->historiaOdontologicaForm->correcciones
+        ]);
+
+        $this->historia->examenRadiografico->update([
+            'correcciones' => $this->examenRadiograficoForm->correcciones
+        ]);
+
+        $this->historia->periodontograma->update([
+            'correcciones' => $this->periodontogramaForm->correcciones
+        ]);
+
+        session()->put('message', 'Correcciones agregadas exitosamente');
 
         $this->redirectRoute('dashboard');
     }

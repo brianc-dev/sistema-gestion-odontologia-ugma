@@ -75,6 +75,11 @@ class AntecedentesMedicosPersonalesForm extends Form
     ], message: self::messages, as: 'descripción')]
     public string $descripcion_amt = '';
 
+    #[Validate([
+        'correcciones' => ['string', 'between:0,200']
+    ], message: self::messages)]
+    public string $correcciones = '';
+
     public function setAntecedentesMedicosPersonales(AntecedentesMedicosPersonales $antecedentesMedicosPersonalespaciente)
     {
         $this->fill($antecedentesMedicosPersonalespaciente->attributesToArray());

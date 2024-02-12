@@ -46,6 +46,11 @@ class AntecedentesMedicosFamiliaresForm extends Form
     ], message: self::messages)]
     public string $abuelos_paternos = '';
 
+    #[Validate([
+        'correcciones' => ['string', 'between:0,200']
+    ], message: self::messages)]
+    public string $correcciones = '';
+
     public function setAntecedentesMedicosFamiliares(AntecedentesMedicosFamiliares $antecedentesMedicosFamiliares)
     {
         $this->fill($antecedentesMedicosFamiliares->attributesToArray());

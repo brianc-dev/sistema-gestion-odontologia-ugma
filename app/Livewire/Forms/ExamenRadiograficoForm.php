@@ -49,6 +49,11 @@ class ExamenRadiograficoForm extends Form
     ], message: self::messages)]
     public string $estudio_coronales = '';
 
+    #[Validate([
+        'correcciones' => ['string', 'between:0,200']
+    ], message: self::messages)]
+    public string $correcciones = '';
+
     public function setExamenRadiografico(ExamenRadiografico $examenRadiografico)
     {
         $this->fill($examenRadiografico->attributesToArray());

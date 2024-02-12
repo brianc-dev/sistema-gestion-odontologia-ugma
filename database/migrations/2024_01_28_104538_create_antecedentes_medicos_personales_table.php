@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('trastorno_ginecologico', ['Sí', 'No'])->nullable();
             $table->enum('enfermedad_infectocontagiosa', ['Sí', 'No'])->nullable();
             $table->text('descripcion_amt')->default('');
+            $table->text('correcciones')->default('');
 
             $table->primary('historia_id');
         });

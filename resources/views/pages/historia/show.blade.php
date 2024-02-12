@@ -5,7 +5,7 @@
                 {{ __('Historia Nro. '. ($historia->numero_historia != '' ? $historia->numero_historia : '(Por asignar)')) }}
             </h2>
 
-            <div class="flex justify-end space-x-2">
+            <div class="flex justify-end space-x-2 print:hidden">
             @can('update', $historia)
                 <livewire:historia.edit-button></livewire:historia.edit-button>
             @endcan

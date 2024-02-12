@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('medicamento_actual')->default('');
             $table->text('alergias')->default('');
+            $table->text('correcciones')->default('');
 
             $table->primary('historia_id');
         });
