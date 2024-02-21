@@ -43,6 +43,9 @@
                 @case(8)
                     <livewire:historia.plan-tratamiento wire:model="estudioModelosForm" :$enabled :$historia/>
                     @break
+                @case(9)
+                    <livewire:historia.modificaciones-plan-tratamiento wire:model="estudioModelosForm" :$enabled :$historia/>
+                    @break
             @endswitch
     </div>
     <div class="hidden print:flex flex-col">
@@ -54,6 +57,6 @@
         <livewire:historia.examen-radiografico wire:model="examenRadiograficoForm" :$enabled :$historia/>
         <livewire:historia.periodontograma wire:model="periodontogramaForm" :$enabled :$historia/>
         <livewire:historia.estudio-modelos wire:model="estudioModelosForm" :$enabled :$historia/>
-        <livewire:historia.plan-tratamiento wire:model="estudioModelosForm" :$enabled :$historia/>
+
     </div>
 </div>

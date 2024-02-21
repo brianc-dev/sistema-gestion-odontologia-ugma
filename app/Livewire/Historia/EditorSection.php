@@ -40,7 +40,7 @@ class EditorSection extends Component
         'Periodontograma',
         'Estudio de modelos',
         'Plan de tratamiento',
-//        'Modificaciones del plan de tratamiento',
+        'Modificaciones del plan de tratamiento',
 //        'Presupuesto',
 //        'Secuencia de tratamiento',
 //        'Historia periodontal',
@@ -49,7 +49,7 @@ class EditorSection extends Component
 //        'Ficha endodontica'
     ];
 
-    public $section = 8;
+    public $section = 9;
 
     public $enabled = false;
 
