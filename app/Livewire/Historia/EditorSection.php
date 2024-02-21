@@ -41,15 +41,15 @@ class EditorSection extends Component
         'Estudio de modelos',
         'Plan de tratamiento',
         'Modificaciones del plan de tratamiento',
-//        'Presupuesto',
-//        'Secuencia de tratamiento',
+        'Presupuesto',
+        'Secuencia de tratamiento',
 //        'Historia periodontal',
 //        'Ficha endodontica',
 //        'Pruebas diagnosticas',
 //        'Ficha endodontica'
     ];
 
-    public $section = 9;
+    public $section = 10;
 
     public $enabled = false;
 

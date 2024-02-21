@@ -46,6 +46,9 @@
                 @case(9)
                     <livewire:historia.modificaciones-plan-tratamiento wire:model="estudioModelosForm" :$enabled :$historia/>
                     @break
+                @case(10)
+                    <livewire:historia.presupuesto :$enabled :$historia/>
+                    @break
             @endswitch
     </div>
     <div class="hidden print:flex flex-col">
