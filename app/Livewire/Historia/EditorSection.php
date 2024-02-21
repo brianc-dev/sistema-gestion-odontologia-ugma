@@ -4,6 +4,7 @@ namespace App\Livewire\Historia;
 
 use App\Livewire\Forms\AntecedentesMedicosFamiliaresForm;
 use App\Livewire\Forms\AntecedentesMedicosPersonalesForm;
+use App\Livewire\Forms\EstudioModelosForm;
 use App\Livewire\Forms\ExamenRadiograficoForm;
 use App\Livewire\Forms\HistoriaOdontologicaForm;
 use App\Livewire\Forms\MedicamentoForm;
@@ -27,6 +28,8 @@ class EditorSection extends Component
     public HistoriaOdontologicaForm $historiaOdontologicaForm;
     public ExamenRadiograficoForm $examenRadiograficoForm;
     public PeriodontogramaForm $periodontogramaForm;
+
+    public EstudioModelosForm $estudioModelosForm;
     private $sections = [
         'Datos personales del paciente',
         'Antecedentes Médicos Personales',
@@ -35,8 +38,8 @@ class EditorSection extends Component
         'Historia Odontológica',
         'Examen radiográfico',
         'Periodontograma',
-//        'Estudio de modelos',
-//        'Plan de tratamiento',
+        'Estudio de modelos',
+        'Plan de tratamiento',
 //        'Modificaciones del plan de tratamiento',
 //        'Presupuesto',
 //        'Secuencia de tratamiento',
@@ -46,7 +49,7 @@ class EditorSection extends Component
 //        'Ficha endodontica'
     ];
 
-    public $section = 0;
+    public $section = 8;
 
     public $enabled = false;
 

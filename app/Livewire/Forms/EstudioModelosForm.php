@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\EstudioModelos;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -38,4 +39,9 @@ class EstudioModelosForm extends Form
         'pronostico' => ['string', 'between:0,300']
     ], message: self::messages)]
     public string $pronostico = '';
+
+    public function setEstudioModelo(EstudioModelos $estudioModelos)
+    {
+        $this->fill($estudioModelos->attributesToArray());
+    }
 }
