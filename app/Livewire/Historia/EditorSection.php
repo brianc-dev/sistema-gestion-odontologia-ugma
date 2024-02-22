@@ -43,13 +43,13 @@ class EditorSection extends Component
         'Modificaciones del plan de tratamiento',
         'Presupuesto',
         'Secuencia de tratamiento',
-//        'Historia periodontal',
-//        'Ficha endodontica',
+        'Historia periodontal',
+        'Ficha endodontica',
 //        'Pruebas diagnosticas',
 //        'Ficha endodontica'
     ];
 
-    public $section = 10;
+    public $section = 13;
 
     public $enabled = false;
 

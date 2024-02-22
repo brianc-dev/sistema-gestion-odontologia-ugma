@@ -49,6 +49,15 @@
                 @case(10)
                     <livewire:historia.presupuesto :$enabled :$historia/>
                     @break
+                @case(11)
+                    <livewire:historia.secuencia-tratamiento :$enabled :$historia/>
+                    @break
+                @case(12)
+                    <livewire:historia.historia-periodontal :$enabled :$historia/>
+                    @break
+                @case(13)
+                    <livewire:historia.ficha-endodontica :$enabled :$historia/>
+                    @break
             @endswitch
     </div>
     <div class="hidden print:flex flex-col">
