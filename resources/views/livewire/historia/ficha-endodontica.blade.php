@@ -1,6 +1,6 @@
 <div class="grid grid-cols-4 break-inside-avoid items-start">
     <div class="col-span-3 bg-slate-400 py-6 px-4">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Presupuesto</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Ficha Endodontica</h2>
         <form class="">
             <div>
                 <x-input-label for="ano" :value="__('Año')"/>

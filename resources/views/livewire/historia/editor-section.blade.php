@@ -58,6 +58,12 @@
                 @case(13)
                     <livewire:historia.ficha-endodontica :$enabled :$historia/>
                     @break
+                @case(14)
+                    <livewire:historia.pruebas-diagnosticas :$enabled :$historia/>
+                    @break
+                @case(15)
+                    <livewire:historia.pruebas-diagnosticas :$enabled :$historia/>
+                    @break
             @endswitch
     </div>
     <div class="hidden print:flex flex-col">

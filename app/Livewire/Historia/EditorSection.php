@@ -45,11 +45,11 @@ class EditorSection extends Component
         'Secuencia de tratamiento',
         'Historia periodontal',
         'Ficha endodontica',
-//        'Pruebas diagnosticas',
-//        'Ficha endodontica'
+        'Pruebas diagnosticas',
+        'Radiografias'
     ];
 
-    public $section = 13;
+    public $section = 14;
 
     public $enabled = false;
 
