@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('radiografia_penachos_2')->default('');
             $table->string('radiografia_final_1')->default('');
             $table->string('radiografia_final_2')->default('');
+            $table->string('radiografia_final_3')->default('');
             $table->string('radiografia_final_4')->default('');
-            $table->text('radiografia_conductomedria')->default('');
+            $table->text('radiografia_conductometria')->default('');
             $table->text('radiografia_cono_patron')->default('');
 
             $table->primary('historia_id');

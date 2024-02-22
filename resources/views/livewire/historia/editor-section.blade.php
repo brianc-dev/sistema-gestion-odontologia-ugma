@@ -62,7 +62,7 @@
                     <livewire:historia.pruebas-diagnosticas :$enabled :$historia/>
                     @break
                 @case(15)
-                    <livewire:historia.pruebas-diagnosticas :$enabled :$historia/>
+                    <livewire:historia.radiografias :$enabled :$historia/>
                     @break
             @endswitch
     </div>

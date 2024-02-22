@@ -49,7 +49,7 @@ class EditorSection extends Component
         'Radiografias'
     ];
 
-    public $section = 14;
+    public $section = 0;
 
     public $enabled = false;
 
