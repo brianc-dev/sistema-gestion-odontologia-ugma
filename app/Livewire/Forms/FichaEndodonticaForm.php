@@ -20,29 +20,14 @@ class FichaEndodonticaForm extends Form
     ];
 
     #[Validate([
-        'nombre_paciente' => ['string', 'between:0,300']
+        'ano' => ['required', 'numeric', 'integer', 'min:0', 'max:150']
     ], message: self::messages)]
-    public string $nombre_paciente = '';
+    public string $ano = '';
 
     #[Validate([
-        'numero_historia' => ['string', 'between:0,300']
+        'diente' => ['required', 'numeric', 'integer']
     ], message: self::messages)]
-    public string $numero_historia = '';
-
-    #[Validate([
-        'nombre_bachiller' => ['string', 'between:0,300']
-    ], message: self::messages)]
-    public string $nombre_bachiller = '';
-
-    #[Validate([
-        'anos' => ['required', 'numeric', 'integer', 'min:0', 'max:150']
-    ], message: self::messages)]
-    public string $anos = '';
-
-    #[Validate([
-        'cliente' => ['required', 'numeric', 'integer']
-    ], message: self::messages)]
-    public string $cliente = '';
+    public string $diente = '';
 
     #[Validate([
         'sintomas' => ['string', 'between:0,300']

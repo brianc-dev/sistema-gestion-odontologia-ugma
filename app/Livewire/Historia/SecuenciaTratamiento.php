@@ -2,46 +2,29 @@
 
 namespace App\Livewire\Historia;
 
+use App\Livewire\Forms\SecuenciaTratatamientoForm;
 use App\Models\Historia;
+use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class SecuenciaTratamiento extends Component
 {
-    #[Validate(
-        [
-            'secuenciaTratamiento' => ['array'],
-            'secuenciaTratamiento.*' => ['array:fecha,diente,tratamiento_realizado,observaciones_docente,nombre_firma_docente'],
-            'secuenciaTratamiento.*.fecha' => ['required'],
-            'secuenciaTratamiento.*.diente' => ['required'],
-            'secuenciaTratamiento.*.tratamiento_realizado' => ['required'],
-            'secuenciaTratamiento.*.observaciones_docente' => ['required'],
-            'secuenciaTratamiento.*.nombre_firma_docente' => ['required'],
-        ]
-    )]
-    public $secuenciaTratamientos = [];
+    #[Modelable]
+    public SecuenciaTratatamientoForm $form;
     public ?Historia $historia;
     public $enabled;
 
     public function delete($index)
     {
-        array_splice($this->secuenciaTratamientos, $index, 1);
+        array_splice($this->form->secuenciaTratamientos, $index, 1);
     }
 
     public function mount()
     {
         if ($this->historia) {
 
-        } else {
-            $plan = [
-                'fecha' => '',
-                'diente' => '',
-                'tratamiento_realizado' => '',
-                'observaciones_docente' => '',
-                'nombre_firma_docente' => '',
-            ];
-            array_push($this->secuenciaTratamientos, $plan);
         }
     }
 
@@ -55,7 +38,19 @@ class SecuenciaTratamiento extends Component
             'observaciones_docente' => '',
             'nombre_firma_docente' => '',
         ];
-        array_push($this->secuenciaTratamientos, $plan);
+        array_push($this->form->secuenciaTratamientos, $plan);
+    }
+
+    #[On('errors-show')]
+    public function showErrors()
+    {
+        $this->form->validate();
+    }
+
+    #[On('historia-editing')]
+    public function edit($isEditing)
+    {
+        $this->enabled = $isEditing;
     }
 
     public function render()

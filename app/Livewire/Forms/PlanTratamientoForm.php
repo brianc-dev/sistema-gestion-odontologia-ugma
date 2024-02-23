@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class ModificacionesPlanTratatamientoForm extends Form
+class PlanTratamientoForm extends Form
 {
     const messages = [
         'required' => 'El campo :attribute es requerido.',
@@ -19,18 +19,14 @@ class ModificacionesPlanTratatamientoForm extends Form
         'boolean' => 'El campo :attribute debe ser Sí o No.'
     ];
 
-    #[Validate([
-        'diente' => ['numeric', 'integer']
-    ], message: self::messages)]
-    public string $diente = '';
-
-    #[Validate([
-        'tratamiento_modificado' => ['string', 'between:0,300']
-    ], message: self::messages)]
-    public string $tratamiento_modificado = '';
-
-    #[Validate([
-        'firma_docente' => ['string', 'between:0,300']
-    ], message: self::messages)]
-    public string $firma_docente = '';
+    #[Validate(
+        [
+            'planTratamiento' => ['array'],
+            'planTratamiento.*' => ['array:diente,cavidad,tratamiento'],
+            'planTratamiento.*.diente' => ['required', 'numeric', 'integer', 'between:18,48'],
+            'planTratamiento.*.cavidad' => ['required'],
+            'planTratamiento.*.tratamiento' => ['required'],
+        ]
+    )]
+    public $planTratamiento = [];
 }

@@ -7,22 +7,22 @@
             <div class="col-span-6 text-center">Tratamiento</div>
             <div>Firma</div>
             <div></div>
-            @forelse($modificacionesPlanTratamiento as $plan)
+            @forelse($form->modificacionesPlanTratamiento as $plan)
                 <div wire:key="{{ $loop->index }}">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="modificacionesPlanTratamiento.{{ $loop->index }}.fecha"
+                                  wire:model="form.modificacionesPlanTratamiento.{{ $loop->index }}.fecha"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
                 <div wire:key="{{ $loop->index }}">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="modificacionesPlanTratamiento.{{ $loop->index }}.diente"
+                                  wire:model="form.modificacionesPlanTratamiento.{{ $loop->index }}.diente"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
                 <div wire:key="{{ $loop->index }}" class="col-span-6">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="modificacionesPlanTratamiento.{{ $loop->index }}.tratamiento"
+                                  wire:model="form.modificacionesPlanTratamiento.{{ $loop->index }}.tratamiento"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>

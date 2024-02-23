@@ -2,40 +2,29 @@
 
 namespace App\Livewire\Historia;
 
+use App\Livewire\Forms\PresupuestoForm;
 use App\Models\Historia;
+use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class Presupuesto extends Component
 {
-    #[Validate(
-        [
-            'presupuestos' => ['array'],
-            'presupuestos.*' => ['array:tratamiento,costo'],
-            'presupuestos.*.tratamiento' => ['required'],
-            'presupuestos.*.costo' => ['required'],
-        ]
-    )]
-    public $presupuestos = [];
+    #[Modelable]
+    public PresupuestoForm $form;
     public ?Historia $historia;
     public $enabled;
 
     public function delete($index)
     {
-        array_splice($this->presupuestos, $index, 1);
+        array_splice($this->form->presupuestos, $index, 1);
     }
 
     public function mount()
     {
         if ($this->historia) {
 
-        } else {
-            $plan = [
-                'tratamiento' => '',
-                'costo' => ''
-            ];
-            array_push($this->presupuestos, $plan);
         }
     }
 
@@ -46,7 +35,19 @@ class Presupuesto extends Component
             'tratamiento' => '',
             'costo' => ''
         ];
-        array_push($this->presupuestos, $plan);
+        array_push($this->form->presupuestos, $plan);
+    }
+
+    #[On('errors-show')]
+    public function showErrors()
+    {
+        $this->form->validate();
+    }
+
+    #[On('historia-editing')]
+    public function edit($isEditing)
+    {
+        $this->enabled = $isEditing;
     }
 
     public function render()

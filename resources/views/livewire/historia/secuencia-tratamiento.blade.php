@@ -8,34 +8,34 @@
             <div class="col-span-3 text-center">Observaciones del docente</div>
             <div class="col-span-1 text-center">Nombre y firma del docente</div>
             <div></div>
-            @forelse($secuenciaTratamientos as $secuencia)
+            @forelse($form->secuenciaTratamientos as $secuencia)
                 <div wire:key="{{ $loop->index }}">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="secuenciaTratamientos.{{ $loop->index }}.fecha"
+                                  wire:model="form.secuenciaTratamientos.{{ $loop->index }}.fecha"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
                 <div wire:key="{{ $loop->index }}">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="secuenciaTratamientos.{{ $loop->index }}.diente"
+                                  wire:model="form.secuenciaTratamientos.{{ $loop->index }}.diente"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
                 <div wire:key="{{ $loop->index }}" class="col-span-3">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="secuenciaTratamientos.{{ $loop->index }}.tratamiento_realizado"
+                                  wire:model="form.secuenciaTratamientos.{{ $loop->index }}.tratamiento_realizado"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
                 <div wire:key="{{ $loop->index }}" class="col-span-3">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="secuenciaTratamientos.{{ $loop->index }}.observaciones_docente"
+                                  wire:model="form.secuenciaTratamientos.{{ $loop->index }}.observaciones_docente"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
                 <div wire:key="{{ $loop->index }}">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="secuenciaTratamientos.{{ $loop->index }}.nombre_firma_docente"
+                                  wire:model="form.secuenciaTratamientos.{{ $loop->index }}.nombre_firma_docente"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>

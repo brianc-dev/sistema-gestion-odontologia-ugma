@@ -5,16 +5,16 @@
             <div class="col-span-7 text-center">Tratamiento</div>
             <div class="col-span-2 text-center">Costo Unitario</div>
             <div></div>
-            @forelse($presupuestos as $presupuesto)
+            @forelse($form->presupuestos as $presupuesto)
                 <div wire:key="{{ $loop->index }}" class="col-span-7">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="presupuestos.{{ $loop->index }}.tratamiento"
+                                  wire:model="form.presupuestos.{{ $loop->index }}.tratamiento"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
                 <div wire:key="{{ $loop->index }}" class="col-span-2">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="presupuestos.{{ $loop->index }}.costo"
+                                  wire:model="form.presupuestos.{{ $loop->index }}.costo"
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>

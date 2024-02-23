@@ -41,25 +41,25 @@
                     <livewire:historia.estudio-modelos wire:model="estudioModelosForm" :$enabled :$historia/>
                     @break
                 @case(8)
-                    <livewire:historia.plan-tratamiento wire:model="estudioModelosForm" :$enabled :$historia/>
+                    <livewire:historia.plan-tratamiento wire:model="planTratamientoForm" :$enabled :$historia/>
                     @break
                 @case(9)
-                    <livewire:historia.modificaciones-plan-tratamiento wire:model="estudioModelosForm" :$enabled :$historia/>
+                    <livewire:historia.modificaciones-plan-tratamiento wire:model="modificacionesPlanTratamientoForm" :$enabled :$historia/>
                     @break
                 @case(10)
-                    <livewire:historia.presupuesto :$enabled :$historia/>
+                    <livewire:historia.presupuesto wire:model="presupuestoForm" :$enabled :$historia/>
                     @break
                 @case(11)
-                    <livewire:historia.secuencia-tratamiento :$enabled :$historia/>
+                    <livewire:historia.secuencia-tratamiento wire:model="secuenciaTratatamientoForm" :$enabled :$historia/>
                     @break
                 @case(12)
-                    <livewire:historia.historia-periodontal :$enabled :$historia/>
+                    <livewire:historia.historia-periodontal wire:model="historiaPeriodontalForm" :$enabled :$historia/>
                     @break
                 @case(13)
-                    <livewire:historia.ficha-endodontica :$enabled :$historia/>
+                    <livewire:historia.ficha-endodontica wire:model="fichaEndodonticaForm" :$enabled :$historia/>
                     @break
                 @case(14)
-                    <livewire:historia.pruebas-diagnosticas :$enabled :$historia/>
+                    <livewire:historia.pruebas-diagnosticas wire:model="pruebasDiagnosticasForm" :$enabled :$historia/>
                     @break
                 @case(15)
                     <livewire:historia.radiografias :$enabled :$historia/>

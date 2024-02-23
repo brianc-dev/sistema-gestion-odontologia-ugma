@@ -5,50 +5,50 @@
             <div>
                 <x-input-label for="ano" :value="__('Año')"/>
                 <x-text-input :disabled="!$enabled"
-                              wire:model="ano"
+                              wire:model="form.ano"
                               class="block mt-1 w-full" type="text"
                               required autofocus/>
-                <x-input-error :messages="$errors->get('')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('form.ano')" class="mt-2"/>
             </div>
             <div>
                 <x-input-label for="diente" :value="__('Diente')"/>
                 <x-text-input :disabled="!$enabled"
-                              wire:model="diente"
+                              wire:model="form.diente"
                               class="block mt-1 w-full" type="text"
                               required autofocus/>
-                <x-input-error :messages="$errors->get('diente')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('form.diente')" class="mt-2"/>
             </div>
             <div>
                 <x-input-label for="sintomas" :value="__('Sintomas')"/>
                 <x-text-input :disabled="!$enabled"
-                              wire:model="sintomas"
+                              wire:model="form.sintomas"
                               class="block mt-1 w-full" type="text"
                               required autofocus/>
-                <x-input-error :messages="$errors->get('sintomas')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('form.sintomas')" class="mt-2"/>
             </div>
             <div>
                 <x-input-label for="signos" :value="__('Signos')"/>
                 <x-text-input :disabled="!$enabled"
-                              wire:model="signos"
+                              wire:model="form.signos"
                               class="block mt-1 w-full" type="text"
                               required autofocus/>
-                <x-input-error :messages="$errors->get('signos')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('form.signos')" class="mt-2"/>
             </div>
             <div>
                 <x-input-label for="etiologia" :value="__('Etiología')"/>
                 <x-text-input :disabled="!$enabled"
-                              wire:model="etiologia"
+                              wire:model="form.etiologia"
                               class="block mt-1 w-full" type="text"
                               required autofocus/>
-                <x-input-error :messages="$errors->get('etiologia')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('form.etiologia')" class="mt-2"/>
             </div>
             <div>
                 <x-input-label for="interpretacion_radiografica" :value="__('Interpretación radiológica')"/>
                 <x-text-input :disabled="!$enabled"
-                              wire:model="interpretacion_radiografica"
+                              wire:model="form.interpretacion_radiografica"
                               class="block mt-1 w-full" type="text"
                               required autofocus/>
-                <x-input-error :messages="$errors->get('interpretacion_radiografica')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('form.interpretacion_radiografica')" class="mt-2"/>
             </div>
         </form>
     </div>

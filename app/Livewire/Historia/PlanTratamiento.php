@@ -2,42 +2,41 @@
 
 namespace App\Livewire\Historia;
 
+use App\Livewire\Forms\PlanTratamientoForm;
 use App\Models\Historia;
+use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class PlanTratamiento extends Component
 {
-    #[Validate(
-        [
-            'planTratamiento' => ['array'],
-            'planTratamiento.*' => ['array:diente,cavidad,tratamiento'],
-            'planTratamiento.*.diente' => ['required', 'numeric', 'integer', 'between:18,48'],
-            'planTratamiento.*.cavidad' => ['required'],
-            'planTratamiento.*.tratamiento' => ['required'],
-        ]
-    )]
-    public $planTratamiento = [];
+    #[Modelable]
+    public PlanTratamientoForm $form;
     public ?Historia $historia;
     public $enabled;
 
     public function delete($index)
     {
-        array_splice($this->planTratamiento, $index, 1);
+        array_splice($this->form->planTratamiento, $index, 1);
+    }
+
+    #[On('errors-show')]
+    public function showErrors()
+    {
+        $this->form->validate();
+    }
+
+    #[On('historia-editing')]
+    public function edit($isEditing)
+    {
+        $this->enabled = $isEditing;
     }
 
     public function mount()
     {
         if ($this->historia) {
 
-        } else {
-            $plan = [
-                'diente' => '',
-                'cavidad' => '',
-                'tratamiento' => ''
-            ];
-            array_push($this->planTratamiento, $plan);
         }
     }
 
@@ -49,7 +48,7 @@ class PlanTratamiento extends Component
             'cavidad' => '',
             'tratamiento' => ''
         ];
-        array_push($this->planTratamiento, $plan);
+        array_push($this->form->planTratamiento, $plan);
     }
 
     public function render()

@@ -6,24 +6,24 @@
             <form class="grid grid-cols-2 gap-2">
                 <div>
                     <x-input-label for="frecuencia_cepillado" :value="__('Frecuencia del cepillado')"/>
-                    <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text"
+                    <x-text-input wire:model="form.frecuencia_cepillado" :disabled="!$enabled" class="block mt-1 w-full" type="text"
                                   id="frecuencia_cepillado"/>
-                    <x-input-error :messages="$errors->get('frecuencia_cepillado')" class="mt-2"/>
+                    <x-input-error :messages="$errors->get('form.frecuencia_cepillado')" class="mt-2"/>
                 </div>
                 <div>
                     <x-input-label for="tipo_cepillo" :value="__('Tipo de cepillado')"/>
-                    <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text" id="tipo_cepillo"/>
-                    <x-input-error :messages="$errors->get('tipo_cepillo')" class="mt-2"/>
+                    <x-text-input wire:model="form.tipo_cepillo" :disabled="!$enabled" class="block mt-1 w-full" type="text" id="tipo_cepillo"/>
+                    <x-input-error :messages="$errors->get('form.tipo_cepillo')" class="mt-2"/>
                 </div>
                 <div>
                     <x-input-label for="metodo_cepillado" :value="__('Método de cepillado')"/>
-                    <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text" id="metodo_cepillado"/>
-                    <x-input-error :messages="$errors->get('metodo_cepillado')" class="mt-2"/>
+                    <x-text-input wire:model="form.metodo_cepillado" :disabled="!$enabled" class="block mt-1 w-full" type="text" id="metodo_cepillado"/>
+                    <x-input-error :messages="$errors->get('form.metodo_cepillado')" class="mt-2"/>
                 </div>
                 <div>
                     <x-input-label for="metodos_auxiliares" :value="__('Métodos auxiliares')"/>
-                    <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text" id="metodos_auxiliares"/>
-                    <x-input-error :messages="$errors->get('metodos_auxiliares')" class="mt-2"/>
+                    <x-text-input wire:model="form.metodos_auxiliares" :disabled="!$enabled" class="block mt-1 w-full" type="text" id="metodos_auxiliares"/>
+                    <x-input-error :messages="$errors->get('form.metodos_auxiliares')" class="mt-2"/>
                 </div>
                 <div class="grid grid-cols-4 col-span-2 gap-2">
                     <div>
@@ -31,12 +31,12 @@
                         <x-fieldset :disabled="!$enabled">
                             <div>
                                 <input type="radio" id="Sí" value="Sí"
-                                       wire:model.blur="cepillado_lengua">
+                                       wire:model.blur="form.cepillado_lengua">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
                                 <input type="radio" id="No" value="No"
-                                       wire:model.blur="cepillado_lengua">
+                                       wire:model.blur="form.cepillado_lengua">
                                 <label for="No">No</label>
                             </div>
                         </x-fieldset>
@@ -46,12 +46,12 @@
                         <x-fieldset :disabled="!$enabled">
                             <div>
                                 <input type="radio" id="Sí" value="Sí"
-                                       wire:model.blur="hemorragia_gingival">
+                                       wire:model.blur="form.hemorragia_gingival">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
                                 <input type="radio" id="No" value="No"
-                                       wire:model.blur="hemorragia_gingival">
+                                       wire:model.blur="form.hemorragia_gingival">
                                 <label for="No">No</label>
                             </div>
                         </x-fieldset>
@@ -61,12 +61,12 @@
                         <x-fieldset :disabled="!$enabled">
                             <div>
                                 <input type="radio" id="Sí" value="Sí"
-                                       wire:model.blur="xerostomia">
+                                       wire:model.blur="form.xerostomia">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
                                 <input type="radio" id="No" value="No"
-                                       wire:model.blur="xerostomia">
+                                       wire:model.blur="form.xerostomia">
                                 <label for="No">No</label>
                             </div>
                         </x-fieldset>
@@ -76,12 +76,12 @@
                         <x-fieldset :disabled="!$enabled">
                             <div>
                                 <input type="radio" id="Sí" value="Sí"
-                                       wire:model.blur="sialorrea">
+                                       wire:model.blur="form.sialorrea">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
                                 <input type="radio" id="No" value="No"
-                                       wire:model.blur="sialorrea">
+                                       wire:model.blur="form.sialorrea">
                                 <label for="No">No</label>
                             </div>
                         </x-fieldset>
@@ -92,19 +92,19 @@
                 </div>
                 <div>
                     <x-input-label for="tecnica_cepillado" :value="__('Técnica de cepillado enseñada al paciente')"/>
-                    <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text"
+                    <x-text-input wire:model="form.tecnica_cepillado" :disabled="!$enabled" class="block mt-1 w-full" type="text"
                                   id="tecnica_cepillado"/>
-                    <x-input-error :messages="$errors->get('tecnica_cepillado')" class="mt-2"/>
+                    <x-input-error :messages="$errors->get('form.tecnica_cepillado')" class="mt-2"/>
                 </div>
                 <div>
                     <x-input-label for="cepillo_recomendado" :value="__('Cepillo dental recomendado')"/>
-                    <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text" id="cepillo_recomendado"/>
-                    <x-input-error :messages="$errors->get('cepillo_recomendado')" class="mt-2"/>
+                    <x-text-input wire:model="form.cepillo_recomendado" :disabled="!$enabled" class="block mt-1 w-full" type="text" id="cepillo_recomendado"/>
+                    <x-input-error :messages="$errors->get('form.cepillo_recomendado')" class="mt-2"/>
                 </div>
                 <div>
                     <x-input-label for="metodos_auxiliares_requeridos" :value="__('Métodos auxiliares requeridos')"/>
-                    <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text" id="metodos_auxiliares_requeridos"/>
-                    <x-input-error :messages="$errors->get('metodos_auxiliares_requeridos')" class="mt-2"/>
+                    <x-text-input wire:model="form.metodos_auxiliares_requeridos" :disabled="!$enabled" class="block mt-1 w-full" type="text" id="metodos_auxiliares_requeridos"/>
+                    <x-input-error :messages="$errors->get('form.metodos_auxiliares_requeridos')" class="mt-2"/>
                 </div>
                 <div>
 
@@ -115,12 +115,12 @@
                         <x-fieldset :disabled="!$enabled">
                             <div>
                                 <input type="radio" id="Sí" value="Sí"
-                                       wire:model.blur="placa_bacteriana_lengua">
+                                       wire:model.blur="form.placa_bacteriana_lengua">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
                                 <input type="radio" id="No" value="No"
-                                       wire:model.blur="placa_bacteriana_lengua">
+                                       wire:model.blur="form.placa_bacteriana_lengua">
                                 <label for="No">No</label>
                             </div>
                         </x-fieldset>
@@ -130,20 +130,20 @@
                         <x-fieldset :disabled="!$enabled">
                             <div>
                                 <input type="radio" id="Sí" value="Sí"
-                                       wire:model.blur="control_halitosis">
+                                       wire:model.blur="form.control_halitosis">
                                 <label for="Sí">Sí</label>
                             </div>
                             <div>
                                 <input type="radio" id="No" value="No"
-                                       wire:model.blur="control_halitosis">
+                                       wire:model.blur="form.control_halitosis">
                                 <label for="No">No</label>
                             </div>
                         </x-fieldset>
                     </div>
                     <div class="col-span-4">
                         <x-input-label for="tratamiento" :value="__('Tratamiento')"/>
-                        <x-text-input :disabled="!$enabled" class="block mt-1 w-full" type="text" id="tratamiento"/>
-                        <x-input-error :messages="$errors->get('tratamiento')" class="mt-2"/>
+                        <x-text-input wire:model="form.tratamiento" :disabled="!$enabled" class="block mt-1 w-full" type="text" id="tratamiento"/>
+                        <x-input-error :messages="$errors->get('form.tratamiento')" class="mt-2"/>
                     </div>
                     <div></div>
                 </div>

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->integer('diente');
             $table->text('tratamiento_realizado');
             $table->text('observaciones_docente');
-            $table->foreignId('firma_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->text('firma')->default('');
+//            $table->foreignId('firma_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('historia_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

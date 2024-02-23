@@ -9,6 +9,8 @@ class HistoriaPeriodontal extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $attributes = [
         'control_placa_dental_url' => '',
         'porcentaje' => 0

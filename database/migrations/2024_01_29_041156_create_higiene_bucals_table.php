@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('higiene_bucals', function (Blueprint $table) {
             $table->foreignId('historia_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('frecuencia_cepillado')->default('');
             $table->text('tipo_cepillo')->default('');
             $table->text('metodo_cepillado')->default('');
             $table->text('metodos_auxiliares')->default('');

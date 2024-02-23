@@ -5,23 +5,23 @@
             <div>Diente</div>
             <div>Cavidad</div>
             <div class="col-span-8 text-center">Tratamiento</div>
-            @forelse($planTratamiento as $plan)
+            @forelse($form->planTratamiento as $plan)
                 <div>
                     <x-text-input :disabled="!$enabled"
-                                  wire:model.live="planTratamiento[{{ $loop->index }}]['diente']"
+                                  wire:model.live="form.planTratamiento.{{ $loop->index }}.diente"
                                   id="diente"
                                   class="block mt-1 w-full" type="text"
                                   name="diente" required autofocus/>
                 </div>
                 <div>
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="planTratamiento[{{ $loop->index }}]['cavidad']" id="cavidad"
+                                  wire:model="form.planTratamiento.{{ $loop->index }}.cavidad" id="cavidad"
                                   class="block mt-1 w-full" type="text"
                                   name="cavidad" required autofocus/>
                 </div>
                 <div class="col-span-7">
                     <x-text-input :disabled="!$enabled"
-                                  wire:model="planTratamiento[{{ $loop->index }}]['tratamiento']"
+                                  wire:model="form.planTratamiento.{{ $loop->index }}.tratamiento"
                                   id="tratamiento"
                                   class="block mt-1 w-full" type="text"
                                   name="tratamiento" required autofocus/>

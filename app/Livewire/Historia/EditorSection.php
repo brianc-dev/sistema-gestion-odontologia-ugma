@@ -6,10 +6,19 @@ use App\Livewire\Forms\AntecedentesMedicosFamiliaresForm;
 use App\Livewire\Forms\AntecedentesMedicosPersonalesForm;
 use App\Livewire\Forms\EstudioModelosForm;
 use App\Livewire\Forms\ExamenRadiograficoForm;
+use App\Livewire\Forms\FichaEndodonticaForm;
 use App\Livewire\Forms\HistoriaOdontologicaForm;
+use App\Livewire\Forms\HistoriaPeriodontalForm;
 use App\Livewire\Forms\MedicamentoForm;
+use App\Livewire\Forms\ModificacionesPlanTratamientoForm;
 use App\Livewire\Forms\PacienteForm;
 use App\Livewire\Forms\PeriodontogramaForm;
+use App\Livewire\Forms\PlanTratamientoForm;
+use App\Livewire\Forms\PresupuestoForm;
+use App\Livewire\Forms\PruebasDiagnosticasForm;
+use App\Livewire\Forms\SecuenciaTratatamientoForm;
+use App\Models\ControlHigieneBucal;
+use App\Models\HigieneBucal;
 use App\Models\Historia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -33,6 +42,13 @@ class EditorSection extends Component
     public HistoriaOdontologicaForm $historiaOdontologicaForm;
     public ExamenRadiograficoForm $examenRadiograficoForm;
     public PeriodontogramaForm $periodontogramaForm;
+    public PlanTratamientoForm $planTratamientoForm;
+    public ModificacionesPlanTratamientoForm $modificacionesPlanTratamientoForm;
+    public PresupuestoForm $presupuestoForm;
+    public SecuenciaTratatamientoForm $secuenciaTratatamientoForm;
+    public HistoriaPeriodontalForm $historiaPeriodontalForm;
+    public FichaEndodonticaForm $fichaEndodonticaForm;
+    public PruebasDiagnosticasForm $pruebasDiagnosticasForm;
 
     public EstudioModelosForm $estudioModelosForm;
     private $sections = [
@@ -175,6 +191,65 @@ class EditorSection extends Component
             $periodontograma->url = Storage::url('public/periodontogramas/'. $file);
         }
         $periodontograma->save();
+
+        foreach ($this->planTratamientoForm->planTratamiento as $plan) {
+            $planTratamiento = new \App\Models\PlanTratamiento();
+            $planTratamiento->historia_id = $historia->id;
+            $planTratamiento->diente = $plan['diente'];
+            $planTratamiento->tipo_cavidad = $plan['cavidad'];
+            $planTratamiento->tratamiento = $plan['tratamiento'];
+            $planTratamiento->save();
+        }
+
+        foreach ($this->modificacionesPlanTratamientoForm->modificacionesPlanTratamiento as $plan) {
+            $modificacionesPlanTratamiento = new \App\Models\ModificacionesPlanTratamiento();
+            $modificacionesPlanTratamiento->historia_id = $historia->id;
+            $modificacionesPlanTratamiento->diente = $plan['diente'];
+            $modificacionesPlanTratamiento->tratamiento_modificado = $plan['tratamiento'];
+            $modificacionesPlanTratamiento->firma_docente = 'En espera';
+            $modificacionesPlanTratamiento->save();
+        }
+
+        foreach ($this->presupuestoForm->presupuestos as $presu) {
+            $presupuesto = new \App\Models\Presupuesto();
+            $presupuesto->historia_id = $historia->id;
+            $presupuesto->tratamiento = $presu['tratamiento'];
+            $presupuesto->costo_unitario = $presu['costo'];
+            $presupuesto->save();
+        }
+
+        foreach ($this->secuenciaTratatamientoForm->secuenciaTratamientos as $secuencia) {
+            $secuenciaTratamiento = new \App\Models\SecuenciaTratamiento();
+            $secuenciaTratamiento->historia_id = $historia->id;
+            $secuenciaTratamiento->diente = $secuencia['diente'];
+            $secuenciaTratamiento->tratamiento_realizado = $secuencia['tratamiento_realizado'];
+            $secuenciaTratamiento->observaciones_docente = $secuencia['observaciones_docente'];
+            $secuenciaTratamiento->firma = 'En espera';
+            $secuenciaTratamiento->save();
+        }
+
+        $historiaPeriodontal = \App\Models\HistoriaPeriodontal::create(
+            ['historia_id' => $historia->id]
+        );
+
+        $higiene = new \App\Models\HigieneBucal($this->historiaPeriodontalForm->only([
+            'frecuencia_cepillado', 'tipo_cepillo', 'metodo_cepillado', 'metodos_auxiliares', 'cepillado_lengua', 'hemorragia_gingival', 'xerostomia', 'sialorrea']));
+        $higiene->historia_id = $historia->id;
+        $higiene->save();
+
+        $control = new \App\Models\ControlHigieneBucal($this->historiaPeriodontalForm->only([
+            'tecnica_cepillado', 'cepillo_recomendado', 'metodos_auxiliares_requeridos', 'placa_bacteriana_lengua', 'control_halitosis', 'tratamiento'
+            ]));
+        $control->historia_id = $historia->id;
+        $control->save();
+
+        $fichaEndodontica = new \App\Models\FichaEndodontica($this->fichaEndodonticaForm->all());
+        $fichaEndodontica->historia_id = $historia->id;
+        $fichaEndodontica->save();
+
+        $pruebasDiagnosticas = new \App\Models\PruebasDiagnosticas($this->pruebasDiagnosticasForm->all());
+        $pruebasDiagnosticas->historia_id = $historia->id;
+        $pruebasDiagnosticas->save();
 
         session()->put('message', 'Historia creada');
 
