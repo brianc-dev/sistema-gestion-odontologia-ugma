@@ -12,14 +12,19 @@ use App\Livewire\Forms\PacienteForm;
 use App\Livewire\Forms\PeriodontogramaForm;
 use App\Models\Historia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Reactive;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 
 class EditorSection extends Component
 {
+//    use WithFileUploads;
+
     public Historia $historia;
     public PacienteForm $pacienteForm;
     public AntecedentesMedicosFamiliaresForm $antecedentesMedicosFamiliaresForm;
@@ -67,7 +72,7 @@ class EditorSection extends Component
     }
 
     #[On('historia-update')]
-    public function update()
+    public function updateHistoria()
     {
         $this->pacienteForm->cedula = $this->pacienteForm->letra_cedula . $this->pacienteForm->numero_cedula;
 
@@ -78,7 +83,7 @@ class EditorSection extends Component
             $this->medicamentoForm->validate();
             $this->historiaOdontologicaForm->validate();
             $this->examenRadiograficoForm->validate();
-            $this->periodontogramaForm->validate();
+//            $this->periodontogramaForm->validate();
         } catch (ValidationException $exception) {
             $this->dispatch('errors-show');
             return;
@@ -99,7 +104,6 @@ class EditorSection extends Component
         $this->historia->historiaOdontologica->update($this->historiaOdontologicaForm->all());
         $this->historia->examenRadiografico->update($this->examenRadiograficoForm->all());
 
-        $this->historia->periodontograma->update($this->periodontogramaForm->all());
 
         session()->put('message', 'Historia actualizada');
 
@@ -107,7 +111,7 @@ class EditorSection extends Component
     }
 
     #[On('historia-create')]
-    public function save()
+    public function saveHistoria()
     {
         $this->pacienteForm->cedula = $this->pacienteForm->letra_cedula . $this->pacienteForm->numero_cedula;
 
@@ -162,9 +166,13 @@ class EditorSection extends Component
         $periodontograma = new \App\Models\Periodontograma();
         $periodontograma->historia_id = $historia->id;
 
-        if ($this->periodontogramaForm->url) {
-            $path = $this->periodontogramaForm->url->store(path: 'periodontogramas');
-            $periodontograma->url = $path;
+        if ($this->periodontogramaForm->periodontograma_photo) {
+            $file = Str::remove('livewire-file:', $this->periodontogramaForm->periodontograma_photo);
+            $this->periodontogramaForm->periodontograma_photo = Str::replace('livewire-file:', 'livewire-tmp/', $this->periodontogramaForm->periodontograma_photo);
+
+            Storage::move($this->periodontogramaForm->periodontograma_photo, 'public/periodontogramas/'. $file);
+
+            $periodontograma->url = Storage::url('public/periodontogramas/'. $file);
         }
         $periodontograma->save();
 
@@ -234,6 +242,7 @@ class EditorSection extends Component
             $this->medicamentoForm->setMedicamento($historia->medicamento);
             $this->historiaOdontologicaForm->setHistoriaOdontologica($historia->historiaOdontologica);
             $this->examenRadiograficoForm->setExamenRadiografico($historia->examenRadiografico);
+            $this->periodontogramaForm->setPeriodontograma($historia->periodontograma);
         } else {
             $this->enabled = true;
         }

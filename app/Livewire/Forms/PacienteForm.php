@@ -30,42 +30,42 @@ class PacienteForm extends Form
     public string $apellido = '';
 
     #[Validate([
-        'letra_cedula' => ['required', 'string', 'size:1', 'regex:/^[V|E]$/']
+        'letra_cedula' => [ 'string', 'size:1', 'regex:/^[V|E]$/']
     ], message: self::messages)]
     public string $letra_cedula = '';
 
     #[Validate([
-        'numero_cedula' => ['required', 'numeric', 'integer', 'min:100000', 'max:999999999', 'regex:/^[\d]{3,9}$/']
+        'numero_cedula' => [ 'numeric', 'integer', 'min:100000', 'max:999999999', 'regex:/^[\d]{3,9}$/']
     ], message: self::messages)]
     public string $numero_cedula = '';
 
     #[Validate([
-        'edad' => ['required', 'numeric', 'integer', 'min:0', 'max:150']
+        'edad' => [ 'numeric', 'integer', 'min:0', 'max:150']
     ], message: self::messages)]
     public string $edad = '';
 
     #[Validate([
-        'sexo' => ['required', 'string', 'size:1', 'regex:/^[M|F]$/']
+        'sexo' => [ 'string', 'size:1', 'regex:/^[M|F]$/']
     ], message: self::messages)]
     public string $sexo = '';
 
     #[Validate([
-        'lugar_nacimiento' => ['required', 'string', 'between:3, 100']
+        'lugar_nacimiento' => [ 'string', 'between:3, 100']
     ], message: self::messages)]
     public string $lugar_nacimiento = '';
 
     #[Validate([
-        'fecha_nacimiento' => ['required', 'string', 'date']
+        'fecha_nacimiento' => [ 'string', 'date']
     ], message: self::messages)]
     public string $fecha_nacimiento = '';
 
     #[Validate([
-        'ocupacion' => ['required', 'string', 'between:0, 50']
+        'ocupacion' => [ 'string', 'between:0, 50']
     ], message: self::messages)]
     public string $ocupacion = '';
 
     #[Validate([
-        'direccion' => ['required', 'string', 'between:3, 100']
+        'direccion' => [ 'string', 'between:3, 100']
     ], message: self::messages)]
     public string $direccion = '';
 
@@ -75,7 +75,7 @@ class PacienteForm extends Form
     public string $telefono = '';
 
     #[Validate([
-        'cedula' => ['required', 'string', 'between:5, 10', 'regex:/^[V|E][\d]{3,9}$/']
+        'cedula' => [ 'string', 'between:5, 10', 'regex:/^[V|E][\d]{3,9}$/']
     ], message: self::messages)]
     public string $cedula = '';
 
@@ -90,12 +90,12 @@ class PacienteForm extends Form
     public string $telefono_emergencia = '';
 
     #[Validate([
-        'motivo_consulta' => ['required', 'string', 'between:0,200']
+        'motivo_consulta' => ['string', 'between:0,200']
     ], message: self::messages)]
     public string $motivo_consulta = '';
 
     #[Validate([
-        'enfermedad_actual' => ['required', 'string', 'between:0,200']
+        'enfermedad_actual' => ['string', 'between:0,200']
     ], message: self::messages)]
     public string $enfermedad_actual = '';
 

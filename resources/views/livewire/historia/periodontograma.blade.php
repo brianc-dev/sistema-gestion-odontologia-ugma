@@ -7,18 +7,38 @@
         </div>
         <div class="flex flex-col">
 
-            <div class="mt-4 print:hidden">
+            <form wire:submit.prevent="save" class="mt-4 print:hidden">
                 <x-input-label for="periodontograma_photo" :value="__('Imagen de periodontograma')"/>
                 <x-input-file :disabled="!$enabled" name="periodontograma_photo" type="file"
                               wire:model="form.periodontograma_photo"
+                              accept="image/png, image/jpeg"
                               id="periodontograma_photo"/>
-                @error('form.periodontograma_photo') <span class="error">{{ $message }}</span> @enderror
-            </div>
+{{--                @error('form.periodontograma_photo') <span class="error">{{ $message }}</span> @enderror--}}
+            </form>
 
-            <div class="mt-4">
-                @isset($form->periodontograma_photo)
-                    <img src="{{ $form->periodontograma_photo->temporaryUrl() }}" alt="imagen periodontograma"/>
-                @endisset
+            <div class="p-2 bg-white rounded-md mt-4">
+                <div id="periodontograma_preview">
+
+                </div>
+
+                @if($form->periodontograma_photo and gettype($form->periodontograma_photo) != 'string')
+                    @php
+                        $form->temporary_url = $form->periodontograma_photo->temporaryUrl()
+                    @endphp
+                    <img class="w-full" src="{{ $form->temporary_url }}" alt="imagen periodontograma"/>
+                @elseif(isset($form->temporary_url))
+                    <a href="{{$form->temporary_url}}">
+                        <img class="w-full" src="{{ $form->temporary_url }}" alt="imagen periodontograma"/>
+                    </a>
+                @elseif($form->periodontograma_photo and gettype($form->periodontograma_photo) == 'string')
+                    <a href="{{url($form->periodontograma_photo)}}">
+                        <img class="w-full" src="{{ $form->periodontograma_photo }}" alt="imagen periodontograma"/>
+                    </a>
+                    @isset($historia)
+                        <time class="font-bold text-lg pt-1">{{ date_format($historia->updated_at, 'd-m-Y') }}</time>
+                    @endisset
+                @endif
+
             </div>
         </div>
     </div>

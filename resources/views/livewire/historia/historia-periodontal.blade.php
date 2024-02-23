@@ -1,6 +1,6 @@
 <div class="grid grid-cols-4 break-inside-avoid items-start">
     <div class="col-span-3 bg-slate-400 py-6 px-4">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Presupuesto</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Historia periodontal</h2>
         <div>
             <h3>Historia buscal del paciente</h3>
             <form class="grid grid-cols-2 gap-2">

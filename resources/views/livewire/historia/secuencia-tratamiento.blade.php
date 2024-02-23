@@ -1,6 +1,6 @@
 <div class="grid grid-cols-4 break-inside-avoid items-start">
     <div class="col-span-3 bg-slate-400 py-6 px-4">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Presupuesto</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Secuencia de tratamiento</h2>
         <form wire:submit="save" class="grid grid-cols-10 gap-2">
             <div class=" text-center">Fecha</div>
             <div class=" text-center">Diente</div>

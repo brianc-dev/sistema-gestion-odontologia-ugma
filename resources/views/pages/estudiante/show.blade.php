@@ -24,7 +24,7 @@
                                 <div class="flex justify-between items-center space-x-4">
                                     <p>Nro. {{$historia->numero_historia}}</p>
                                     <div class="grow">
-                                        <p>Paciente: </p>
+                                        <p>Paciente: {{$historia->paciente->nombre . ' ' . $historia->paciente->apellido}}</p>
                                     </div>
                                     <p class="text-slate-400 text-sm">{{ $historia->created_at->format('d-n-Y h:i A') }}</p>
                                 </div>

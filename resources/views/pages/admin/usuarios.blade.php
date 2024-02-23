@@ -12,29 +12,14 @@
         </div>
     </x-slot>
 
-    <section class="container bg-white">
-        <div class="flex justify-center flex-col items-center">
-            <h2>
-                Opciones de administracion
-            </h2>
-            <div class="flex flex-col space-y-4">
-                <div class="flex space-x-4">
-                    <a href="">
-                        <div class="rounded-lg bg-white">Historias</div>
-                    </a>
-                    <a href="#">
-                        <div class="rounded-lg bg-white">Estudiantes</div>
-                    </a>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#">
-                        <div class="rounded-lg bg-white">Profesores</div>
-                    </a>
-                    <a href="#">
-                        <div class="rounded-lg bg-white">Usuarios</div>
-                    </a>
-                </div>
+    <section class="container bg-white px-4 flex flex-col justify-center">
+        <h2 class="font-bold text-lg">Usuarios registrados en el sistema</h2>
+        @forelse(\App\Models\User::all() as $user)
+            <div>
+                {{$user->name}}
             </div>
-        </div>
+        @empty
+            <p>No existen usuarios</p>
+        @endforelse
     </section>
 </x-app-layout>

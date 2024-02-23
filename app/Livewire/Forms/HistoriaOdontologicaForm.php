@@ -26,12 +26,12 @@ class HistoriaOdontologicaForm extends Form
     public string $antecedentes_odontologicos_personales = '';
 
     #[Validate([
-        'ortodoncia' => ['required', 'regex:/Sí|No/']
+        'ortodoncia' => [ 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $ortodoncia = '';
 
     #[Validate([
-        'protesis' => ['required', 'regex:/Sí|No/']
+        'protesis' => [ 'regex:/Sí|No/']
     ], message: self::messages)]
     public string $protesis = '';
 
