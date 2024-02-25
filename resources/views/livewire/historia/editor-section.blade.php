@@ -75,6 +75,13 @@
         <livewire:historia.examen-radiografico wire:model="examenRadiograficoForm" :$enabled :$historia/>
         <livewire:historia.periodontograma wire:model="periodontogramaForm" :$enabled :$historia/>
         <livewire:historia.estudio-modelos wire:model="estudioModelosForm" :$enabled :$historia/>
-
+        <livewire:historia.plan-tratamiento wire:model="planTratamientoForm" :$enabled :$historia/>
+        <livewire:historia.modificaciones-plan-tratamiento wire:model="modificacionesPlanTratamientoForm" :$enabled :$historia/>
+        <livewire:historia.presupuesto wire:model="presupuestoForm" :$enabled :$historia/>
+        <livewire:historia.secuencia-tratamiento wire:model="secuenciaTratatamientoForm" :$enabled :$historia/>
+        <livewire:historia.historia-periodontal wire:model="historiaPeriodontalForm" :$enabled :$historia/>
+        <livewire:historia.ficha-endodontica wire:model="fichaEndodonticaForm" :$enabled :$historia/>
+        <livewire:historia.pruebas-diagnosticas wire:model="pruebasDiagnosticasForm" :$enabled :$historia/>
+        <livewire:historia.radiografias :$enabled :$historia/>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="grid grid-cols-4 break-inside-avoid items-start">
-    <div class="col-span-3 bg-slate-400 py-6 px-4">
+    <div class="col-span-3 print:col-span-4 bg-slate-400 py-6 px-4">
         <div>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Estudio de modelos

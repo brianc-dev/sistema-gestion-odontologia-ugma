@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Presupuesto;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -16,4 +17,9 @@ class PresupuestoForm extends Form
         ]
     )]
     public $presupuestos = [];
+
+    public function setPresupuesto(Presupuesto $presupuesto)
+    {
+
+    }
 }

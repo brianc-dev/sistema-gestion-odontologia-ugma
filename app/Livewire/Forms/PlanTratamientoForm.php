@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\PlanTratamiento;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -29,4 +31,15 @@ class PlanTratamientoForm extends Form
         ]
     )]
     public $planTratamiento = [];
+
+    public function setPlanTratamiento(Collection $planTratamientos)
+    {
+        foreach ($planTratamientos as $plan) {
+            array_push($this->planTratamiento, [
+                'diente' => $plan->diente,
+                'cavidad' => $plan->tipo_cavidad,
+                'tratamiento' => $plan->tratamiento,
+            ]);
+        }
+    }
 }

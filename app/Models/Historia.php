@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Historia extends Model
@@ -55,6 +56,46 @@ class Historia extends Model
     public function periodontograma(): HasOne
     {
         return $this->hasOne(Periodontograma::class);
+    }
+
+    public function planTratamiento(): HasMany
+    {
+        return $this->hasMany(PlanTratamiento::class);
+    }
+
+    public function modificacionesPlanTratamiento(): HasMany
+    {
+        return $this->hasMany(ModificacionesPlanTratamiento::class);
+    }
+
+    public function presupuesto(): HasMany
+    {
+        return $this->hasMany(Presupuesto::class);
+    }
+
+    public function secuenciaTratamiento(): HasMany
+    {
+        return $this->hasMany(SecuenciaTratamiento::class);
+    }
+
+    public function historiaPeriodontal(): HasOne
+    {
+        return $this->hasOne(HistoriaPeriodontal::class);
+    }
+
+    public function fichaEndodontica(): HasOne
+    {
+        return $this->hasOne(FichaEndodontica::class);
+    }
+
+    public function pruebasDiagnosticas(): HasOne
+    {
+        return $this->hasOne(PruebasDiagnosticas::class);
+    }
+
+    public function radiografias(): HasOne
+    {
+        return $this->hasOne(Radiografias::class);
     }
 
     public function status(): BelongsTo

@@ -318,6 +318,16 @@ class EditorSection extends Component
             $this->historiaOdontologicaForm->setHistoriaOdontologica($historia->historiaOdontologica);
             $this->examenRadiograficoForm->setExamenRadiografico($historia->examenRadiografico);
             $this->periodontogramaForm->setPeriodontograma($historia->periodontograma);
+            $planTratamientos = $historia->planTratamiento;
+            foreach ($planTratamientos as $plan) {
+                $p = [];
+                $p['tratamiento'] = $plan->tratamiento;
+                $p['costo'] = $plan->costo_unitario;
+                array_push($this->planTratamientoForm->planTratamiento, $p);
+            }
+//            $this->planTratamientoForm->setPlanTratamiento($historia->planTratamiento);
+//            $this->modificacionesPlanTratamientoForm->setModificacionesPlanTratamiento($historia->modificacionesPlanTratamiento);
+
         } else {
             $this->enabled = true;
         }

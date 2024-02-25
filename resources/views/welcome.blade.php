@@ -33,7 +33,7 @@
             <div class="flex flex-col space-y-4 justify-center">
 
             <a class="text-center border rounded-md border border-slate-200 p-2" href="{{ route('login') }}">Estudiante | Profesor</a>
-            <a class="text-center border rounded-md border border-slate-200 p-2">Admisión</a>
+            <a class="text-center border rounded-md border border-slate-200 p-2" href="{{ route('admin.login') }}">Admisión</a>
             <a class="text-center border rounded-md border border-slate-200 p-2" href="{{ route('admin.login') }}">Administración</a>
             </div>
         </div>

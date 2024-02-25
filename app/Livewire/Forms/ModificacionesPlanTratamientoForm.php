@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\ModificacionesPlanTratamiento;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -29,4 +30,9 @@ class ModificacionesPlanTratamientoForm extends Form
         ]
     )]
     public $modificacionesPlanTratamiento = [];
+
+    public function setModificacionesPlanTratamiento(ModificacionesPlanTratamiento $modificacionesPlanTratamiento)
+    {
+        $this->fill($modificacionesPlanTratamiento->attributesToArray());
+    }
 }

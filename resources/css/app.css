@@ -12,7 +12,7 @@
     }
 
     .btn-option {
-        @apply inline-flex items-center px-4 py-2 bg-transparent border border-solid border-sky-800 rounded-md font-semibold text-xs text-sky-800 uppercase tracking-widest hover:bg-sky-600 focus:bg-transparent active:bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150;
+        @apply inline-flex items-center px-4 py-2 bg-transparent border border-solid border-sky-800 rounded-md font-semibold text-xs text-sky-800 uppercase tracking-widest hover:bg-sky-600 focus:bg-transparent active:bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 print:hidden;
     }
 
     .btn-alert {
