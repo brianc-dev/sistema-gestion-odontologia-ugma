@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ config('app.name', 'UGMA - Odontología') }}</title>
+    <link rel="icon" href="public/img/UGMA-logo.png" type="image/png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -35,6 +36,7 @@
             <a class="text-center border rounded-md border border-slate-200 p-2" href="{{ route('login') }}">Estudiante | Profesor</a>
             <a class="text-center border rounded-md border border-slate-200 p-2" href="{{ route('admin.login') }}">Admisión</a>
             <a class="text-center border rounded-md border border-slate-200 p-2" href="{{ route('admin.login') }}">Administración</a>
+            <a class="text-center border rounded-md border border-slate-200 p-2 bg-cyan-500 text-white" href="{{ route('register') }}">Registrarse</a>
             </div>
         </div>
     </div>

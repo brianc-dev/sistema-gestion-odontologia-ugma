@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\ModificacionesPlanTratamiento;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -31,8 +32,12 @@ class ModificacionesPlanTratamientoForm extends Form
     )]
     public $modificacionesPlanTratamiento = [];
 
-    public function setModificacionesPlanTratamiento(ModificacionesPlanTratamiento $modificacionesPlanTratamiento)
+    public function setModificacionesPlanTratamiento(Collection $modificacionesPlanTratamiento)
     {
-        $this->fill($modificacionesPlanTratamiento->attributesToArray());
+        $this->modificacionesPlanTratamiento = $modificacionesPlanTratamiento->map(fn($plan, $index) => [
+            'fecha' => $plan->created_at,
+            'diente' => $plan->diente,
+            'tratamiento' => $plan->tratamiento_modificado
+        ]);
     }
 }

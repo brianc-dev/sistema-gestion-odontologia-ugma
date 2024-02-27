@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Forms;
 
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class SecuenciaTratatamientoForm extends Form
+class SecuenciaTratamientoForm extends Form
 {
     #[Validate(
         [
@@ -19,4 +20,15 @@ class SecuenciaTratatamientoForm extends Form
         ]
     )]
     public $secuenciaTratamientos = [];
+
+    public function setSecuenciaTratamiento(Collection $secuenciaTratamiento)
+    {
+        $this->secuenciaTratamientos = $secuenciaTratamiento->map(fn( $s, $index) => [
+            'fecha' => $s->created_at,
+            'diente' => $s->diente,
+            'tratamiento_realizado' => $s->tratamiento_realizado,
+            'observaciones_docente' => $s->observaciones_docente,
+            'nombre_firma_docente' => $s->firma,
+        ]);
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Historia;
+use App\Models\HistoriaPeriodontal;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -56,22 +58,22 @@ class HistoriaPeriodontalForm extends Form
     public string $metodos_auxiliares = '';
 
     #[Validate([
-        'cepillado_lengua' => [ 'boolean']
+        'cepillado_lengua' => ['boolean']
     ], message: self::messages)]
     public string $cepillado_lengua = '';
 
     #[Validate([
-        'hemorragia_gingival' => [ 'boolean']
+        'hemorragia_gingival' => ['boolean']
     ], message: self::messages)]
     public string $hemorragia_gingival = '';
 
     #[Validate([
-        'xerostomia' => [ 'boolean']
+        'xerostomia' => ['boolean']
     ], message: self::messages)]
     public string $xerostomia = '';
 
     #[Validate([
-        'sialorrea' => [ 'boolean']
+        'sialorrea' => ['boolean']
     ], message: self::messages)]
     public string $sialorrea = '';
 
@@ -91,12 +93,12 @@ class HistoriaPeriodontalForm extends Form
     public string $metodos_auxiliares_requeridos = '';
 
     #[Validate([
-        'placa_bacteriana_lengua' => [ 'boolean']
+        'placa_bacteriana_lengua' => ['boolean']
     ], message: self::messages)]
     public string $placa_bacteriana_lengua = '';
 
     #[Validate([
-        'control_halitosis' => [ 'boolean']
+        'control_halitosis' => ['boolean']
     ], message: self::messages)]
     public string $control_halitosis = '';
 
@@ -104,4 +106,16 @@ class HistoriaPeriodontalForm extends Form
         'tratamiento' => ['string', 'between:0,300']
     ], message: self::messages)]
     public string $tratamiento = '';
+
+    public function setHistoriaPeriodontal(Historia $historia)
+    {
+        $h = $historia->higieneBucal;
+        $c = $historia->controlHigieneBucal;
+
+        if ($h and $c) {
+            $this->fill($c->getAttributes());
+            $this->fill($h->getAttributes());
+        }
+
+    }
 }

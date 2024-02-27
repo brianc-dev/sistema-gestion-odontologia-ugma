@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Presupuesto;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -18,8 +19,11 @@ class PresupuestoForm extends Form
     )]
     public $presupuestos = [];
 
-    public function setPresupuesto(Presupuesto $presupuesto)
+    public function setPresupuesto(Collection $presupuestos)
     {
-
+        $this->presupuestos = $presupuestos->map(fn($p, $index) => [
+            'tratamiento' => $p->tratamiento,
+            'costo' => $p->costo_unitario
+        ]);
     }
 }

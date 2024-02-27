@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\PruebasDiagnosticas;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -88,4 +89,9 @@ class PruebasDiagnosticasForm extends Form
         'observaciones' => ['string', 'between:0,300']
     ], message: self::messages)]
     public string $observaciones = '';
+
+    public function setPruebasDiagnosticas(PruebasDiagnosticas $pruebasDiagnosticas)
+    {
+        $this->fill($pruebasDiagnosticas->getAttributes());
+    }
 }

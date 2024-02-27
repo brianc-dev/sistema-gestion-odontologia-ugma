@@ -16,10 +16,13 @@ use App\Livewire\Forms\PeriodontogramaForm;
 use App\Livewire\Forms\PlanTratamientoForm;
 use App\Livewire\Forms\PresupuestoForm;
 use App\Livewire\Forms\PruebasDiagnosticasForm;
-use App\Livewire\Forms\SecuenciaTratatamientoForm;
+use App\Livewire\Forms\SecuenciaTratamientoForm;
 use App\Models\ControlHigieneBucal;
 use App\Models\HigieneBucal;
 use App\Models\Historia;
+use App\Models\MaxilarInferior;
+use App\Models\MaxilarSuperior;
+use App\Models\ModelosOclusion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -45,7 +48,7 @@ class EditorSection extends Component
     public PlanTratamientoForm $planTratamientoForm;
     public ModificacionesPlanTratamientoForm $modificacionesPlanTratamientoForm;
     public PresupuestoForm $presupuestoForm;
-    public SecuenciaTratatamientoForm $secuenciaTratatamientoForm;
+    public SecuenciaTratamientoForm $secuenciaTratatamientoForm;
     public HistoriaPeriodontalForm $historiaPeriodontalForm;
     public FichaEndodonticaForm $fichaEndodonticaForm;
     public PruebasDiagnosticasForm $pruebasDiagnosticasForm;
@@ -139,6 +142,7 @@ class EditorSection extends Component
             $this->historiaOdontologicaForm->validate();
             $this->examenRadiograficoForm->validate();
             $this->periodontogramaForm->validate();
+            $this->estudioModelosForm->validate();
         } catch (ValidationException $exception) {
             $this->dispatch('errors-show');
             return;
@@ -186,9 +190,9 @@ class EditorSection extends Component
             $file = Str::remove('livewire-file:', $this->periodontogramaForm->periodontograma_photo);
             $this->periodontogramaForm->periodontograma_photo = Str::replace('livewire-file:', 'livewire-tmp/', $this->periodontogramaForm->periodontograma_photo);
 
-            Storage::move($this->periodontogramaForm->periodontograma_photo, 'public/periodontogramas/'. $file);
+            Storage::move($this->periodontogramaForm->periodontograma_photo, 'public/periodontogramas/' . $file);
 
-            $periodontograma->url = Storage::url('public/periodontogramas/'. $file);
+            $periodontograma->url = Storage::url('public/periodontogramas/' . $file);
         }
         $periodontograma->save();
 
@@ -228,6 +232,58 @@ class EditorSection extends Component
             $secuenciaTratamiento->save();
         }
 
+        $estudioModelos = new \App\Models\EstudioModelos();
+        $estudioModelos->historia_id = $historia->id;
+        $estudioModelos->fill($this->estudioModelosForm->only([
+            'examenes_complementarios', 'interconsultas', 'diagnostico', 'pronostico',
+        ]));
+        $estudioModelos->save();
+
+        $maxsupAttributes = collect($this->estudioModelosForm->only([
+            'maxsup_tipo_arco', 'maxsup_forma_arco', 'maxsup_simetria_arco', 'maxsup_paladar', 'maxsup_malposiciones_dentarias', 'maxsup_dientes_ausentes', 'maxsup_facetas_desgaste', 'maxsup_diastemas', 'maxsup_anomalias_forma_tamano_numero',
+        ]));
+        $newMaxsupAttributes = [];
+
+        $maxsupAttributes->each(function ($item, $key) use (&$newMaxsupAttributes) {
+            $newKey = Str::remove('maxsup_', $key);
+            $newMaxsupAttributes[$newKey] = $item;
+        });
+
+        $maxinfAttributes = collect($this->estudioModelosForm->only([
+            'maxinf_tipo_arco', 'maxinf_forma_arco', 'maxinf_simetria_arco', 'maxinf_piso_boca', 'maxinf_malposiciones_dentarias', 'maxinf_dientes_ausentes', 'maxinf_facetas_desgaste', 'maxinf_diastemas', 'maxinf_anomalias_forma_tamano_numero',
+        ]));
+        $newMaxinfAttributes = [];
+
+        $maxinfAttributes->each(function ($item, $key) use (&$newMaxinfAttributes) {
+            $newKey = Str::remove('maxinf_', $key);
+            $newMaxinfAttributes[$newKey] = $item;
+        });
+
+        $oclusionAttributes = collect($this->estudioModelosForm->only([
+            'oclusion_linea_media', 'oclusion_sobresalte', 'oclusion_sobrepase', 'oclusion_relacion_canina', 'oclusion_relacion_molar', 'oclusion_mordida_anterior', 'oclusion_mordida_posterior', 'oclusion_curvas_compensacion', 'oclusion_plano_oclusal',
+        ]));
+        $newOclusionAttributes = [];
+
+        $oclusionAttributes->each(function ($item, $key) use (&$newOclusionAttributes) {
+            $newKey = Str::remove('oclusion_', $key);
+            $newOclusionAttributes[$newKey] = $item;
+        });
+
+        $maxsup = new MaxilarSuperior();
+        $maxsup->historia_id = $historia->id;
+        $maxsup->fill($newMaxsupAttributes);
+        $maxsup->save();
+
+        $maxinf = new MaxilarInferior();
+        $maxinf->historia_id = $historia->id;
+        $maxinf->fill($newMaxinfAttributes);
+        $maxinf->save();
+
+        $oclusion = new ModelosOclusion();
+        $oclusion->historia_id = $historia->id;
+        $oclusion->fill($newOclusionAttributes);
+        $oclusion->save();
+
         $historiaPeriodontal = \App\Models\HistoriaPeriodontal::create(
             ['historia_id' => $historia->id]
         );
@@ -239,7 +295,7 @@ class EditorSection extends Component
 
         $control = new \App\Models\ControlHigieneBucal($this->historiaPeriodontalForm->only([
             'tecnica_cepillado', 'cepillo_recomendado', 'metodos_auxiliares_requeridos', 'placa_bacteriana_lengua', 'control_halitosis', 'tratamiento'
-            ]));
+        ]));
         $control->historia_id = $historia->id;
         $control->save();
 
@@ -318,16 +374,14 @@ class EditorSection extends Component
             $this->historiaOdontologicaForm->setHistoriaOdontologica($historia->historiaOdontologica);
             $this->examenRadiograficoForm->setExamenRadiografico($historia->examenRadiografico);
             $this->periodontogramaForm->setPeriodontograma($historia->periodontograma);
-            $planTratamientos = $historia->planTratamiento;
-            foreach ($planTratamientos as $plan) {
-                $p = [];
-                $p['tratamiento'] = $plan->tratamiento;
-                $p['costo'] = $plan->costo_unitario;
-                array_push($this->planTratamientoForm->planTratamiento, $p);
-            }
-//            $this->planTratamientoForm->setPlanTratamiento($historia->planTratamiento);
-//            $this->modificacionesPlanTratamientoForm->setModificacionesPlanTratamiento($historia->modificacionesPlanTratamiento);
-
+            $this->planTratamientoForm->setPlanTratamiento($historia->planTratamiento);
+            $this->modificacionesPlanTratamientoForm->setModificacionesPlanTratamiento($historia->modificacionesPlanTratamiento);
+            $this->presupuestoForm->setPresupuesto($historia->presupuesto);
+            $this->secuenciaTratatamientoForm->setSecuenciaTratamiento($historia->secuenciaTratamiento);
+            $this->historiaPeriodontalForm->setHistoriaPeriodontal($historia);
+            $this->fichaEndodonticaForm->setFichaEndodontica($historia->fichaEndodontica);
+            $this->pruebasDiagnosticasForm->setPruebasDiagnosticas($historia->pruebasDiagnosticas);
+            $this->estudioModelosForm->setEstudioModelo($historia);
         } else {
             $this->enabled = true;
         }

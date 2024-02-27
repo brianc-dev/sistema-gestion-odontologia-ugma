@@ -57,7 +57,7 @@
                     <div>
                         {{--                Malposiciones--}}
                         <x-input-label for="maxsup_malposiciones" :value="__('Malposiciones dentarias')"/>
-                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxsup_malposiciones"
+                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxsup_malposiciones_dentarias"
                                     id="maxsup_malposiciones"
                                     class="block mt-1 w-full rounded-lg border-none resize-y" type="text"
                                     name="maxsup_malposiciones" rows="4" required autofocus spellcheck="true">
@@ -68,7 +68,7 @@
                     <div>
                         {{--                Dientes ausentes--}}
                         <x-input-label for="maxsup_dientes-ausentes" :value="__('Dientes ausentes')"/>
-                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxsup_dientes-ausentes"
+                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxsup_dientes_ausentes"
                                     id="maxsup_dientes-ausentes"
                                     class="block mt-1 w-full rounded-lg border-none resize-y" type="text"
                                     name="maxsup_dientes-ausentes" rows="4" required autofocus spellcheck="true">
@@ -162,7 +162,7 @@
                     <div>
                         {{--                Malposiciones--}}
                         <x-input-label for="maxinf_malposiciones" :value="__('Malposiciones dentarias')"/>
-                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxinf_malposiciones"
+                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxinf_malposiciones_dentarias"
                                     id="maxinf_malposiciones"
                                     class="block mt-1 w-full rounded-lg border-none resize-y" type="text"
                                     name="maxinf_malposiciones" rows="4" required autofocus spellcheck="true">
@@ -173,7 +173,7 @@
                     <div>
                         {{--                Dientes ausentes--}}
                         <x-input-label for="maxinf_dientes-ausentes" :value="__('Dientes ausentes')"/>
-                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxinf_dientes-ausentes"
+                        <x-textarea :disabled="!$enabled" wire:model.live="form.maxinf_dientes_ausentes"
                                     id="maxinf_dientes-ausentes"
                                     class="block mt-1 w-full rounded-lg border-none resize-y" type="text"
                                     name="maxinf_dientes-ausentes" rows="4" required autofocus spellcheck="true">

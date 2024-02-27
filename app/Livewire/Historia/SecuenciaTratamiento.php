@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Historia;
 
-use App\Livewire\Forms\SecuenciaTratatamientoForm;
+use App\Livewire\Forms\SecuenciaTratamientoForm;
 use App\Models\Historia;
 use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
@@ -12,7 +12,7 @@ use Livewire\Component;
 class SecuenciaTratamiento extends Component
 {
     #[Modelable]
-    public SecuenciaTratatamientoForm $form;
+    public SecuenciaTratamientoForm $form;
     public ?Historia $historia;
     public $enabled;
 

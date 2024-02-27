@@ -58,6 +58,26 @@ class Historia extends Model
         return $this->hasOne(Periodontograma::class);
     }
 
+    public function estudioModelos(): HasOne
+    {
+        return $this->hasOne(EstudioModelos::class);
+    }
+
+    public function maxilarSuperior(): HasOne
+    {
+        return $this->hasOne(MaxilarSuperior::class);
+    }
+
+    public function maxilarInferior(): HasOne
+    {
+        return $this->hasOne(MaxilarInferior::class);
+    }
+
+    public function modelosOclusion(): HasOne
+    {
+        return $this->hasOne(ModelosOclusion::class);
+    }
+
     public function planTratamiento(): HasMany
     {
         return $this->hasMany(PlanTratamiento::class);
@@ -96,6 +116,16 @@ class Historia extends Model
     public function radiografias(): HasOne
     {
         return $this->hasOne(Radiografias::class);
+    }
+
+    public function higieneBucal(): HasOne
+    {
+        return $this->hasOne(HigieneBucal::class);
+    }
+
+    public function controlHigieneBucal(): HasOne
+    {
+        return $this->hasOne(ControlHigieneBucal::class);
     }
 
     public function status(): BelongsTo

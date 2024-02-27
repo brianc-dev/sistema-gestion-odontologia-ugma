@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\FichaEndodontica;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -48,4 +49,9 @@ class FichaEndodonticaForm extends Form
         'interpretacion_radiografica' => ['string', 'between:0,300']
     ], message: self::messages)]
     public string $interpretacion_radiografica = '';
+
+    public function setFichaEndodontica(FichaEndodontica $fichaEndodontica)
+    {
+        $this->fill($fichaEndodontica->getAttributes());
+    }
 }

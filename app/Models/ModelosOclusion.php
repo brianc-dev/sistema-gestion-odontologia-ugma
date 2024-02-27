@@ -11,6 +11,8 @@ class ModelosOclusion extends Model
 
     public $timestamps = false;
 
+    protected $guarded = [];
+
     protected $attributes = [
         'linea_media' => '',
         'sobresalte' => 0,
