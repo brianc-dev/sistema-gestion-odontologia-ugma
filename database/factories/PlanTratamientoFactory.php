@@ -16,8 +16,11 @@ class PlanTratamientoFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'diente' => $faker->numberBetween(18, 38),
+            'tipo_cavidad' => $faker->text(),
+            'tratamiento' => $faker->text(),
         ];
     }
 }

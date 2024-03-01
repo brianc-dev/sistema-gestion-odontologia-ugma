@@ -16,8 +16,16 @@ class HigieneBucalFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'frecuencia_cepillado' => $faker->text(),
+            'tipo_cepillo' => $faker->text(),
+            'metodo_cepillado' => $faker->text(),
+            'metodos_auxiliares' => $faker->text(),
+            'cepillado_lengua' => $faker->randomElement(['Sí', 'No']),
+            'hemorragia_gingival' => $faker->randomElement(['Sí', 'No']),
+            'xerostomia' => $faker->randomElement(['Sí', 'No']),
+            'sialorrea' => $faker->randomElement(['Sí', 'No']),
         ];
     }
 }

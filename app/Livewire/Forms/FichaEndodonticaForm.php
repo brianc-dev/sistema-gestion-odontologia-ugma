@@ -50,7 +50,7 @@ class FichaEndodonticaForm extends Form
     ], message: self::messages)]
     public string $interpretacion_radiografica = '';
 
-    public function setFichaEndodontica(FichaEndodontica $fichaEndodontica)
+    public function setFichaEndodontica(?FichaEndodontica $fichaEndodontica)
     {
         $this->fill($fichaEndodontica->getAttributes());
     }

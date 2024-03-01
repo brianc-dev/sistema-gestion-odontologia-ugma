@@ -16,8 +16,10 @@ class PeriodontogramaFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            'url' => null
+            'url' => url('storage/periodontogramas/periodontograma-base.png'),
+            'correcciones' => $faker->text(100),
         ];
     }
 }

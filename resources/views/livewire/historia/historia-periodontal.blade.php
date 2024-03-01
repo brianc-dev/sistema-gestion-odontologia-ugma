@@ -2,7 +2,7 @@
     <div class="col-span-3 print:col-span-4 bg-slate-400 py-6 px-4">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Historia periodontal</h2>
         <div>
-            <h3>Historia buscal del paciente</h3>
+            <h3>Higiene buscal del paciente</h3>
             <form class="grid grid-cols-2 gap-2">
                 <div>
                     <x-input-label for="frecuencia_cepillado" :value="__('Frecuencia del cepillado')"/>

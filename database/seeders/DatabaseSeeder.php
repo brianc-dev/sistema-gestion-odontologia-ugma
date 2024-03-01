@@ -59,7 +59,9 @@ class DatabaseSeeder extends Seeder
             'cedula' => 'V30987654',
             'nombre' => 'user',
             'apellido' => 'name',
-        ])->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->count(5)))->create();
+        ])->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->
+        hasEstudioModelos()->hasMaxilarSuperior()->hasMaxilarInferior()->hasModelosOclusion()->hasPlanTratamiento()->hasModificacionesPlanTratamiento()->hasSecuenciaTratamiento()->hasPresupuesto()->hasHistoriaPeriodontal()->hasHigieneBucal()->hasControlHigieneBucal()->
+        hasFichaEndodontica()->hasPruebasDiagnosticas()->count(5)))->create();
 
         $user = User::create([
             'email' => 'username2@example.com',
@@ -77,6 +79,9 @@ class DatabaseSeeder extends Seeder
 
 //        User::factory()->hasEstudiante()->count(20)->create();
 
-        \App\Models\User::factory()->has(\App\Models\Estudiante::factory()->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->count(2)))->count(20)->create();
+        \App\Models\User::factory()->has(\App\Models\Estudiante::factory()->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->
+        hasEstudioModelos()->hasMaxilarSuperior()->hasMaxilarInferior()->hasModelosOclusion()->hasPlanTratamiento()->hasModificacionesPlanTratamiento()->hasSecuenciaTratamiento()->hasPresupuesto()->hasHistoriaPeriodontal()->hasHigieneBucal()->hasControlHigieneBucal()->
+            hasFichaEndodontica()->hasPruebasDiagnosticas()
+            ->count(2)))->count(20)->create();
     }
 }

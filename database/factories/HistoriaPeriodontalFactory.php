@@ -16,8 +16,10 @@ class HistoriaPeriodontalFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'control_placa_dental_url' => $faker->text(),
+            'porcentaje' => $faker->randomFloat(2, 0, 100),
         ];
     }
 }

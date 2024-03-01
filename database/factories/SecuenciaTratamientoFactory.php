@@ -16,8 +16,12 @@ class SecuenciaTratamientoFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'diente' => $faker->numberBetween(18, 38),
+            'tratamiento_realizado' => $faker->text(),
+            'observaciones_docente' => $faker->text(),
+            'firma' => $faker->text(20),
         ];
     }
 }

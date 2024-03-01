@@ -16,8 +16,10 @@ class PresupuestoFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'tratamiento' => $faker->text(),
+            'costo_unitario' => $faker->randomFloat(2, 0, 100),
         ];
     }
 }

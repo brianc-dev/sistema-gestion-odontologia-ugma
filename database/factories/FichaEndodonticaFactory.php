@@ -16,8 +16,14 @@ class FichaEndodonticaFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'ano' => $faker->year(),
+            'diente' => $faker->numberBetween(18, 38),
+            'sintomas' => $faker->text(),
+            'signos' => $faker->text(),
+            'etiologia' => $faker->text(),
+            'interpretacion_radiografica' => $faker->text(),
         ];
     }
 }

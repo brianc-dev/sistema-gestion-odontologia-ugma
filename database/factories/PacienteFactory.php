@@ -24,7 +24,7 @@ class PacienteFactory extends Factory
             'edad' => $faker->numberBetween(18, 100),
             'sexo' => $faker->regexify('[MF]'),
             'lugar_nacimiento' => $faker->address(),
-            'fecha_nacimiento' => $faker->date(),
+            'fecha_nacimiento' => $faker->date('d-m-Y'),
             'ocupacion' => $faker->jobTitle(),
             'telefono' => $faker->phoneNumber(),
             'contacto_emergencia' => $faker->firstName . ' ' . $faker->lastName,

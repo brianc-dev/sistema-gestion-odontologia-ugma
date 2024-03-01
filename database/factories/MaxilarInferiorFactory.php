@@ -16,8 +16,17 @@ class MaxilarInferiorFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'tipo_arco' => $faker->text(),
+            'forma_arco' => $faker->text(),
+            'simetria_arco' => $faker->text(),
+            'piso_boca' => $faker->text(),
+            'malposiciones_dentarias' => $faker->text(),
+            'dientes_ausentes' => $faker->text(),
+            'facetas_desgaste' => $faker->text(),
+            'diastemas' => $faker->text(),
+            'anomalias_forma_tamano_numero' => $faker->text(),
         ];
     }
 }

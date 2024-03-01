@@ -16,8 +16,17 @@ class ModelosOclusionFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'linea_media' => $faker->text(),
+            'sobresalte' => $faker->text(),
+            'sobrepase' => $faker->text(),
+            'relacion_canina' => $faker->text(),
+            'relacion_molar' => $faker->text(),
+            'mordida_anterior' => $faker->text(),
+            'mordida_posterior' => $faker->text(),
+            'curvas_compensacion' => $faker->text(),
+            'plano_oclusal' => $faker->text(),
         ];
     }
 }

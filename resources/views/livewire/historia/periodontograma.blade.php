@@ -32,7 +32,7 @@
                     </a>
                 @elseif($form->periodontograma_photo and gettype($form->periodontograma_photo) == 'string')
                     <a href="{{url($form->periodontograma_photo)}}">
-                        <img class="w-full" src="{{ $form->periodontograma_photo }}" alt="imagen periodontograma"/>
+                        <img class="w-full" src="{{ url($form->periodontograma_photo) }}" alt="imagen periodontograma"/>
                     </a>
                     @isset($historia)
                         <time class="font-bold text-lg pt-1">{{ date_format($historia->updated_at, 'd-m-Y') }}</time>

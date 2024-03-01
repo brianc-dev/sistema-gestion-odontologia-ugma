@@ -16,8 +16,10 @@ class ModificacionesPlanTratamientoFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'diente' => $faker->numberBetween(18, 38),
+            'tratamiento_modificado' => $faker->text(),
         ];
     }
 }

@@ -16,8 +16,12 @@ class EstudioModelosFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = fake('es_VE');
         return [
-            //
+            'examenes_complementarios' => $faker->text(),
+            'interconsultas' => $faker->text(),
+            'diagnostico' => $faker->text(),
+            'pronostico' => $faker->text(),
         ];
     }
 }
