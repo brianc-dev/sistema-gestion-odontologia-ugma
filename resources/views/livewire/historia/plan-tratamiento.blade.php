@@ -26,12 +26,16 @@
                                   class="block mt-1 w-full" type="text"
                                   name="tratamiento" required autofocus/>
                 </div>
-                <div class="my-auto">
-                    <button class="btn-alert" wire:click.prevent="delete({{ $loop->index }})">Eliminar</button>
+                <div class="my-auto print:hidden">
+                    @if($enabled)
+                        <button class="btn-alert" wire:click.prevent="delete({{ $loop->index }})">Eliminar</button>
+                    @endif
                 </div>
             @empty
             @endforelse
-            <button wire:click.prevent="$dispatch('plan-add')" class="btn-option col-span-2 justify-center">Nuevo plan</button>
+            @if($enabled)
+                <button wire:click.prevent="$dispatch('plan-add')" class="btn-option col-span-2 justify-center">Nuevo plan</button>
+            @endif
         </form>
 
     </div>

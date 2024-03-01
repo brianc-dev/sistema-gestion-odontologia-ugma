@@ -39,12 +39,16 @@
                                   class="block mt-1 w-full" type="text"
                                   required autofocus/>
                 </div>
-                <div wire:key="{{ $loop->index }}" class="my-auto">
-                    <button class="btn-alert" wire:click.prevent="delete({{ $loop->index }})">Eliminar</button>
+                <div wire:key="{{ $loop->index }}" class="my-auto print:hidden">
+                    @if($enabled)
+                        <button class="btn-alert" wire:click.prevent="delete({{ $loop->index }})">Eliminar</button>
+                    @endif
                 </div>
             @empty
             @endforelse
-            <button wire:click.prevent="$dispatch('secuencia-add')" class="btn-option col-span-2 justify-center">Nueva secuencia</button>
+            @if($enabled)
+                <button wire:click.prevent="$dispatch('secuencia-add')" class="btn-option col-span-2 justify-center">Nueva secuencia</button>
+            @endif
         </form>
 
     </div>
