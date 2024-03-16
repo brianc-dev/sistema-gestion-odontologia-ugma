@@ -16,6 +16,7 @@ use App\Livewire\Forms\PeriodontogramaForm;
 use App\Livewire\Forms\PlanTratamientoForm;
 use App\Livewire\Forms\PresupuestoForm;
 use App\Livewire\Forms\PruebasDiagnosticasForm;
+use App\Livewire\Forms\RadiografiasForm;
 use App\Livewire\Forms\SecuenciaTratamientoForm;
 use App\Models\ControlHigieneBucal;
 use App\Models\HigieneBucal;
@@ -35,7 +36,7 @@ use Livewire\WithFileUploads;
 
 class EditorSection extends Component
 {
-//    use WithFileUploads;
+    use WithFileUploads;
 
     public Historia $historia;
     public PacienteForm $pacienteForm;
@@ -52,6 +53,7 @@ class EditorSection extends Component
     public HistoriaPeriodontalForm $historiaPeriodontalForm;
     public FichaEndodonticaForm $fichaEndodonticaForm;
     public PruebasDiagnosticasForm $pruebasDiagnosticasForm;
+    public RadiografiasForm $radiografiasForm;
 
     public EstudioModelosForm $estudioModelosForm;
     private $sections = [
@@ -123,6 +125,20 @@ class EditorSection extends Component
         $this->historia->historiaOdontologica->update($this->historiaOdontologicaForm->all());
         $this->historia->examenRadiografico->update($this->examenRadiograficoForm->all());
 
+        $periodontograma = $this->historia->periodontograma;
+
+        if ($periodontograma->url != $this->periodontogramaForm->periodontograma_photo) {
+            $file = Str::remove('livewire-file:', $this->periodontogramaForm->periodontograma_photo);
+            $this->periodontogramaForm->periodontograma_photo = Str::replace('livewire-file:', 'livewire-tmp/', $this->periodontogramaForm->periodontograma_photo);
+
+            Storage::move($this->periodontogramaForm->periodontograma_photo, 'public/periodontogramas/' . $file);
+
+            $periodontograma->url = Storage::url('public/periodontogramas/' . $file);
+        }
+
+        if ($periodontograma->isDirty()) {
+            $periodontograma->save();
+        }
 
         session()->put('message', 'Historia actualizada');
 
@@ -187,14 +203,20 @@ class EditorSection extends Component
         $periodontograma->historia_id = $historia->id;
 
         if ($this->periodontogramaForm->periodontograma_photo) {
-            $file = Str::remove('livewire-file:', $this->periodontogramaForm->periodontograma_photo);
-            $this->periodontogramaForm->periodontograma_photo = Str::replace('livewire-file:', 'livewire-tmp/', $this->periodontogramaForm->periodontograma_photo);
-
-            Storage::move($this->periodontogramaForm->periodontograma_photo, 'public/periodontogramas/' . $file);
-
-            $periodontograma->url = Storage::url('public/periodontogramas/' . $file);
+            $periodontograma->url = $this->saveFile($this->periodontogramaForm->periodontograma_photo,'periodontogramas');
         }
+
         $periodontograma->save();
+
+//        if ($this->periodontogramaForm->periodontograma_photo) {
+//            $file = Str::remove('livewire-file:', $this->periodontogramaForm->periodontograma_photo);
+//            $this->periodontogramaForm->periodontograma_photo = Str::replace('livewire-file:', 'livewire-tmp/', $this->periodontogramaForm->periodontograma_photo);
+//
+//            Storage::move($this->periodontogramaForm->periodontograma_photo, 'public/periodontogramas/' . $file);
+//
+//            $periodontograma->url = Storage::url('periodontogramas/' . $file);
+//        }
+//        $periodontograma->save();
 
         foreach ($this->planTratamientoForm->planTratamiento as $plan) {
             $planTratamiento = new \App\Models\PlanTratamiento();
@@ -288,12 +310,12 @@ class EditorSection extends Component
             ['historia_id' => $historia->id]
         );
 
-        $higiene = new \App\Models\HigieneBucal($this->historiaPeriodontalForm->only([
+        $higiene = new HigieneBucal($this->historiaPeriodontalForm->only([
             'frecuencia_cepillado', 'tipo_cepillo', 'metodo_cepillado', 'metodos_auxiliares', 'cepillado_lengua', 'hemorragia_gingival', 'xerostomia', 'sialorrea']));
         $higiene->historia_id = $historia->id;
         $higiene->save();
 
-        $control = new \App\Models\ControlHigieneBucal($this->historiaPeriodontalForm->only([
+        $control = new ControlHigieneBucal($this->historiaPeriodontalForm->only([
             'tecnica_cepillado', 'cepillo_recomendado', 'metodos_auxiliares_requeridos', 'placa_bacteriana_lengua', 'control_halitosis', 'tratamiento'
         ]));
         $control->historia_id = $historia->id;
@@ -306,6 +328,48 @@ class EditorSection extends Component
         $pruebasDiagnosticas = new \App\Models\PruebasDiagnosticas($this->pruebasDiagnosticasForm->all());
         $pruebasDiagnosticas->historia_id = $historia->id;
         $pruebasDiagnosticas->save();
+
+        $radiografias = new \App\Models\Radiografias();
+        $radiografias->historia_id = $historia->id;
+
+        if ($this->radiografiasForm->radiografia_inicial) {
+            $radiografias->radiografia_inicial = $this->saveFile($this->radiografiasForm->radiografia_inicial, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_penachos_1) {
+            $radiografias->radiografia_penachos_1 = $this->saveFile($this->radiografiasForm->radiografia_penachos_1, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_penachos_2) {
+            $radiografias->radiografia_penachos_2 = $this->saveFile($this->radiografiasForm->radiografia_penachos_2, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_final_1) {
+            $radiografias->radiografia_final_1 = $this->saveFile($this->radiografiasForm->radiografia_final_1, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_final_2) {
+            $radiografias->radiografia_final_2 = $this->saveFile($this->radiografiasForm->radiografia_final_2, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_final_3) {
+            $radiografias->radiografia_final_3 = $this->saveFile($this->radiografiasForm->radiografia_final_3, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_final_4) {
+            $radiografias->radiografia_final_4 = $this->saveFile($this->radiografiasForm->radiografia_final_4, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_conductometria) {
+            $radiografias->radiografia_conductometria = $this->saveFile($this->radiografiasForm->radiografia_conductometria, 'radiografias');
+        }
+
+        if ($this->radiografiasForm->radiografia_cono_patron) {
+            $radiografias->radiografia_cono_patron = $this->saveFile($this->radiografiasForm->radiografia_cono_patron, 'radiografias');
+        }
+
+        $radiografias->save();
+
 
         session()->put('message', 'Historia creada');
 
@@ -382,9 +446,19 @@ class EditorSection extends Component
             $this->fichaEndodonticaForm->setFichaEndodontica($historia->fichaEndodontica);
             $this->pruebasDiagnosticasForm->setPruebasDiagnosticas($historia->pruebasDiagnosticas);
             $this->estudioModelosForm->setEstudioModelo($historia);
+            $this->radiografiasForm->setRadiografias($historia->radiografias);
         } else {
             $this->enabled = true;
         }
+    }
+
+    private function saveFile($field, $folder)
+    {
+        $file = Str::remove('livewire-file:', $field);
+        $newField = Str::replace('livewire-file:', 'livewire-tmp/', $field);
+        Storage::move($newField, "public/$folder/" . $file);
+
+        return Storage::url("$folder/" . $file);
     }
 
     public function render()

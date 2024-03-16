@@ -24,6 +24,6 @@ class PresupuestoForm extends Form
         $this->presupuestos = $presupuestos->map(fn($p, $index) => [
             'tratamiento' => $p->tratamiento,
             'costo' => $p->costo_unitario
-        ]);
+        ])->toArray();
     }
 }

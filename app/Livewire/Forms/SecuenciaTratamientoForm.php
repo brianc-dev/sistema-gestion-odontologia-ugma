@@ -29,6 +29,6 @@ class SecuenciaTratamientoForm extends Form
             'tratamiento_realizado' => $s->tratamiento_realizado,
             'observaciones_docente' => $s->observaciones_docente,
             'nombre_firma_docente' => $s->firma,
-        ]);
+        ])->toArray();
     }
 }

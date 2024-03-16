@@ -38,6 +38,6 @@ class ModificacionesPlanTratamientoForm extends Form
             'fecha' => $plan->created_at,
             'diente' => $plan->diente,
             'tratamiento' => $plan->tratamiento_modificado
-        ]);
+        ])->toArray();
     }
 }

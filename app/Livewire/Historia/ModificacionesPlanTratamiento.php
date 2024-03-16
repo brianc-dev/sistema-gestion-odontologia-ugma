@@ -28,8 +28,8 @@ class ModificacionesPlanTratamiento extends Component
         }
     }
 
-    #[On('plan-add')]
-    public function addPlanTratamiento()
+    #[On('modificacionesplan-add')]
+    public function addModificacionesPlanTratamiento()
     {
         $plan = [
             'fecha' => '',

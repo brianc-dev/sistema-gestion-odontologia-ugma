@@ -16,8 +16,6 @@ class PeriodontogramaForm extends Form
 
     public $periodontograma_photo;
 
-    public $temporary_url;
-
     #[Validate([
         'correcciones' => ['string', 'between:0,200']
     ], message: self::MESSAGES)]

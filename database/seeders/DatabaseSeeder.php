@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'apellido' => 'name',
         ])->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->
         hasEstudioModelos()->hasMaxilarSuperior()->hasMaxilarInferior()->hasModelosOclusion()->hasPlanTratamiento()->hasModificacionesPlanTratamiento()->hasSecuenciaTratamiento()->hasPresupuesto()->hasHistoriaPeriodontal()->hasHigieneBucal()->hasControlHigieneBucal()->
-        hasFichaEndodontica()->hasPruebasDiagnosticas()->count(5)))->create();
+        hasFichaEndodontica()->hasPruebasDiagnosticas()->hasRadiografias()->count(5)))->create();
 
         $user = User::create([
             'email' => 'username2@example.com',
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory()->has(\App\Models\Estudiante::factory()->has(\App\Models\Historia::factory()->hasPaciente()->hasAntecedentesMedicosPersonales()->hasAntecedentesMedicosFamiliares()->hasMedicamento()->hasHistoriaOdontologica()->hasExamenRadiografico()->hasPeriodontograma()->
         hasEstudioModelos()->hasMaxilarSuperior()->hasMaxilarInferior()->hasModelosOclusion()->hasPlanTratamiento()->hasModificacionesPlanTratamiento()->hasSecuenciaTratamiento()->hasPresupuesto()->hasHistoriaPeriodontal()->hasHigieneBucal()->hasControlHigieneBucal()->
-            hasFichaEndodontica()->hasPruebasDiagnosticas()
+            hasFichaEndodontica()->hasPruebasDiagnosticas()->hasRadiografias()
             ->count(2)))->count(20)->create();
     }
 }

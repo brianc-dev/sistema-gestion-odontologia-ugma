@@ -37,7 +37,7 @@
             @empty
             @endforelse
             @if($enabled)
-                <button wire:click.prevent="$dispatch('plan-add')" class="btn-option col-span-2 justify-center">Nuevo plan</button>
+                <button wire:click.prevent="$dispatch('modificacionesplan-add')" class="btn-option col-span-2 justify-center">Nuevo plan</button>
             @endif
         </form>
 

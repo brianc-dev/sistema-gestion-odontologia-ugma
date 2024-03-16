@@ -62,7 +62,7 @@
                     <livewire:historia.pruebas-diagnosticas wire:model="pruebasDiagnosticasForm" :$enabled :$historia/>
                     @break
                 @case(15)
-                    <livewire:historia.radiografias :$enabled :$historia/>
+                    <livewire:historia.radiografias wire:model="radiografiasForm" :$enabled :$historia/>
                     @break
             @endswitch
     </div>
@@ -82,6 +82,6 @@
         <livewire:historia.historia-periodontal wire:model="historiaPeriodontalForm" :$enabled :$historia/>
         <livewire:historia.ficha-endodontica wire:model="fichaEndodonticaForm" :$enabled :$historia/>
         <livewire:historia.pruebas-diagnosticas wire:model="pruebasDiagnosticasForm" :$enabled :$historia/>
-        <livewire:historia.radiografias :$enabled :$historia/>
+        <livewire:historia.radiografias wire:model="radiografiasForm" :$enabled :$historia/>
     </div>
 </div>

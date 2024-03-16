@@ -19,14 +19,14 @@ class HistoriaOdontologicaFactory extends Factory
         $faker = fake('es_VE');
 
         return [
-            'antecedentes_odontologicos_personales' => $faker->realText(200),
+            'antecedentes_odontologicos_personales' => $faker->text(),
             'ortodoncia' => $faker->randomElement(['Sí', 'No']),
             'protesis' => $faker->randomElement(['Sí', 'No']),
-            'habitos' => $faker->realText(200),
-            'descripcion_habitos' => $faker->realText(200),
-            'examen_fisico' => $faker->realText(200),
-            'examen_extrabucal' => $faker->realText(200),
-            'examen_intrabucal' => $faker->realText(200),
+            'habitos' => $faker->text(),
+            'descripcion_habitos' => $faker->text(),
+            'examen_fisico' => $faker->text(),
+            'examen_extrabucal' => $faker->text(),
+            'examen_intrabucal' => $faker->text(),
         ];
     }
 }

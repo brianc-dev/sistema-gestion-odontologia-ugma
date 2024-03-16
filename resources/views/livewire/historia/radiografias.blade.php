@@ -4,76 +4,130 @@
         <form class="grid grid-cols-2 gap-2">
             <div>
                 <x-input-label for="radiografia_inicial" :value="__('Radiografia inicial')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_inicial"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_inicial')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_inicial"/>
+                <x-input-error :messages="$errors->get('form.radiografia_inicial')" class="mt-2"/>
+                @if ($form->radiografia_inicial and gettype($form->radiografia_inicial) != 'string')
+                    <img src="{{ $form->radiografia_inicial->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_inicial) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_inicial ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_inicial)) }}" />
+                @else
+                    <a href="{{$form->radiografia_inicial}}">
+                        <img src="{{$form->radiografia_inicial}}"/>
+                    </a>
+                @endif
             </div>
             <div></div>
             <div>
                 <x-input-label for="radiografia_penachos_1" :value="__('Radiografia penachos 1')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_penachos_1"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_penachos_1')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_penachos_1"/>
+                <x-input-error :messages="$errors->get('form.radiografia_penachos_1')" class="mt-2"/>
+                @if ($form->radiografia_penachos_1 and gettype($form->radiografia_penachos_1) != 'string')
+                    <img src="{{ $form->radiografia_penachos_1->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_penachos_1) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_penachos_1 ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_penachos_1)) }}" />
+                @else
+                    <a href="{{$form->radiografia_penachos_1}}">
+                        <img src="{{$form->radiografia_penachos_1}}"/>
+                    </a>
+                @endif
             </div>
             <div>
                 <x-input-label for="radiografia_penachos_2" :value="__('Radiografia penachos 2')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_penachos_2"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_penachos_2')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_penachos_2"/>
+                <x-input-error :messages="$errors->get('form.radiografia_penachos_2')" class="mt-2"/>
+                @if ($form->radiografia_penachos_2 and gettype($form->radiografia_penachos_2) != 'string')
+                    <img src="{{ $form->radiografia_penachos_2->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_penachos_2) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_penachos_2 ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_penachos_2)) }}" />
+                @else
+                    <a href="{{$form->radiografia_penachos_2}}">
+                        <img src="{{$form->radiografia_penachos_2}}"/>
+                    </a>
+                @endif
             </div>
             <div>
                 <x-input-label for="radiografia_final_1" :value="__('Radiografia final 1')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_final_1"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_final_1')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_final_1"/>
+                <x-input-error :messages="$errors->get('form.radiografia_final_1')" class="mt-2"/>
+                @if ($form->radiografia_final_1 and gettype($form->radiografia_final_1) != 'string')
+                    <img src="{{ $form->radiografia_final_1->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_final_1) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_final_1 ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_final_1)) }}" />
+                @else
+                    <a href="{{$form->radiografia_final_1}}">
+                        <img src="{{$form->radiografia_final_1}}"/>
+                    </a>
+                @endif
             </div>
             <div>
                 <x-input-label for="radiografia_final_2" :value="__('Radiografia final 2')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_final_2"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_final_2')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_final_2"/>
+                <x-input-error :messages="$errors->get('form.radiografia_final_2')" class="mt-2"/>
+                @if ($form->radiografia_final_2 and gettype($form->radiografia_final_2) != 'string')
+                    <img src="{{ $form->radiografia_final_2->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_final_2) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_final_2 ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_final_2)) }}" />
+                @else
+                    <a href="{{$form->radiografia_final_2}}">
+                        <img src="{{$form->radiografia_final_2}}"/>
+                    </a>
+                @endif
             </div>
             <div>
                 <x-input-label for="radiografia_final_3" :value="__('Radiografia final 3')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_final_3"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_final_3')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_final_3"/>
+                <x-input-error :messages="$errors->get('form.radiografia_final_3')" class="mt-2"/>
+                @if ($form->radiografia_final_3 and gettype($form->radiografia_final_3) != 'string')
+                    <img src="{{ $form->radiografia_final_3->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_final_3) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_final_3 ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_final_3)) }}" />
+                @else
+                    <a href="{{$form->radiografia_final_3}}">
+                        <img src="{{$form->radiografia_final_3}}"/>
+                    </a>
+                @endif
             </div>
             <div>
                 <x-input-label for="radiografia_final_4" :value="__('Radiografia final 4')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_final_4"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_final_4')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_final_4"/>
+                <x-input-error :messages="$errors->get('form.radiografia_final_4')" class="mt-2"/>
+                @if ($form->radiografia_final_4 and gettype($form->radiografia_final_4) != 'string')
+                    <img src="{{ $form->radiografia_final_4->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_final_4) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_final_4 ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_final_4)) }}" />
+                @else
+                    <a href="{{$form->radiografia_final_4}}">
+                        <img src="{{$form->radiografia_final_4}}"/>
+                    </a>
+                @endif
             </div>
             <div>
                 <x-input-label for="radiografia_conductometria" :value="__('Radiografia de conductometría')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_conductometria"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_conductometria')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_conductometria"/>
+                <x-input-error :messages="$errors->get('form.radiografia_conductometria')" class="mt-2"/>
+                @if ($form->radiografia_conductometria and gettype($form->radiografia_conductometria) != 'string')
+                    <img src="{{ $form->radiografia_conductometria->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_conductometria) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_conductometria ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_conductometria)) }}" />
+                @else
+                    <a href="{{$form->radiografia_conductometria}}">
+                        <img src="{{$form->radiografia_conductometria}}"/>
+                    </a>
+                @endif
             </div>
             <div>
                 <x-input-label for="radiografia_cono_patron" :value="__('Radiografia de cono patrón')"/>
-                <x-text-input :disabled="!$enabled"
-                              wire:model="radiografia_cono_patron"
-                              class="block mt-1 w-full" type="file"
-                              required autofocus/>
-                <x-input-error :messages="$errors->get('radiografia_cono_patron')" class="mt-2"/>
+                <x-input-file :disabled="!$enabled" wire:model="form.radiografia_cono_patron"/>
+                <x-input-error :messages="$errors->get('form.radiografia_cono_patron')" class="mt-2"/>
+                @if ($form->radiografia_cono_patron and gettype($form->radiografia_cono_patron) != 'string')
+                    <img src="{{ $form->radiografia_cono_patron->temporaryUrl() }}" />
+                @elseif(gettype($form->radiografia_cono_patron) == 'string' and \Illuminate\Support\Str::startsWith($form->radiografia_cono_patron ,'livewire-file:'))
+                    <img src="{{url('storage/app/livewire-tmp/' . \Illuminate\Support\Str::remove('livewire-file:' ,$form->radiografia_cono_patron)) }}" />
+                @else
+                    <a href="{{$form->radiografia_cono_patron}}">
+                        <img src="{{$form->radiografia_cono_patron}}"/>
+                    </a>
+                @endif
             </div>
         </form>
     </div>
