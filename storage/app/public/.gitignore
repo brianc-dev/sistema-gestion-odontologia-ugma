@@ -1,4 +1,5 @@
-*
 !.gitignore
 !periodontogramas
 !radiografias
+!radiografias/radiografia.png
+!periodontogramas/periodontograma-base.png
